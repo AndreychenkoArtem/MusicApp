@@ -1,0 +1,34 @@
+﻿<Properties StartupConfiguration="{C1CC3C0D-7083-4559-A315-31EEC59C9B06}|Default">
+  <MonoDevelop.Ide.ItemProperties.MusicApp.iOS automaticSigning="False" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.63C87277-1992-4137-B8E0-1E2AFE5D477D" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="MusicApp.Core/Services/LoadMusicService.cs">
+    <Files>
+      <File FileName="MusicApp/MusicApp.iOS/AppDelegate.cs" Line="27" Column="1" />
+      <File FileName="MusicApp.Core/Bootstrappers/PresentationBootstrapper.cs" Line="36" Column="10" />
+      <File FileName="MusicApp.Core/Services/LoadMusicService.cs" Line="21" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="MusicApp" expanded="True">
+            <Node name="MusicApp.Core" expanded="True">
+              <Node name="Bootstrappers" expanded="True" />
+              <Node name="Services" expanded="True">
+                <Node name="LoadMusicService.cs" selected="True" />
+              </Node>
+            </Node>
+            <Node name="MusicApp.iOS" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.MusicApp.Android PreferredExecutionTarget="Android.Nexus_5X_API_29_x86" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/artemandreichenko/RiderProjects/MusicApp/MusicApp.Core/Services/LoadMusicService.cs" relfile="MusicApp.Core/Services/LoadMusicService.cs" line="20" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

@@ -1,0 +1,2690 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FlexiMvvm.Lifecycle</name>
+    </assembly>
+    <members>
+        <member name="T:FlexiMvvm.Commands.CommandProvider">
+            <summary>
+            Represents a provider that returns an existing command instance by name or creates a new one.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Commands.CommandProvider.Get(System.Action,System.Func{System.Boolean},System.String)">
+            <summary>
+            Returns an existing <see cref="T:FlexiMvvm.Commands.Command"/> instance by <paramref name="name"/> or creates a new one. <paramref name="execute"/> is expected to be synchronous.
+            </summary>
+            <param name="execute">The synchronous <see cref="T:System.Action"/> to invoke when <see cref="M:FlexiMvvm.Commands.Command.Execute"/> is called.</param>
+            <param name="canExecute">The <see cref="T:System.Func`1"/> to invoke when <see cref="M:FlexiMvvm.Commands.Command.CanExecute"/> is called. Can be <see langword="null"/>.</param>
+            <param name="name">A unique name that is used to get a command instance.</param>
+            <returns>The command instance.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="execute"/> or <paramref name="name"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Commands.CommandProvider.Get``1(System.Action{``0},System.Func{``0,System.Boolean},System.String)">
+            <summary>
+            Returns an existing <see cref="T:FlexiMvvm.Commands.Command`1"/> instance by <paramref name="name"/> or creates a new one. <paramref name="execute"/> is expected to be synchronous.
+            </summary>
+            <typeparam name="T">The type of the command parameter.</typeparam>
+            <param name="execute">The synchronous <see cref="T:System.Action`1"/> to invoke when <see cref="M:FlexiMvvm.Commands.Command`1.Execute(`0)"/> is called.</param>
+            <param name="canExecute">The <see cref="T:System.Func`2"/> to invoke when <see cref="M:FlexiMvvm.Commands.Command`1.CanExecute(`0)"/> is called. Can be <see langword="null"/>.</param>
+            <param name="name">A unique name that is used to get a command instance.</param>
+            <returns>The command instance.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="execute"/> or <paramref name="name"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Commands.CommandProvider.GetForAsync(System.Func{System.Threading.Tasks.Task},System.Func{System.Boolean},System.String)">
+            <summary>
+            Returns an existing <see cref="T:FlexiMvvm.Commands.Command"/> instance by <paramref name="name"/> or creates a new one. <paramref name="execute"/> is expected to be asynchronous.
+            </summary>
+            <param name="execute">The asynchronous <see cref="T:System.Func`1"/> to invoke when <see cref="M:FlexiMvvm.Commands.Command.Execute"/> is called.</param>
+            <param name="canExecute">The <see cref="T:System.Func`1"/> to invoke when <see cref="M:FlexiMvvm.Commands.Command.CanExecute"/> is called. Can be <see langword="null"/>.</param>
+            <param name="name">A unique name that is used to get a command instance.</param>
+            <returns>The command instance.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="execute"/> or <paramref name="name"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Commands.CommandProvider.GetForAsync``1(System.Func{``0,System.Threading.Tasks.Task},System.Func{``0,System.Boolean},System.String)">
+            <summary>
+            Returns an existing <see cref="T:FlexiMvvm.Commands.Command`1"/> instance by <paramref name="name"/> or creates a new one. <paramref name="execute"/> is expected to be asynchronous.
+            </summary>
+            <typeparam name="T">The type of the command parameter.</typeparam>
+            <param name="execute">The asynchronous <see cref="T:System.Func`2"/> to invoke when <see cref="M:FlexiMvvm.Commands.Command`1.Execute(`0)"/> is called.</param>
+            <param name="canExecute">The <see cref="T:System.Func`2"/> to invoke when <see cref="M:FlexiMvvm.Commands.Command`1.CanExecute(`0)"/> is called. Can be <see langword="null"/>.</param>
+            <param name="name">A unique name that is used to get a command instance.</param>
+            <returns>The command instance.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="execute"/> or <paramref name="name"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="T:FlexiMvvm.Commands.RelayCommand">
+            <summary>
+            Represents a <see cref="T:FlexiMvvm.Commands.Command"/> that delegates execution and execution check to its owner and takes no parameters.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Commands.RelayCommand.#ctor(System.Action,System.Func{System.Boolean},System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FlexiMvvm.Commands.RelayCommand"/> class.
+            </summary>
+            <param name="execute">The <see cref="T:System.Action"/> to invoke when <see cref="M:FlexiMvvm.Commands.Command.Execute"/> is called.</param>
+            <param name="canExecute">
+            The <see cref="T:System.Func`1"/> to invoke when <see cref="M:FlexiMvvm.Commands.Command.CanExecute"/> is called. Can be <see langword="null"/>.
+            <para><see cref="M:FlexiMvvm.Commands.Command.CanExecute"/> will return <see langword="true"/> if <paramref name="canExecute"/> is <see langword="null"/>.</para>
+            </param>
+            <param name="name">The diagnostic command name. Can be <see langword="null"/>.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="execute"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Commands.RelayCommand.Execute">
+            <summary>
+            Executes the command if <see cref="M:FlexiMvvm.Commands.RelayCommand.CanExecute"/> returns <see langword="true"/>.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Commands.RelayCommand.CanExecute">
+            <summary>
+            Determines whether the command can be executed.
+            </summary>
+            <returns><see langword="true"/> if the command can be executed; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="T:FlexiMvvm.Commands.RelayCommand`1">
+            <summary>
+            Represents a <see cref="T:FlexiMvvm.Commands.Command`1"/> that delegates execution and execution check to its owner and takes a parameter.
+            </summary>
+            <typeparam name="T">The type of the command parameter.</typeparam>
+        </member>
+        <member name="M:FlexiMvvm.Commands.RelayCommand`1.#ctor(System.Action{`0},System.Func{`0,System.Boolean},System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FlexiMvvm.Commands.RelayCommand`1"/> class.
+            </summary>
+            <param name="execute">The <see cref="T:System.Action`1"/> to invoke when <see cref="M:FlexiMvvm.Commands.Command`1.Execute(`0)"/> is called.</param>
+            <param name="canExecute">
+            The <see cref="T:System.Func`2"/> to invoke when <see cref="M:FlexiMvvm.Commands.Command`1.CanExecute(`0)"/> is called. Can be <see langword="null"/>.
+            <para><see cref="M:FlexiMvvm.Commands.Command`1.CanExecute(`0)"/> will return <see langword="true"/> if <paramref name="canExecute"/> is <see langword="null"/>.</para>
+            </param>
+            <param name="name">The diagnostic command name. Can be <see langword="null"/>.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="execute"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Commands.RelayCommand`1.Execute(`0)">
+            <summary>
+            Executes the command with the passed <paramref name="parameter"/> if <see cref="M:FlexiMvvm.Commands.RelayCommand`1.CanExecute(`0)"/> returns <see langword="true"/>.
+            </summary>
+            <param name="parameter">The command parameter.</param>
+        </member>
+        <member name="M:FlexiMvvm.Commands.RelayCommand`1.CanExecute(`0)">
+            <summary>
+            Determines whether the command can be executed with the passed <paramref name="parameter"/>.
+            </summary>
+            <param name="parameter">The parameter used by the command to determine if it can be executed.</param>
+            <returns><see langword="true"/> if the command can be executed; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="T:FlexiMvvm.Persistence.BundleFactory">
+            <summary>
+            Represents a factory that creates a new bundle instance.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.BundleFactory.Create">
+            <summary>
+            Creates a new <see cref="T:FlexiMvvm.Persistence.IBundle"/> instance.
+            </summary>
+            <returns>The bundle instance.</returns>
+        </member>
+        <member name="E:FlexiMvvm.Persistence.Core.InMemoryBundle.PropertyChanged">
+            <inheritdoc />
+        </member>
+        <member name="P:FlexiMvvm.Persistence.Core.InMemoryBundle.Count">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.ContainsKey(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.GetBool(System.Boolean,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.GetBoolArray(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.GetByteArray(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.GetChar(System.Char,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.GetCharArray(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.GetDateTime(System.DateTime,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.GetDateTimeOffset(System.DateTimeOffset,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.GetDouble(System.Double,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.GetDoubleArray(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.GetEnum``1(``0,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.GetFloat(System.Single,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.GetFloatArray(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.GetInt(System.Int32,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.GetIntArray(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.GetLong(System.Int64,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.GetLongArray(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.GetShort(System.Int16,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.GetShortArray(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.GetString(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.GetStringArray(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.SetBool(System.Boolean,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.SetBoolArray(System.Boolean[],System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.SetByteArray(System.Byte[],System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.SetChar(System.Char,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.SetCharArray(System.Char[],System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.SetDateTime(System.DateTime,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.SetDateTimeOffset(System.DateTimeOffset,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.SetDouble(System.Double,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.SetDoubleArray(System.Double[],System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.SetEnum``1(``0,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.SetFloat(System.Single,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.SetFloatArray(System.Single[],System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.SetInt(System.Int32,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.SetIntArray(System.Int32[],System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.SetLong(System.Int64,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.SetLongArray(System.Int64[],System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.SetShort(System.Int16,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.SetShortArray(System.Int16[],System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.SetString(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.SetStringArray(System.String[],System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:FlexiMvvm.Persistence.Core.IStateOwner">
+            <summary>
+            Defines the contract for an object whose state needs to be persisted in view's persistent storage.
+            <para>This interface is intended for internal use by the FlexiMvvm.</para>
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.IStateOwner.ImportState(FlexiMvvm.Persistence.IBundle)">
+            <summary>
+            Imports the <paramref name="state"/> of the object from view's persistent storage.
+            </summary>
+            <param name="state">The state bundle. Can be <see langword="null"/>.</param>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.IStateOwner.ExportState">
+            <summary>
+            Exports the state of the object to view's persistent storage.
+            </summary>
+            <returns>The state bundle instance if the object has a state; otherwise, <see langword="null"/>.</returns>
+        </member>
+        <member name="T:FlexiMvvm.Persistence.IBundle">
+            <summary>
+            Defines the contract for a container that stores data as a set of key/value pairs in view's persistent storage.
+            </summary>
+        </member>
+        <member name="P:FlexiMvvm.Persistence.IBundle.Count">
+            <summary>
+            Gets the number of key/value pairs contained in the bundle.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.ContainsKey(System.String)">
+            <summary>
+            Determines whether the bundle contains the specified <paramref name="key"/>.
+            </summary>
+            <param name="key">The key to locate in the bundle.</param>
+            <returns><see langword="true"/> if the bundle contains an element with the specified key; otherwise, <see langword="false"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.GetBool(System.Boolean,System.String)">
+            <summary>
+            Returns the value for a given <paramref name="key"/>, or <paramref name="defaultValue"/> if no matching <paramref name="key"/> is found in the bundle.
+            </summary>
+            <param name="defaultValue">The default value to return if no matching key is found in the bundle.</param>
+            <param name="key">The key of the value to get.</param>
+            <returns>The value for the key, or <paramref name="defaultValue"/> if no matching key was found.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.GetBoolArray(System.String)">
+            <summary>
+            Returns the value for a given <paramref name="key"/>, or <see langword="null"/> if no matching <paramref name="key"/> is found in the bundle.
+            </summary>
+            <param name="key">The key of the value to get.</param>
+            <returns>The value for the key, or <see langword="null"/> if no matching key was found.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.GetByteArray(System.String)">
+            <summary>
+            Returns the value for a given <paramref name="key"/>, or <see langword="null"/> if no matching <paramref name="key"/> is found in the bundle.
+            </summary>
+            <param name="key">The key of the value to get.</param>
+            <returns>The value for the key, or <see langword="null"/> if no matching key was found.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.GetChar(System.Char,System.String)">
+            <summary>
+            Returns the value for a given <paramref name="key"/>, or <paramref name="defaultValue"/> if no matching <paramref name="key"/> is found in the bundle.
+            </summary>
+            <param name="defaultValue">The default value to return if no matching key is found in the bundle.</param>
+            <param name="key">The key of the value to get.</param>
+            <returns>The value for the key, or <paramref name="defaultValue"/> if no matching key was found.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.GetCharArray(System.String)">
+            <summary>
+            Returns the value for a given <paramref name="key"/>, or <see langword="null"/> if no matching <paramref name="key"/> is found in the bundle.
+            </summary>
+            <param name="key">The key of the value to get.</param>
+            <returns>The value for the key, or <see langword="null"/> if no matching key was found.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.GetDateTime(System.DateTime,System.String)">
+            <summary>
+            Returns the value for a given <paramref name="key"/>, or <paramref name="defaultValue"/> if no matching <paramref name="key"/> is found in the bundle.
+            </summary>
+            <param name="defaultValue">The default value to return if no matching key is found in the bundle.</param>
+            <param name="key">The key of the value to get.</param>
+            <returns>The value for the key, or <paramref name="defaultValue"/> if no matching key was found.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.GetDateTimeOffset(System.DateTimeOffset,System.String)">
+            <summary>
+            Returns the value for a given <paramref name="key"/>, or <paramref name="defaultValue"/> if no matching <paramref name="key"/> is found in the bundle.
+            </summary>
+            <param name="defaultValue">The default value to return if no matching key is found in the bundle.</param>
+            <param name="key">The key of the value to get.</param>
+            <returns>The value for the key, or <paramref name="defaultValue"/> if no matching key was found.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.GetDouble(System.Double,System.String)">
+            <summary>
+            Returns the value for a given <paramref name="key"/>, or <paramref name="defaultValue"/> if no matching <paramref name="key"/> is found in the bundle.
+            </summary>
+            <param name="defaultValue">The default value to return if no matching key is found in the bundle.</param>
+            <param name="key">The key of the value to get.</param>
+            <returns>The value for the key, or <paramref name="defaultValue"/> if no matching key was found.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.GetDoubleArray(System.String)">
+            <summary>
+            Returns the value for a given <paramref name="key"/>, or <see langword="null"/> if no matching <paramref name="key"/> is found in the bundle.
+            </summary>
+            <param name="key">The key of the value to get.</param>
+            <returns>The value for the key, or <see langword="null"/> if no matching key was found.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.GetEnum``1(``0,System.String)">
+            <summary>
+            Returns the value for a given <paramref name="key"/>, or <paramref name="defaultValue"/> if no matching <paramref name="key"/> is found in the bundle.
+            </summary>
+            <typeparam name="T">The type of the enumeration.</typeparam>
+            <param name="defaultValue">The default value to return if no matching key is found in the bundle.</param>
+            <param name="key">The key of the value to get.</param>
+            <returns>The value for the key, or <paramref name="defaultValue"/> if no matching key was found.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.GetFloat(System.Single,System.String)">
+            <summary>
+            Returns the value for a given <paramref name="key"/>, or <paramref name="defaultValue"/> if no matching <paramref name="key"/> is found in the bundle.
+            </summary>
+            <param name="defaultValue">The default value to return if no matching key is found in the bundle.</param>
+            <param name="key">The key of the value to get.</param>
+            <returns>The value for the key, or <paramref name="defaultValue"/> if no matching key was found.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.GetFloatArray(System.String)">
+            <summary>
+            Returns the value for a given <paramref name="key"/>, or <see langword="null"/> if no matching <paramref name="key"/> is found in the bundle.
+            </summary>
+            <param name="key">The key of the value to get.</param>
+            <returns>The value for the key, or <see langword="null"/> if no matching key was found.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.GetInt(System.Int32,System.String)">
+            <summary>
+            Returns the value for a given <paramref name="key"/>, or <paramref name="defaultValue"/> if no matching <paramref name="key"/> is found in the bundle.
+            </summary>
+            <param name="defaultValue">The default value to return if no matching key is found in the bundle.</param>
+            <param name="key">The key of the value to get.</param>
+            <returns>The value for the key, or <paramref name="defaultValue"/> if no matching key was found.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.GetIntArray(System.String)">
+            <summary>
+            Returns the value for a given <paramref name="key"/>, or <see langword="null"/> if no matching <paramref name="key"/> is found in the bundle.
+            </summary>
+            <param name="key">The key of the value to get.</param>
+            <returns>The value for the key, or <see langword="null"/> if no matching key was found.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.GetLong(System.Int64,System.String)">
+            <summary>
+            Returns the value for a given <paramref name="key"/>, or <paramref name="defaultValue"/> if no matching <paramref name="key"/> is found in the bundle.
+            </summary>
+            <param name="defaultValue">The default value to return if no matching key is found in the bundle.</param>
+            <param name="key">The key of the value to get.</param>
+            <returns>The value for the key, or <paramref name="defaultValue"/> if no matching key was found.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.GetLongArray(System.String)">
+            <summary>
+            Returns the value for a given <paramref name="key"/>, or <see langword="null"/> if no matching <paramref name="key"/> is found in the bundle.
+            </summary>
+            <param name="key">The key of the value to get.</param>
+            <returns>The value for the key, or <see langword="null"/> if no matching key was found.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.GetShort(System.Int16,System.String)">
+            <summary>
+            Returns the value for a given <paramref name="key"/>, or <paramref name="defaultValue"/> if no matching <paramref name="key"/> is found in the bundle.
+            </summary>
+            <param name="defaultValue">The default value to return if no matching key is found in the bundle.</param>
+            <param name="key">The key of the value to get.</param>
+            <returns>The value for the key, or <paramref name="defaultValue"/> if no matching key was found.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.GetShortArray(System.String)">
+            <summary>
+            Returns the value for a given <paramref name="key"/>, or <see langword="null"/> if no matching <paramref name="key"/> is found in the bundle.
+            </summary>
+            <param name="key">The key of the value to get.</param>
+            <returns>The value for the key, or <see langword="null"/> if no matching key was found.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.GetString(System.String,System.String)">
+            <summary>
+            Returns the value for a given <paramref name="key"/>, or <paramref name="defaultValue"/> if no matching <paramref name="key"/> is found in the bundle.
+            </summary>
+            <param name="defaultValue">The default value to return if no matching key is found in the bundle.</param>
+            <param name="key">The key of the value to get.</param>
+            <returns>The value for the key, or <paramref name="defaultValue"/> if no matching key was found.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.GetStringArray(System.String)">
+            <summary>
+            Returns the value for a given <paramref name="key"/>, or <see langword="null"/> if no matching <paramref name="key"/> is found in the bundle.
+            </summary>
+            <param name="key">The key of the value to get.</param>
+            <returns>The value for the key, or <see langword="null"/> if no matching key was found.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.SetBool(System.Boolean,System.String)">
+            <summary>
+            Sets the value for a given <paramref name="key"/>, replacing the existing value if it is not equal to the new one.
+            </summary>
+            <param name="value">The value to set in the bundle.</param>
+            <param name="key">The key of the value to set.</param>
+            <returns><see langword="true"/> if the new value was set; otherwise, <see langword="false"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.SetBoolArray(System.Boolean[],System.String)">
+            <summary>
+            Sets the value for a given <paramref name="key"/>, replacing the existing value if its reference is not equal to the new one.
+            </summary>
+            <param name="value">The value to set in the bundle. Can be <see langword="null"/>.</param>
+            <param name="key">The key of the value to set.</param>
+            <returns><see langword="true"/> if the new value was set; otherwise, <see langword="false"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.SetByteArray(System.Byte[],System.String)">
+            <summary>
+            Sets the value for a given <paramref name="key"/>, replacing the existing value if its reference is not equal to the new one.
+            </summary>
+            <param name="value">The value to set in the bundle. Can be <see langword="null"/>.</param>
+            <param name="key">The key of the value to set.</param>
+            <returns><see langword="true"/> if the new value was set; otherwise, <see langword="false"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.SetChar(System.Char,System.String)">
+            <summary>
+            Sets the value for a given <paramref name="key"/>, replacing the existing value if it is not equal to the new one.
+            </summary>
+            <param name="value">The value to set in the bundle.</param>
+            <param name="key">The key of the value to set.</param>
+            <returns><see langword="true"/> if the new value was set; otherwise, <see langword="false"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.SetCharArray(System.Char[],System.String)">
+            <summary>
+            Sets the value for a given <paramref name="key"/>, replacing the existing value if its reference is not equal to the new one.
+            </summary>
+            <param name="value">The value to set in the bundle. Can be <see langword="null"/>.</param>
+            <param name="key">The key of the value to set.</param>
+            <returns><see langword="true"/> if the new value was set; otherwise, <see langword="false"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.SetDateTime(System.DateTime,System.String)">
+            <summary>
+            Sets the value for a given <paramref name="key"/>, replacing the existing value if it is not equal to the new one.
+            </summary>
+            <param name="value">The value to set in the bundle.</param>
+            <param name="key">The key of the value to set.</param>
+            <returns><see langword="true"/> if the new value was set; otherwise, <see langword="false"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.SetDateTimeOffset(System.DateTimeOffset,System.String)">
+            <summary>
+            Sets the value for a given <paramref name="key"/>, replacing the existing value if it is not equal to the new one.
+            </summary>
+            <param name="value">The value to set in the bundle.</param>
+            <param name="key">The key of the value to set.</param>
+            <returns><see langword="true"/> if the new value was set; otherwise, <see langword="false"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.SetDouble(System.Double,System.String)">
+            <summary>
+            Sets the value for a given <paramref name="key"/>, replacing the existing value if it is not equal to the new one.
+            </summary>
+            <param name="value">The value to set in the bundle.</param>
+            <param name="key">The key of the value to set.</param>
+            <returns><see langword="true"/> if the new value was set; otherwise, <see langword="false"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.SetDoubleArray(System.Double[],System.String)">
+            <summary>
+            Sets the value for a given <paramref name="key"/>, replacing the existing value if its reference is not equal to the new one.
+            </summary>
+            <param name="value">The value to set in the bundle. Can be <see langword="null"/>.</param>
+            <param name="key">The key of the value to set.</param>
+            <returns><see langword="true"/> if the new value was set; otherwise, <see langword="false"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.SetEnum``1(``0,System.String)">
+            <summary>
+            Sets the value for a given <paramref name="key"/>, replacing the existing value if it is not equal to the new one.
+            </summary>
+            <typeparam name="T">The type of the enumeration.</typeparam>
+            <param name="value">The value to set in the bundle.</param>
+            <param name="key">The key of the value to set.</param>
+            <returns><see langword="true"/> if the new value was set; otherwise, <see langword="false"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.SetFloat(System.Single,System.String)">
+            <summary>
+            Sets the value for a given <paramref name="key"/>, replacing the existing value if it is not equal to the new one.
+            </summary>
+            <param name="value">The value to set in the bundle.</param>
+            <param name="key">The key of the value to set.</param>
+            <returns><see langword="true"/> if the new value was set; otherwise, <see langword="false"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.SetFloatArray(System.Single[],System.String)">
+            <summary>
+            Sets the value for a given <paramref name="key"/>, replacing the existing value if its reference is not equal to the new one.
+            </summary>
+            <param name="value">The value to set in the bundle. Can be <see langword="null"/>.</param>
+            <param name="key">The key of the value to set.</param>
+            <returns><see langword="true"/> if the new value was set; otherwise, <see langword="false"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.SetInt(System.Int32,System.String)">
+            <summary>
+            Sets the value for a given <paramref name="key"/>, replacing the existing value if it is not equal to the new one.
+            </summary>
+            <param name="value">The value to set in the bundle.</param>
+            <param name="key">The key of the value to set.</param>
+            <returns><see langword="true"/> if the new value was set; otherwise, <see langword="false"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.SetIntArray(System.Int32[],System.String)">
+            <summary>
+            Sets the value for a given <paramref name="key"/>, replacing the existing value if its reference is not equal to the new one.
+            </summary>
+            <param name="value">The value to set in the bundle. Can be <see langword="null"/>.</param>
+            <param name="key">The key of the value to set.</param>
+            <returns><see langword="true"/> if the new value was set; otherwise, <see langword="false"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.SetLong(System.Int64,System.String)">
+            <summary>
+            Sets the value for a given <paramref name="key"/>, replacing the existing value if it is not equal to the new one.
+            </summary>
+            <param name="value">The value to set in the bundle.</param>
+            <param name="key">The key of the value to set.</param>
+            <returns><see langword="true"/> if the new value was set; otherwise, <see langword="false"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.SetLongArray(System.Int64[],System.String)">
+            <summary>
+            Sets the value for a given <paramref name="key"/>, replacing the existing value if its reference is not equal to the new one.
+            </summary>
+            <param name="value">The value to set in the bundle. Can be <see langword="null"/>.</param>
+            <param name="key">The key of the value to set.</param>
+            <returns><see langword="true"/> if the new value was set; otherwise, <see langword="false"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.SetShort(System.Int16,System.String)">
+            <summary>
+            Sets the value for a given <paramref name="key"/>, replacing the existing value if it is not equal to the new one.
+            </summary>
+            <param name="value">The value to set in the bundle.</param>
+            <param name="key">The key of the value to set.</param>
+            <returns><see langword="true"/> if the new value was set; otherwise, <see langword="false"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.SetShortArray(System.Int16[],System.String)">
+            <summary>
+            Sets the value for a given <paramref name="key"/>, replacing the existing value if its reference is not equal to the new one.
+            </summary>
+            <param name="value">The value to set in the bundle. Can be <see langword="null"/>.</param>
+            <param name="key">The key of the value to set.</param>
+            <returns><see langword="true"/> if the new value was set; otherwise, <see langword="false"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.SetString(System.String,System.String)">
+            <summary>
+            Sets the value for a given <paramref name="key"/>, replacing the existing value if it is not equal to the new one.
+            </summary>
+            <param name="value">The value to set in the bundle. Can be <see langword="null"/>.</param>
+            <param name="key">The key of the value to set.</param>
+            <returns><see langword="true"/> if the new value was set; otherwise, <see langword="false"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.SetStringArray(System.String[],System.String)">
+            <summary>
+            Sets the value for a given <paramref name="key"/>, replacing the existing value if its reference is not equal to the new one.
+            </summary>
+            <param name="value">The value to set in the bundle. Can be <see langword="null"/>.</param>
+            <param name="key">The key of the value to set.</param>
+            <returns><see langword="true"/> if the new value was set; otherwise, <see langword="false"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="T:FlexiMvvm.ViewModels.InteractionWeakEventSubscriptionExtensions">
+            <summary>Provides a set of static methods for weak subscriptions on <see cref="T:FlexiMvvm.ViewModels.Interaction"/> class events.</summary>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.InteractionWeakEventSubscriptionExtensions.RequestedWeakSubscribe(FlexiMvvm.ViewModels.Interaction,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:FlexiMvvm.ViewModels.Interaction.Requested"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:FlexiMvvm.ViewModels.Interaction.Requested"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="T:FlexiMvvm.ViewModels.GenericInteractionWeakEventSubscriptionExtensions">
+            <summary>Provides a set of static methods for weak subscriptions on <see cref="T:FlexiMvvm.ViewModels.Interaction`1"/> class events.</summary>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.GenericInteractionWeakEventSubscriptionExtensions.RequestedWeakSubscribe``1(FlexiMvvm.ViewModels.Interaction{``0},System.EventHandler{FlexiMvvm.ViewModels.InteractionRequestedEventArgs{``0}})">
+            <summary>Weak subscription on <see cref="E:FlexiMvvm.ViewModels.Interaction`1.Requested"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:FlexiMvvm.ViewModels.Interaction`1.Requested"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.Core.InMemoryLifecycleViewModelStore.Get``1(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.Core.InMemoryLifecycleViewModelStore.Add``1(System.String,``0)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.Core.InMemoryLifecycleViewModelStore.Remove(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:FlexiMvvm.ViewModels.DefaultLifecycleViewModelFactory">
+            <summary>
+            Represents an <see cref="T:FlexiMvvm.ViewModels.ILifecycleViewModelFactory"/> that creates a new lifecycle-aware view model instance using the <see cref="T:System.IServiceProvider"/>.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.DefaultLifecycleViewModelFactory.#ctor(System.IServiceProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FlexiMvvm.ViewModels.DefaultLifecycleViewModelFactory"/> class.
+            </summary>
+            <param name="serviceProvider">The service provider that is used to create a view model instance.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="serviceProvider"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.DefaultLifecycleViewModelFactory.Create``1">
+            <inheritdoc />
+        </member>
+        <member name="T:FlexiMvvm.ViewModels.ILifecycleViewModel">
+            <summary>
+            Defines the contract for a lifecycle-aware view model.
+            </summary>
+        </member>
+        <member name="T:FlexiMvvm.ViewModels.ILifecycleViewModelWithoutParameters">
+            <summary>
+            Defines the contract for a lifecycle-aware view model that takes no parameters.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.ILifecycleViewModelWithoutParameters.InitializeAsync(System.Boolean)">
+            <summary>
+            An asynchronous lifecycle method for the lifecycle-aware view model initialization.
+            </summary>
+            <param name="recreated">Determines whether the view model has been destroyed to recover memory and recreated with a restored state if it was persisted.</param>
+            <returns>A task that represents the asynchronous initialization operation.</returns>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.ILifecycleViewModelWithoutParameters.Initialize(System.Boolean)">
+            <summary>
+            A synchronous lifecycle method for the lifecycle-aware view model initialization.
+            </summary>
+            <param name="recreated">Determines whether the view model has been destroyed to recover memory and recreated with a restored state if it was persisted.</param>
+        </member>
+        <member name="T:FlexiMvvm.ViewModels.ILifecycleViewModelWithParameters`1">
+            <summary>
+            Defines the contract for a lifecycle-aware view model that takes parameters.
+            </summary>
+            <typeparam name="TParameters">The type of the view model parameters.</typeparam>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.ILifecycleViewModelWithParameters`1.InitializeAsync(`0,System.Boolean)">
+            <summary>
+            An asynchronous lifecycle method for the lifecycle-aware view model initialization with <paramref name="parameters"/>.
+            </summary>
+            <param name="parameters">The view model parameters. Can be <see langword="null"/>.</param>
+            <param name="recreated">Determines whether the view model has been destroyed to recover memory and recreated with a restored state if it was persisted.</param>
+            <returns>A task that represents the asynchronous initialization operation.</returns>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.ILifecycleViewModelWithParameters`1.Initialize(`0,System.Boolean)">
+            <summary>
+            A synchronous lifecycle method for the lifecycle-aware view model initialization with <paramref name="parameters"/>.
+            </summary>
+            <param name="parameters">The view model parameters. Can be <see langword="null"/>.</param>
+            <param name="recreated">Determines whether the view model has been destroyed to recover memory and recreated with a restored state if it was persisted.</param>
+        </member>
+        <member name="T:FlexiMvvm.ViewModels.ILifecycleViewModelWithResult`1">
+            <summary>
+            Defines the contract for a lifecycle-aware view model that returns a result.
+            </summary>
+            <typeparam name="TResult">The type of the view model result.</typeparam>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.ILifecycleViewModelWithResult`1.SetResult(FlexiMvvm.ViewModels.ResultCode,`0)">
+            <summary>
+            Sets the lifecycle-aware view model result.
+            </summary>
+            <param name="resultCode">Determines whether the result should be set as successful or not due to cancellation by the user.</param>
+            <param name="result">The view model result. Can be <see langword="null"/>.</param>
+        </member>
+        <member name="T:FlexiMvvm.ViewModels.ILifecycleViewModelWithResultHandler">
+            <summary>
+            Defines the contract for a lifecycle-aware view model that can handle a lifecycle-aware view model result.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.ILifecycleViewModelWithResultHandler.HandleResult(FlexiMvvm.ViewModels.ResultCode,FlexiMvvm.ViewModels.Result)">
+            <summary>
+            Handles the lifecycle-aware view model result.
+            </summary>
+            <param name="resultCode">Determines whether the view model result is set successfully or not due to cancellation by the user.</param>
+            <param name="result">The view model result to handle. Can be <see langword="null"/>.</param>
+        </member>
+        <member name="T:FlexiMvvm.ViewModels.ILifecycleViewModelFactory">
+            <summary>
+            Defines the contract for a factory that creates a new lifecycle-aware view model instance.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.ILifecycleViewModelFactory.Create``1">
+            <summary>
+            Creates a new lifecycle-aware <typeparamref name="TViewModel"/> instance.
+            </summary>
+            <typeparam name="TViewModel">The type of the view model to create.</typeparam>
+            <returns>The view model instance.</returns>
+        </member>
+        <member name="T:FlexiMvvm.ViewModels.ILifecycleViewModelStore">
+            <summary>
+            Defines the contract for a store that keeps lifecycle-aware view models.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.ILifecycleViewModelStore.Get``1(System.String)">
+            <summary>
+            Returns an existing lifecycle-aware <typeparamref name="TViewModel"/> instance from the store.
+            </summary>
+            <typeparam name="TViewModel">The type of the view model to get.</typeparam>
+            <param name="key">The view model unique key.</param>
+            <returns>The view model instance if it exists; otherwise, <see langword="null"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.ILifecycleViewModelStore.Add``1(System.String,``0)">
+            <summary>
+            Adds a lifecycle-aware <typeparamref name="TViewModel"/> instance to the store by <paramref name="key"/>.
+            </summary>
+            <typeparam name="TViewModel">The type of the view model to add.</typeparam>
+            <param name="key">The view model unique key.</param>
+            <param name="viewModel">The view model to add.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> or <paramref name="viewModel"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentException">The store already has a view model with the specified <paramref name="key"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.ILifecycleViewModelStore.Remove(System.String)">
+            <summary>
+            Removes an existing lifecycle-aware view model instance from the store by <paramref name="key"/>.
+            </summary>
+            <param name="key">The view model unique key.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="T:FlexiMvvm.ViewModels.Interaction">
+            <summary>
+            Defines the contract for a view model to view interaction.
+            </summary>
+        </member>
+        <member name="E:FlexiMvvm.ViewModels.Interaction.Requested">
+            <summary>
+            Occurs when the view model requested interaction.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.Interaction.RaiseRequested">
+            <summary>
+            Raises the <see cref="E:FlexiMvvm.ViewModels.Interaction.Requested"/> event.
+            </summary>
+        </member>
+        <member name="T:FlexiMvvm.ViewModels.Interaction`1">
+            <summary>
+            Defines the contract for a view model to view interaction with passing a request.
+            </summary>
+            <typeparam name="T">The type of the request.</typeparam>
+        </member>
+        <member name="E:FlexiMvvm.ViewModels.Interaction`1.Requested">
+            <summary>
+            Occurs when the view model requested interaction.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.Interaction`1.RaiseRequested(`0)">
+            <summary>
+            Raises the <see cref="E:FlexiMvvm.ViewModels.Interaction`1.Requested"/> event with passing the <paramref name="request"/>.
+            </summary>
+            <param name="request">The request to be passed in the event arguments.</param>
+        </member>
+        <member name="T:FlexiMvvm.ViewModels.InteractionRequestedEventArgs`1">
+            <summary>
+            Provides data for the <see cref="E:FlexiMvvm.ViewModels.Interaction`1.Requested"/> event.
+            </summary>
+            <typeparam name="T">The type of the request.</typeparam>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.InteractionRequestedEventArgs`1.#ctor(`0)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FlexiMvvm.ViewModels.InteractionRequestedEventArgs`1"/> class.
+            </summary>
+            <param name="request">The request to be passed by the view model to view.</param>
+        </member>
+        <member name="P:FlexiMvvm.ViewModels.InteractionRequestedEventArgs`1.Request">
+            <summary>
+            Gets the request sent by the view model.
+            </summary>
+        </member>
+        <member name="T:FlexiMvvm.ViewModels.IViewModel">
+            <summary>
+            Defines the contract for a view model. Typically, such view models are used as children of <see cref="T:FlexiMvvm.ViewModels.ILifecycleViewModel"/>.
+            </summary>
+        </member>
+        <member name="T:FlexiMvvm.ViewModels.LifecycleViewModel">
+            <summary>
+            Base class for a lifecycle-aware view model implementation that takes no parameters.
+            </summary>
+        </member>
+        <member name="P:FlexiMvvm.ViewModels.LifecycleViewModel.State">
+            <summary>
+            Gets the bundle that stores the lifecycle-aware view model state as a set of key/value pairs.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.LifecycleViewModel.InitializeAsync(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.LifecycleViewModel.Initialize(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="T:FlexiMvvm.ViewModels.LifecycleViewModel`1">
+            <summary>
+            Base class for a lifecycle-aware view model implementation that takes parameters.
+            </summary>
+            <typeparam name="TParameters">The type of the view model parameters.</typeparam>
+        </member>
+        <member name="P:FlexiMvvm.ViewModels.LifecycleViewModel`1.State">
+            <summary>
+            Gets the bundle that stores the lifecycle-aware view model state as a set of key/value pairs.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.LifecycleViewModel`1.InitializeAsync(`0,System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.LifecycleViewModel`1.Initialize(`0,System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="T:FlexiMvvm.ViewModels.LifecycleViewModelProvider">
+            <summary>
+            Represents a provider that returns an existing lifecycle-aware view model instance or creates a new one.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.LifecycleViewModelProvider.Get``1(FlexiMvvm.ViewModels.ILifecycleViewModelStore,System.String,FlexiMvvm.ViewModels.ILifecycleViewModelFactory,FlexiMvvm.Persistence.IBundle,System.Boolean@)">
+            <summary>
+            Returns an existing lifecycle-aware <typeparamref name="TViewModel"/> instance by <paramref name="key"/> if it is presented in the <paramref name="store"/>,
+            or creates a new one using the <paramref name="factory"/> with restoring its <paramref name="state"/>.
+            </summary>
+            <typeparam name="TViewModel">The type of the view model to get.</typeparam>
+            <param name="store">The view model store.</param>
+            <param name="key">The view model unique key.</param>
+            <param name="factory">The view model factory.</param>
+            <param name="state">The view model state bundle.</param>
+            <param name="created"><see langword="true"/> if the view model is created by the <paramref name="factory"/>; otherwise, <see langword="false"/>.</param>
+            <returns>The view model instance.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="store"/> or <paramref name="key"/> or <paramref name="factory"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.InvalidOperationException">The <paramref name="factory"/> returned <see langword="null"/> value for the <typeparamref name="TViewModel"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.LifecycleViewModelProvider.SetFactory(FlexiMvvm.ViewModels.ILifecycleViewModelFactory)">
+            <summary>
+            Sets the lifecycle-aware view model <paramref name="factory"/> that is used to create a view model instance.
+            </summary>
+            <param name="factory">The view model factory.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="factory"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="T:FlexiMvvm.ViewModels.LifecycleViewModelStoreFactory">
+            <summary>
+            Represents a factory that creates a new lifecycle-aware view model store instance.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.LifecycleViewModelStoreFactory.Create">
+            <summary>
+            Creates a new <see cref="T:FlexiMvvm.ViewModels.ILifecycleViewModelStore"/> instance.
+            </summary>
+            <returns>The view model store instance.</returns>
+        </member>
+        <member name="T:FlexiMvvm.ViewModels.Parameters">
+            <summary>
+            Represents a container for storing lifecycle-aware view model parameters.
+            </summary>
+        </member>
+        <member name="P:FlexiMvvm.ViewModels.Parameters.Bundle">
+            <summary>
+            Gets the bundle that stores lifecycle-aware view model parameters as a set of key/value pairs.
+            </summary>
+        </member>
+        <member name="T:FlexiMvvm.ViewModels.Result">
+            <summary>
+            Represents a container for storing a lifecycle-aware view model result.
+            </summary>
+        </member>
+        <member name="P:FlexiMvvm.ViewModels.Result.Bundle">
+            <summary>
+            Gets the bundle that stores the lifecycle-aware view model result as a set of key/value pairs.
+            </summary>
+        </member>
+        <member name="T:FlexiMvvm.ViewModels.ResultCode">
+            <summary>
+            Determines whether a lifecycle-aware view model result is set successfully or not due to cancellation by the user.
+            </summary>
+        </member>
+        <member name="F:FlexiMvvm.ViewModels.ResultCode.Ok">
+            <summary>
+            Indicates that the lifecycle-aware view model result is set successfully.
+            </summary>
+        </member>
+        <member name="F:FlexiMvvm.ViewModels.ResultCode.Canceled">
+            <summary>
+            Indicates that the lifecycle-aware view model result is not set due to cancellation by the user.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.ResultCode.op_Equality(FlexiMvvm.ViewModels.ResultCode,FlexiMvvm.ViewModels.ResultCode)">
+            <summary>
+            Determines whether result codes are equal.
+            </summary>
+            <param name="code1">First result code to compare.</param>
+            <param name="code2">Second result code to compare.</param>
+            <returns><see langword="true"/> if result codes are equal; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.ResultCode.op_Inequality(FlexiMvvm.ViewModels.ResultCode,FlexiMvvm.ViewModels.ResultCode)">
+            <summary>
+            Determines whether result codes are not equal.
+            </summary>
+            <param name="code1">First result code to compare.</param>
+            <param name="code2">Second result code to compare.</param>
+            <returns><see langword="true"/> if result codes are not equal; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.ResultCode.Equals(System.Object)">
+            <summary>
+            Determines whether the current result code is equal to the <paramref name="obj"/> one.
+            </summary>
+            <param name="obj">The result code to compare.</param>
+            <returns><see langword="true"/> if the <paramref name="obj"/> is <see cref="T:FlexiMvvm.ViewModels.ResultCode"/> and result codes are equal; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.ResultCode.Equals(FlexiMvvm.ViewModels.ResultCode)">
+            <summary>
+            Determines whether the current result code is equal to the <paramref name="other"/> one.
+            </summary>
+            <param name="other">The result code to compare.</param>
+            <returns><see langword="true"/> if result codes are equal; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.ResultCode.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="T:FlexiMvvm.ViewModels.ViewModel">
+            <summary>
+            Base class for a view model implementation. Typically, such view models are used as children of <see cref="T:FlexiMvvm.ViewModels.ILifecycleViewModel"/>.
+            </summary>
+        </member>
+        <member name="P:FlexiMvvm.ViewModels.ViewModel.CommandProvider">
+            <summary>
+            Gets the command provider.
+            </summary>
+        </member>
+        <member name="T:FlexiMvvm.Navigation.NavigationStrategy">
+            <summary>
+            Provides strategies for forward and backward navigation.
+            </summary>
+        </member>
+        <member name="P:FlexiMvvm.Navigation.NavigationStrategy.Forward">
+            <summary>
+            Gets the forward navigation strategy.
+            </summary>
+        </member>
+        <member name="P:FlexiMvvm.Navigation.NavigationStrategy.Backward">
+            <summary>
+            Gets the backward navigation strategy.
+            </summary>
+        </member>
+        <member name="T:FlexiMvvm.Navigation.NavigationViewProvider">
+            <summary>
+            Allows to get an existing navigation view by a lifecycle-aware view model.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Navigation.NavigationViewProvider.Get(FlexiMvvm.ViewModels.ILifecycleViewModel)">
+            <summary>
+            Returns an existing <see cref="T:FlexiMvvm.Views.INavigationView`1"/> instance by <paramref name="viewModel"/>.
+            </summary>
+            <param name="viewModel">The view model that is used to get its view.</param>
+            <returns>The navigation view instance.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="viewModel"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.InvalidOperationException">The view instance is missing for the provided <paramref name="viewModel"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Navigation.NavigationViewProvider.TryGetView(FlexiMvvm.ViewModels.ILifecycleViewModel,FlexiMvvm.Views.INavigationView{FlexiMvvm.ViewModels.ILifecycleViewModel}@)">
+            <summary>
+            Gets an existing <see cref="T:FlexiMvvm.Views.INavigationView`1"/> instance by <paramref name="viewModel"/>.
+            </summary>
+            <param name="viewModel">The view model that is used to get its view.</param>
+            <param name="view">The navigation view corresponding to the provided model.</param>
+            <returns><see langword="true"/> if the view still exists and has not yet been garbage collected or disposed; otherwise, <see langword="false"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="viewModel"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Navigation.NavigationViewProvider.Get(FlexiMvvm.ViewModels.ILifecycleViewModelWithResultHandler)">
+            <summary>
+            Returns an existing <see cref="T:FlexiMvvm.Views.INavigationView`1"/> instance by <paramref name="viewModel"/> that can handle a lifecycle-aware view model result.
+            </summary>
+            <param name="viewModel">The view model that is used to get its view.</param>
+            <returns>The navigation view instance.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="viewModel"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.InvalidOperationException">The view instance is missing for the provided <paramref name="viewModel"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Navigation.NavigationViewProvider.TryGetView(FlexiMvvm.ViewModels.ILifecycleViewModelWithResultHandler,FlexiMvvm.Views.INavigationView{FlexiMvvm.ViewModels.ILifecycleViewModelWithResultHandler}@)">
+            <summary>
+            Gets an existing <see cref="T:FlexiMvvm.Views.INavigationView`1"/> instance by <paramref name="viewModel"/> that can handle a lifecycle-aware view model result.
+            </summary>
+            <param name="viewModel">The view model that is used to get its view.</param>
+            <param name="view">The navigation view corresponding to the provided model.</param>
+            <returns><see langword="true"/> if the view still exists and has not yet been garbage collected or disposed; otherwise, <see langword="false"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="viewModel"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Navigation.NavigationViewProvider.Get``1(FlexiMvvm.ViewModels.ILifecycleViewModelWithResult{``0})">
+            <summary>
+            Returns an existing <see cref="T:FlexiMvvm.Views.INavigationView`1"/> instance by <paramref name="viewModel"/> that can return a lifecycle-aware view model result.
+            </summary>
+            <typeparam name="TResult">The type of the view model result.</typeparam>
+            <param name="viewModel">The view model that is used to get its view.</param>
+            <returns>The navigation view instance.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="viewModel"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.InvalidOperationException">The view instance is missing for the provided <paramref name="viewModel"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Navigation.NavigationViewProvider.TryGetView``1(FlexiMvvm.ViewModels.ILifecycleViewModelWithResult{``0},FlexiMvvm.Views.INavigationView{FlexiMvvm.ViewModels.ILifecycleViewModelWithResult{``0}}@)">
+            <summary>
+            Gets an existing <see cref="T:FlexiMvvm.Views.INavigationView`1"/> instance by <paramref name="viewModel"/> that can return a lifecycle-aware view model result.
+            </summary>
+            <typeparam name="TResult">The type of the view model result.</typeparam>
+            <param name="viewModel">The view model that is used to get its view.</param>
+            <param name="view">The navigation view corresponding to the provided model.</param>
+            <returns><see langword="true"/> if the view still exists and has not yet been garbage collected or disposed; otherwise, <see langword="false"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="viewModel"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Navigation.NavigationViewProvider.GetViewController``2(``1)">
+            <summary>
+            Returns an existing navigation <typeparamref name="TView"/> derived from the <see cref="T:UIKit.UIViewController"/> by <paramref name="viewModel"/>.
+            </summary>
+            <typeparam name="TView">The type of the view.</typeparam>
+            <typeparam name="TViewModel">The type of the view model.</typeparam>
+            <param name="viewModel">The view model that is used to get its view.</param>
+            <returns>The navigation view instance.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="viewModel"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.InvalidOperationException">The view instance is missing for the provided <paramref name="viewModel"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Navigation.NavigationViewProvider.TryGetViewController``2(``0,``1@)">
+            <summary>
+            Gets an existing navigation <typeparamref name="TView"/> derived from the <see cref="T:UIKit.UIViewController"/> by <paramref name="viewModel"/>.
+            </summary>
+            <typeparam name="TViewModel">The type of the view model.</typeparam>
+            <typeparam name="TView">The type of the view.</typeparam>
+            <param name="viewModel">The view model that is used to get its view.</param>
+            <param name="view">The navigation view corresponding to the provided model.</param>
+            <returns><see langword="true"/> if the view still exists and has not yet been garbage collected or disposed; otherwise, <see langword="false"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="viewModel"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Navigation.NavigationViewProvider.TryGetNavigationController``2(``0,``1@)">
+            <summary>
+            Gets an existing navigation <typeparamref name="TView"/> derived from the <see cref="T:UIKit.UINavigationController"/> by <paramref name="viewModel"/>.
+            </summary>
+            <typeparam name="TViewModel">The type of the view model.</typeparam>
+            <typeparam name="TView">The type of the view.</typeparam>
+            <param name="viewModel">The view model that is used to get its view.</param>
+            <param name="view">The navigation view corresponding to the provided model.</param>
+            <returns><see langword="true"/> if the view still exists and has not yet been garbage collected or disposed; otherwise, <see langword="false"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="viewModel"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="T:FlexiMvvm.Navigation.NavigationViewExtensions">
+            <summary>
+            Provides a set of static methods for the <see cref="T:FlexiMvvm.Views.INavigationView`1"/>.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Navigation.NavigationViewExtensions.GetNavigationController(FlexiMvvm.Views.INavigationView{FlexiMvvm.ViewModels.ILifecycleViewModel})">
+            <summary>
+            Returns self if <paramref name="view"/> is <see cref="T:UIKit.UINavigationController"/> or
+            <see cref="P:UIKit.UIViewController.NavigationController"/> property value if <paramref name="view"/> is <see cref="T:UIKit.UIViewController"/>.
+            </summary>
+            <param name="view">The navigation view.</param>
+            <returns>The view controller instance. Can be <see langword="null"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="view"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentException">
+            The <paramref name="view" /> is derived from a class other than the <see cref="T:UIKit.UINavigationController"/> or <see cref="T:UIKit.UIViewController"/>.
+            </exception>
+        </member>
+        <member name="T:FlexiMvvm.Navigation.BackwardNavigationDelegate">
+            <summary>
+            Defines the contract for backward navigation.
+            </summary>
+            <param name="sourceView">The source navigation view from which navigation is performed from.</param>
+            <param name="animated">Determines if the transition is to be animated.</param>
+        </member>
+        <member name="T:FlexiMvvm.Navigation.BackwardNavigationStrategy">
+            <summary>
+            Provides a set of backward navigation strategies.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Navigation.BackwardNavigationStrategy.PopViewController">
+            <summary>
+            Backward navigation using the <see cref="M:UIKit.UINavigationController.PopViewController(System.Boolean)"/> method.
+            </summary>
+            <returns>The backward navigation delegate.</returns>
+        </member>
+        <member name="M:FlexiMvvm.Navigation.BackwardNavigationStrategy.PopToViewController(UIKit.UIViewController)">
+            <summary>
+            Backward navigation using the <see cref="M:UIKit.UINavigationController.PopToViewController(UIKit.UIViewController,System.Boolean)"/> method.
+            </summary>
+            <param name="targetView">The target view for navigation.</param>
+            <returns>The backward navigation delegate.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="targetView"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Navigation.BackwardNavigationStrategy.PopToRootViewController">
+            <summary>
+            Backward navigation using the <see cref="M:UIKit.UINavigationController.PopToRootViewController(System.Boolean)"/> method.
+            </summary>
+            <returns>The backward navigation delegate.</returns>
+        </member>
+        <member name="M:FlexiMvvm.Navigation.BackwardNavigationStrategy.DismissViewController(System.Action)">
+            <summary>
+            Backward navigation using the <see cref="M:FlexiMvvm.Views.INavigationView`1.DismissViewController(System.Boolean,System.Action)"/> method.
+            </summary>
+            <param name="completionHandler">The method to invoke when the animation completes. Can be <see langword="null"/>.</param>
+            <returns>The backward navigation delegate.</returns>
+        </member>
+        <member name="T:FlexiMvvm.Navigation.ForwardNavigationDelegate">
+            <summary>
+            Defines the contract for forward navigation.
+            </summary>
+            <param name="sourceView">The source navigation view from which navigation is performed from.</param>
+            <param name="targetView">The target view for navigation.</param>
+            <param name="animated">Determines if the transition is to be animated.</param>
+        </member>
+        <member name="T:FlexiMvvm.Navigation.ForwardNavigationStrategy">
+            <summary>
+            Provides a set of forward navigation strategies.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Navigation.ForwardNavigationStrategy.PushViewController">
+            <summary>
+            Forward navigation using the <see cref="M:UIKit.UINavigationController.PushViewController(UIKit.UIViewController,System.Boolean)"/> method.
+            </summary>
+            <returns>The forward navigation delegate.</returns>
+        </member>
+        <member name="M:FlexiMvvm.Navigation.ForwardNavigationStrategy.PresentViewController(System.Action)">
+            <summary>
+            Forward navigation using the <see cref="M:FlexiMvvm.Views.INavigationView`1.PresentViewController(UIKit.UIViewController,System.Boolean,System.Action)"/> method.
+            </summary>
+            <param name="completionHandler">The method to invoke when the animation completes. Can be <see langword="null"/>.</param>
+            <returns>The forward navigation delegate.</returns>
+        </member>
+        <member name="M:FlexiMvvm.Navigation.ForwardNavigationStrategy.SetViewControllers">
+            <summary>
+            Forward navigation using the <see cref="M:UIKit.UINavigationController.SetViewControllers(UIKit.UIViewController[],System.Boolean)"/> method. Target view delegate parameter is passed as a value.
+            </summary>
+            <returns>The forward navigation delegate.</returns>
+        </member>
+        <member name="M:FlexiMvvm.Navigation.ForwardNavigationStrategy.SetViewControllers(UIKit.UIViewController[])">
+            <summary>
+            Forward navigation using the <see cref="M:UIKit.UINavigationController.SetViewControllers(UIKit.UIViewController[],System.Boolean)"/> method.
+            </summary>
+            <param name="viewControllers">The array of view controllers to be set. Target view delegate parameter is ignored.</param>
+            <returns>The forward navigation delegate.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="viewControllers"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="T:FlexiMvvm.Navigation.NavigationService">
+            <summary>
+            Base class for an application navigation implementation.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Navigation.NavigationService.Navigate``1(FlexiMvvm.Views.INavigationView{FlexiMvvm.ViewModels.ILifecycleViewModel},``0,System.Boolean,FlexiMvvm.Navigation.ForwardNavigationDelegate)">
+            <summary>
+            Performs forward navigation from the <paramref name="sourceView"/> to the <paramref name="targetView"/>.
+            </summary>
+            <typeparam name="TTargetView">The type of the target view.</typeparam>
+            <param name="sourceView">The source navigation view from which navigation is performed from.</param>
+            <param name="targetView">The target view for navigation.</param>
+            <param name="animated">Determines if the transition is to be animated.</param>
+            <param name="navigationStrategy">
+            The strategy used for performing navigation. Can be <see langword="null"/>.
+            <para>The default is <see cref="M:FlexiMvvm.Navigation.ForwardNavigationStrategy.PresentViewController(System.Action)"/> if <paramref name="targetView"/> is <see cref="T:UIKit.UINavigationController"/> or
+            <see cref="M:FlexiMvvm.Navigation.ForwardNavigationStrategy.PushViewController"/> if <paramref name="targetView"/> is <see cref="T:UIKit.UIViewController"/>.</para>
+            </param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="sourceView"/> or <paramref name="targetView"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Navigation.NavigationService.Navigate``2(FlexiMvvm.Views.INavigationView{FlexiMvvm.ViewModels.ILifecycleViewModel},``0,``1,System.Boolean,FlexiMvvm.Navigation.ForwardNavigationDelegate)">
+            <summary>
+            Performs forward navigation from the <paramref name="sourceView"/> to the <paramref name="targetView"/> with the provided lifecycle-aware view model <paramref name="parameters"/>.
+            </summary>
+            <typeparam name="TTargetView">The type of the target view.</typeparam>
+            <typeparam name="TParameters">The type of the target view model parameters.</typeparam>
+            <param name="sourceView">The source navigation view from which navigation is performed from.</param>
+            <param name="targetView">The target view for navigation.</param>
+            <param name="parameters">The target view model parameters. Can be <see langword="null"/>.</param>
+            <param name="animated">Determines if the transition is to be animated.</param>
+            <param name="navigationStrategy">
+            The strategy used for performing navigation. Can be <see langword="null"/>.
+            <para>The default is <see cref="M:FlexiMvvm.Navigation.ForwardNavigationStrategy.PresentViewController(System.Action)"/> if <paramref name="targetView"/> is <see cref="T:UIKit.UINavigationController"/> or
+            <see cref="M:FlexiMvvm.Navigation.ForwardNavigationStrategy.PushViewController"/> if <paramref name="targetView"/> is <see cref="T:UIKit.UIViewController"/>.</para>
+            </param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="sourceView"/> or <paramref name="targetView"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Navigation.NavigationService.NavigateForResult``2(FlexiMvvm.Views.INavigationView{FlexiMvvm.ViewModels.ILifecycleViewModelWithResultHandler},``0,System.Boolean,FlexiMvvm.Navigation.ForwardNavigationDelegate)">
+            <summary>
+            Performs forward navigation from the <paramref name="sourceView"/> to the <paramref name="targetView"/> with handling a lifecycle-aware view model result when it finished.
+            </summary>
+            <typeparam name="TTargetView">The type of the target view.</typeparam>
+            <typeparam name="TResult">The type of the target view model result.</typeparam>
+            <param name="sourceView">The source navigation view from which navigation is performed from.</param>
+            <param name="targetView">The target view for navigation.</param>
+            <param name="animated">Determines if the transition is to be animated.</param>
+            <param name="navigationStrategy">
+            The strategy used for performing navigation. Can be <see langword="null"/>.
+            <para>The default is <see cref="M:FlexiMvvm.Navigation.ForwardNavigationStrategy.PresentViewController(System.Action)"/> if <paramref name="targetView"/> is <see cref="T:UIKit.UINavigationController"/> or
+            <see cref="M:FlexiMvvm.Navigation.ForwardNavigationStrategy.PushViewController"/> if <paramref name="targetView"/> is <see cref="T:UIKit.UIViewController"/>.</para>
+            </param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="sourceView"/> or <paramref name="targetView"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Navigation.NavigationService.NavigateForResult``3(FlexiMvvm.Views.INavigationView{FlexiMvvm.ViewModels.ILifecycleViewModelWithResultHandler},``0,``1,System.Boolean,FlexiMvvm.Navigation.ForwardNavigationDelegate)">
+            <summary>
+            Performs forward navigation from the <paramref name="sourceView"/> to the <paramref name="targetView"/> with the provided lifecycle-aware view model <paramref name="parameters"/>
+            and handling a lifecycle-aware view model result when it finished.
+            </summary>
+            <typeparam name="TTargetView">The type of the target view.</typeparam>
+            <typeparam name="TParameters">The type of the target view model parameters.</typeparam>
+            <typeparam name="TResult">The type of the target view model result.</typeparam>
+            <param name="sourceView">The source navigation view from which navigation is performed from.</param>
+            <param name="targetView">The target view for navigation.</param>
+            <param name="parameters">The target view model parameters. Can be <see langword="null"/>.</param>
+            <param name="animated">Determines if the transition is to be animated.</param>
+            <param name="navigationStrategy">
+            The strategy used for performing navigation. Can be <see langword="null"/>.
+            <para>The default is <see cref="M:FlexiMvvm.Navigation.ForwardNavigationStrategy.PresentViewController(System.Action)"/> if <paramref name="targetView"/> is <see cref="T:UIKit.UINavigationController"/> or
+            <see cref="M:FlexiMvvm.Navigation.ForwardNavigationStrategy.PushViewController"/> if <paramref name="targetView"/> is <see cref="T:UIKit.UIViewController"/>.</para>
+            </param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="sourceView"/> or <paramref name="targetView"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Navigation.NavigationService.NavigateBack(FlexiMvvm.Views.INavigationView{FlexiMvvm.ViewModels.ILifecycleViewModel},System.Boolean,FlexiMvvm.Navigation.BackwardNavigationDelegate)">
+            <summary>
+            Performs backward navigation from the <paramref name="sourceView"/>.
+            </summary>
+            <param name="sourceView">The source navigation view from which navigation is performed from.</param>
+            <param name="animated">Determines if the transition is to be animated.</param>
+            <param name="navigationStrategy">
+            The strategy used for performing navigation. Can be <see langword="null"/>.
+            <para>The default is <see cref="M:FlexiMvvm.Navigation.BackwardNavigationStrategy.DismissViewController(System.Action)"/> if <paramref name="sourceView"/> is presented or
+            <see cref="M:FlexiMvvm.Navigation.BackwardNavigationStrategy.PopViewController"/> if <paramref name="sourceView"/> is pushed.</para>
+            </param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="sourceView"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Navigation.NavigationService.NavigateBack``1(FlexiMvvm.Views.INavigationView{FlexiMvvm.ViewModels.ILifecycleViewModelWithResult{``0}},FlexiMvvm.ViewModels.ResultCode,``0,System.Boolean,FlexiMvvm.Navigation.BackwardNavigationDelegate)">
+            <summary>
+            Performs backward navigation from the <paramref name="sourceView"/> with returning a lifecycle-aware view model result.
+            </summary>
+            <typeparam name="TResult">The type of the source view model result.</typeparam>
+            <param name="sourceView">The source navigation view from which navigation is performed from.</param>
+            <param name="resultCode">Determines whether the result should be set as successful or canceled.</param>
+            <param name="result">The source view model result. Can be <see langword="null"/>.</param>
+            <param name="animated">Determines if the transition is to be animated.</param>
+            <param name="navigationStrategy">
+            The strategy used for performing navigation. Can be <see langword="null"/>.
+            <para>The default is <see cref="M:FlexiMvvm.Navigation.BackwardNavigationStrategy.DismissViewController(System.Action)"/> if <paramref name="sourceView"/> is presented or
+            <see cref="M:FlexiMvvm.Navigation.BackwardNavigationStrategy.PopViewController"/> if <paramref name="sourceView"/> is pushed.</para>
+            </param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="sourceView"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="T:FlexiMvvm.Views.Core.ILifecycleViewModelOwner`1">
+            <summary>
+            Defines the contract for a lifecycle-aware view model owner.
+            <para>This interface is intended for internal use by the FlexiMvvm.</para>
+            </summary>
+            <typeparam name="TViewModel">The type of the view model.</typeparam>
+        </member>
+        <member name="M:FlexiMvvm.Views.Core.ILifecycleViewModelOwner`1.SetViewModel(`0)">
+            <summary>
+            Sets the lifecycle-aware view model to its owner.
+            </summary>
+            <param name="viewModel">The view model to set.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="viewModel"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.Core.ILifecycleViewModelOwner`1.InitializeViewModelAsync(System.Boolean)">
+            <summary>
+            Initializes the lifecycle-aware view model by calling its corresponding method.
+            </summary>
+            <param name="recreated">Determines whether the view model has been destroyed to recover memory and recreated with a restored state if it was persisted.</param>
+            <returns>A task that represents the asynchronous initialization operation.</returns>
+        </member>
+        <member name="T:FlexiMvvm.Views.Core.IViewLifecycleDelegate">
+            <summary>
+            Defines the contract for a view lifecycle delegate. Can perform custom actions when view's lifecycle method is called.
+            <para>This interface is intended for internal use by the FlexiMvvm.</para>
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.Core.IViewLifecycleDelegate.WillMoveToParentViewController(UIKit.UIViewController)">
+            <summary>
+            Can perform custom actions when <see cref="M:UIKit.UIViewController.WillMoveToParentViewController(UIKit.UIViewController)"/> method is called.
+            </summary>
+            <param name="parent">The parent view. Can be <see langword="null"/>.</param>
+        </member>
+        <member name="M:FlexiMvvm.Views.Core.IViewLifecycleDelegate.ViewDidLoad">
+            <summary>
+            Can perform custom actions when <see cref="M:UIKit.UIViewController.ViewDidLoad"/> method is called.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.Core.IViewLifecycleDelegate.ViewWillAppear">
+            <summary>
+            Can perform custom actions when <see cref="M:UIKit.UIViewController.ViewWillAppear(System.Boolean)"/> method is called.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.Core.IViewLifecycleDelegate.ViewDidAppear">
+            <summary>
+            Can perform custom actions when <see cref="M:UIKit.UIViewController.ViewDidAppear(System.Boolean)"/> method is called.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.Core.IViewLifecycleDelegate.ViewWillDisappear">
+            <summary>
+            Can perform custom actions when <see cref="M:UIKit.UIViewController.ViewWillDisappear(System.Boolean)"/> method is called.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.Core.IViewLifecycleDelegate.ViewDidDisappear">
+            <summary>
+            Can perform custom actions when <see cref="M:UIKit.UIViewController.ViewDidDisappear(System.Boolean)"/> method is called.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.Core.IViewLifecycleDelegate.DidMoveToParentViewController(UIKit.UIViewController)">
+            <summary>
+            Can perform custom actions when <see cref="M:UIKit.UIViewController.DidMoveToParentViewController(UIKit.UIViewController)"/> method is called.
+            </summary>
+            <param name="parent">The parent view. Can be <see langword="null"/>.</param>
+        </member>
+        <member name="M:FlexiMvvm.Views.Core.IViewLifecycleDelegate.SetResult(FlexiMvvm.ViewModels.ResultCode,FlexiMvvm.ViewModels.Result)">
+            <summary>
+            Sets the lifecycle-aware view model result to be returned to the calling view's model.
+            </summary>
+            <param name="resultCode">Determines whether the result should be set as successful or not due to cancellation by the user.</param>
+            <param name="result">The view model result. Can be <see langword="null"/>.</param>
+        </member>
+        <member name="M:FlexiMvvm.Views.Core.IViewLifecycleDelegate.HandleResult(System.Object,FlexiMvvm.Views.ResultSetEventArgs)">
+            <summary>
+            The event handler which forwards the lifecycle-aware view model result processing to the lifecycle-aware view model
+            if it implements the <see cref="T:FlexiMvvm.ViewModels.ILifecycleViewModelWithResultHandler"/>.
+            </summary>
+            <param name="sender">The event sender.</param>
+            <param name="args">The event arguments containing the view model result.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="sender"/> or <paramref name="args"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="T:FlexiMvvm.Views.Core.ViewLifecycleDelegate`1">
+            <summary>
+            Base view lifecycle delegate. Responsible for keyboard handling.
+            <para>This class is intended for internal use by the FlexiMvvm.</para>
+            </summary>
+            <typeparam name="TView">The type of the view that forwards its lifecycle calls.</typeparam>
+        </member>
+        <member name="M:FlexiMvvm.Views.Core.ViewLifecycleDelegate`1.#ctor(`0)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FlexiMvvm.Views.Core.ViewLifecycleDelegate`1"/> class.
+            </summary>
+            <param name="view">The view that forwards its lifecycle calls to the delegate.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="view"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="P:FlexiMvvm.Views.Core.ViewLifecycleDelegate`1.View">
+            <summary>
+            Gets the view that forwards its lifecycle calls.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.Core.ViewLifecycleDelegate`1.WillMoveToParentViewController(UIKit.UIViewController)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.Core.ViewLifecycleDelegate`1.ViewDidLoad">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.Core.ViewLifecycleDelegate`1.ViewWillAppear">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.Core.ViewLifecycleDelegate`1.ViewDidAppear">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.Core.ViewLifecycleDelegate`1.ViewWillDisappear">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.Core.ViewLifecycleDelegate`1.ViewDidDisappear">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.Core.ViewLifecycleDelegate`1.DidMoveToParentViewController(UIKit.UIViewController)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.Core.ViewLifecycleDelegate`1.SetResult(FlexiMvvm.ViewModels.ResultCode,FlexiMvvm.ViewModels.Result)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.Core.ViewLifecycleDelegate`1.HandleResult(System.Object,FlexiMvvm.Views.ResultSetEventArgs)">
+            <inheritdoc />
+        </member>
+        <member name="T:FlexiMvvm.Views.Core.ViewLifecycleDelegate`2">
+            <summary>
+            A lifecycle delegate that is responsible for view model lifecycle.
+            <para>This class is intended for internal use by the FlexiMvvm.</para>
+            </summary>
+            <typeparam name="TView">The type of the view that forwards its lifecycle calls.</typeparam>
+            <typeparam name="TViewModel">The type of the view model.</typeparam>
+        </member>
+        <member name="M:FlexiMvvm.Views.Core.ViewLifecycleDelegate`2.#ctor(`0)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FlexiMvvm.Views.Core.ViewLifecycleDelegate`2"/> class.
+            </summary>
+            <param name="view">The view that forwards its lifecycle calls to the delegate.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="view"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.InvalidOperationException">The view model factory returned <see langword="null"/> value for the <typeparamref name="TViewModel"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.Core.ViewLifecycleDelegate`2.ViewWillAppear">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.Core.ViewLifecycleDelegate`2.ViewWillDisappear">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.Core.ViewLifecycleDelegate`2.SetResult(FlexiMvvm.ViewModels.ResultCode,FlexiMvvm.ViewModels.Result)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.Core.ViewLifecycleDelegate`2.HandleResult(System.Object,FlexiMvvm.Views.ResultSetEventArgs)">
+            <inheritdoc />
+        </member>
+        <member name="T:FlexiMvvm.Views.IView`1">
+            <summary>
+            Defines the contract for a view that owns a lifecycle-aware view model.
+            </summary>
+            <typeparam name="TViewModel">The type of the view model.</typeparam>
+        </member>
+        <member name="P:FlexiMvvm.Views.IView`1.ViewModel">
+            <summary>
+            Gets the lifecycle-aware view model.
+            </summary>
+        </member>
+        <member name="T:FlexiMvvm.Views.ViewExtensions">
+            <summary>
+            Provides a set of static methods for the <see cref="T:FlexiMvvm.Views.IView`1"/>.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.ViewExtensions.As(FlexiMvvm.Views.IView{FlexiMvvm.ViewModels.ILifecycleViewModel},System.Action{UIKit.UINavigationController},System.Action{UIKit.UIViewController})">
+            <summary>
+            Executes appropriate handler based on actual type of the <paramref name="view"/>.
+            </summary>
+            <param name="view">The view that is represented by a navigation or view controller.</param>
+            <param name="navigationControllerHandler">The handler to execute if <paramref name="view"/> is <see cref="T:UIKit.UINavigationController"/>.</param>
+            <param name="viewControllerHandler">The handler to execute if <paramref name="view"/> is <see cref="T:UIKit.UIViewController"/>.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="view" /> or <paramref name="navigationControllerHandler" /> or <paramref name="viewControllerHandler" /> is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentException">
+            The <paramref name="view" /> is derived from a class other than the <see cref="T:UIKit.UINavigationController"/> or <see cref="T:UIKit.UIViewController"/>.
+            </exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.ViewExtensions.As``1(FlexiMvvm.Views.IView{FlexiMvvm.ViewModels.ILifecycleViewModel},System.Func{UIKit.UINavigationController,``0},System.Func{UIKit.UIViewController,``0})">
+            <summary>
+            Executes appropriate handler based on actual type of the <paramref name="view"/> with returning a result.
+            </summary>
+            <typeparam name="T">The type of the result.</typeparam>
+            <param name="view">The view that is represented by a navigation or view controller.</param>
+            <param name="navigationControllerHandler">The handler to execute if <paramref name="view"/> is <see cref="T:UIKit.UINavigationController"/>.</param>
+            <param name="viewControllerHandler">The handler to execute if <paramref name="view"/> is <see cref="T:UIKit.UIViewController"/>.</param>
+            <returns>A result returned by appropriate handler.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="view" /> or <paramref name="navigationControllerHandler" /> or <paramref name="viewControllerHandler" /> is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentException">
+            The <paramref name="view" /> is derived from a class other than the <see cref="T:UIKit.UINavigationController"/> or <see cref="T:UIKit.UIViewController"/>.
+            </exception>
+        </member>
+        <member name="T:FlexiMvvm.Views.ViewLifecycleDelegateExtensions">
+            <summary>
+            Provides a set of static methods for the <see cref="T:FlexiMvvm.Views.Core.IViewLifecycleDelegate"/>.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.ViewLifecycleDelegateExtensions.ForceInstanceCreation(FlexiMvvm.Views.Core.IViewLifecycleDelegate)">
+            <summary>
+            This method does nothing and just forces the <paramref name="lifecycleDelegate"/> to be created.
+            It should only be used in the <paramref name="lifecycleDelegate"/> owner's constructor for a lazy loaded property
+            that itself creates the <paramref name="lifecycleDelegate"/> instance.
+            <para>
+            The <see cref="T:FlexiMvvm.Views.Core.IViewLifecycleDelegate"/> instance should be created in the owner's constructor,
+            but due to the https://bugzilla.xamarin.com/show_bug.cgi?id=22490 issue,
+            it should be defined as a lazy loaded property that itself can create the instance.
+            </para>
+            </summary>
+            <param name="lifecycleDelegate">The view lifecycle delegate that needs to be created.</param>
+        </member>
+        <member name="T:FlexiMvvm.Views.INavigationViewWeakEventSubscriptionExtensions">
+            <summary>Provides a set of static methods for weak subscriptions on <see cref="!:FlexiMvvm.Views.INavigationView&lt;FlexiMvvm.ViewModels.ILifecycleViewModel&gt;"/> class events.</summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.INavigationViewWeakEventSubscriptionExtensions.ResultSetWeakSubscribe(FlexiMvvm.Views.INavigationView{FlexiMvvm.ViewModels.ILifecycleViewModel},System.EventHandler{FlexiMvvm.Views.ResultSetEventArgs})">
+            <summary>Weak subscription on <see cref="!:FlexiMvvm.Views.INavigationView&lt;FlexiMvvm.ViewModels.ILifecycleViewModel&gt;.ResultSet"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="!:FlexiMvvm.Views.INavigationView&lt;FlexiMvvm.ViewModels.ILifecycleViewModel&gt;.ResultSet"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="T:FlexiMvvm.Views.FlexiCollectionViewController">
+            <summary>
+            Represents a/an <see cref="T:UIKit.UICollectionViewController"/> that is adapted for use with the FlexiMvvm.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiCollectionViewController.#ctor(UIKit.UICollectionViewLayout)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiCollectionViewController.#ctor">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiCollectionViewController.#ctor(Foundation.NSCoder)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiCollectionViewController.#ctor(System.String,Foundation.NSBundle)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiCollectionViewController.#ctor(Foundation.NSObjectFlag)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiCollectionViewController.#ctor(System.IntPtr)">
+            <inheritdoc />
+        </member>
+        <member name="P:FlexiMvvm.Views.FlexiCollectionViewController.LifecycleDelegate">
+            <summary>
+            Gets the view lifecycle delegate. Intended for internal use by the FlexiMvvm.
+            </summary>
+        </member>
+        <member name="P:FlexiMvvm.Views.FlexiCollectionViewController.KeyboardHandler">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiCollectionViewController.CreateLifecycleDelegate">
+            <summary>
+            Creates a new <see cref="T:FlexiMvvm.Views.Core.IViewLifecycleDelegate"/> instance. Intended for internal use by the FlexiMvvm.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiCollectionViewController.WillMoveToParentViewController(UIKit.UIViewController)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiCollectionViewController.ViewDidLoad">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiCollectionViewController.ViewWillAppear(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiCollectionViewController.ViewDidAppear(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiCollectionViewController.ViewWillDisappear(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiCollectionViewController.ViewDidDisappear(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiCollectionViewController.DidMoveToParentViewController(UIKit.UIViewController)">
+            <inheritdoc />
+        </member>
+        <member name="T:FlexiMvvm.Views.FlexiCollectionViewController`1">
+            <summary>
+            Represents a/an <see cref="T:UIKit.UICollectionViewController"/> that is adapted for use with the FlexiMvvm
+            and has its own lifecycle-aware view model.
+            </summary>
+            <typeparam name="TViewModel">The type of the view model.</typeparam>
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiCollectionViewController`1.#ctor(UIKit.UICollectionViewLayout)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiCollectionViewController`1.#ctor">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiCollectionViewController`1.#ctor(Foundation.NSCoder)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiCollectionViewController`1.#ctor(System.String,Foundation.NSBundle)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiCollectionViewController`1.#ctor(Foundation.NSObjectFlag)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiCollectionViewController`1.#ctor(System.IntPtr)">
+            <inheritdoc />
+        </member>
+        <member name="E:FlexiMvvm.Views.FlexiCollectionViewController`1.ResultSet">
+            <inheritdoc />
+        </member>
+        <member name="P:FlexiMvvm.Views.FlexiCollectionViewController`1.ViewModel">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiCollectionViewController`1.CreateLifecycleDelegate">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiCollectionViewController`1.SetResult(FlexiMvvm.ViewModels.ResultCode,FlexiMvvm.ViewModels.Result)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiCollectionViewController`1.RaiseResultSet(FlexiMvvm.ViewModels.ResultCode,FlexiMvvm.ViewModels.Result)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiCollectionViewController`1.HandleResult(System.Object,FlexiMvvm.Views.ResultSetEventArgs)">
+            <inheritdoc />
+        </member>
+        <member name="T:FlexiMvvm.Views.FlexiCollectionViewController`2">
+            <summary>
+            Represents a/an <see cref="T:UIKit.UICollectionViewController"/> that is adapted for use with the FlexiMvvm,
+            has its own lifecycle-aware view model and takes lifecycle-aware view model parameters.
+            </summary>
+            <typeparam name="TViewModel">The type of the view model.</typeparam>
+            <typeparam name="TParameters">The type of the view model parameters.</typeparam>
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiCollectionViewController`2.#ctor(UIKit.UICollectionViewLayout)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiCollectionViewController`2.#ctor">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiCollectionViewController`2.#ctor(Foundation.NSCoder)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiCollectionViewController`2.#ctor(System.String,Foundation.NSBundle)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiCollectionViewController`2.#ctor(Foundation.NSObjectFlag)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiCollectionViewController`2.#ctor(System.IntPtr)">
+            <inheritdoc />
+        </member>
+        <member name="E:FlexiMvvm.Views.FlexiCollectionViewController`2.ResultSet">
+            <inheritdoc />
+        </member>
+        <member name="P:FlexiMvvm.Views.FlexiCollectionViewController`2.ViewModel">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiCollectionViewController`2.CreateLifecycleDelegate">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiCollectionViewController`2.SetParameters(`1)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiCollectionViewController`2.SetResult(FlexiMvvm.ViewModels.ResultCode,FlexiMvvm.ViewModels.Result)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiCollectionViewController`2.RaiseResultSet(FlexiMvvm.ViewModels.ResultCode,FlexiMvvm.ViewModels.Result)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiCollectionViewController`2.HandleResult(System.Object,FlexiMvvm.Views.ResultSetEventArgs)">
+            <inheritdoc />
+        </member>
+        <member name="T:FlexiMvvm.Views.FlexiNavigationController">
+            <summary>
+            Represents a/an <see cref="T:UIKit.UINavigationController"/> that is adapted for use with the FlexiMvvm.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiNavigationController.#ctor(UIKit.UIViewController)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiNavigationController.#ctor(System.Type,System.Type)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiNavigationController.#ctor">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiNavigationController.#ctor(Foundation.NSCoder)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiNavigationController.#ctor(System.String,Foundation.NSBundle)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiNavigationController.#ctor(Foundation.NSObjectFlag)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiNavigationController.#ctor(System.IntPtr)">
+            <inheritdoc />
+        </member>
+        <member name="P:FlexiMvvm.Views.FlexiNavigationController.LifecycleDelegate">
+            <summary>
+            Gets the view lifecycle delegate. Intended for internal use by the FlexiMvvm.
+            </summary>
+        </member>
+        <member name="P:FlexiMvvm.Views.FlexiNavigationController.KeyboardHandler">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiNavigationController.CreateLifecycleDelegate">
+            <summary>
+            Creates a new <see cref="T:FlexiMvvm.Views.Core.IViewLifecycleDelegate"/> instance. Intended for internal use by the FlexiMvvm.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiNavigationController.WillMoveToParentViewController(UIKit.UIViewController)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiNavigationController.ViewDidLoad">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiNavigationController.ViewWillAppear(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiNavigationController.ViewDidAppear(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiNavigationController.ViewWillDisappear(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiNavigationController.ViewDidDisappear(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiNavigationController.DidMoveToParentViewController(UIKit.UIViewController)">
+            <inheritdoc />
+        </member>
+        <member name="T:FlexiMvvm.Views.FlexiNavigationController`1">
+            <summary>
+            Represents a/an <see cref="T:UIKit.UINavigationController"/> that is adapted for use with the FlexiMvvm
+            and has its own lifecycle-aware view model.
+            </summary>
+            <typeparam name="TViewModel">The type of the view model.</typeparam>
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiNavigationController`1.#ctor(UIKit.UIViewController)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiNavigationController`1.#ctor(System.Type,System.Type)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiNavigationController`1.#ctor">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiNavigationController`1.#ctor(Foundation.NSCoder)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiNavigationController`1.#ctor(System.String,Foundation.NSBundle)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiNavigationController`1.#ctor(Foundation.NSObjectFlag)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiNavigationController`1.#ctor(System.IntPtr)">
+            <inheritdoc />
+        </member>
+        <member name="E:FlexiMvvm.Views.FlexiNavigationController`1.ResultSet">
+            <inheritdoc />
+        </member>
+        <member name="P:FlexiMvvm.Views.FlexiNavigationController`1.ViewModel">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiNavigationController`1.CreateLifecycleDelegate">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiNavigationController`1.SetResult(FlexiMvvm.ViewModels.ResultCode,FlexiMvvm.ViewModels.Result)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiNavigationController`1.RaiseResultSet(FlexiMvvm.ViewModels.ResultCode,FlexiMvvm.ViewModels.Result)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiNavigationController`1.HandleResult(System.Object,FlexiMvvm.Views.ResultSetEventArgs)">
+            <inheritdoc />
+        </member>
+        <member name="T:FlexiMvvm.Views.FlexiNavigationController`2">
+            <summary>
+            Represents a/an <see cref="T:UIKit.UINavigationController"/> that is adapted for use with the FlexiMvvm,
+            has its own lifecycle-aware view model and takes lifecycle-aware view model parameters.
+            </summary>
+            <typeparam name="TViewModel">The type of the view model.</typeparam>
+            <typeparam name="TParameters">The type of the view model parameters.</typeparam>
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiNavigationController`2.#ctor(UIKit.UIViewController)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiNavigationController`2.#ctor(System.Type,System.Type)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiNavigationController`2.#ctor">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiNavigationController`2.#ctor(Foundation.NSCoder)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiNavigationController`2.#ctor(System.String,Foundation.NSBundle)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiNavigationController`2.#ctor(Foundation.NSObjectFlag)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiNavigationController`2.#ctor(System.IntPtr)">
+            <inheritdoc />
+        </member>
+        <member name="E:FlexiMvvm.Views.FlexiNavigationController`2.ResultSet">
+            <inheritdoc />
+        </member>
+        <member name="P:FlexiMvvm.Views.FlexiNavigationController`2.ViewModel">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiNavigationController`2.CreateLifecycleDelegate">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiNavigationController`2.SetParameters(`1)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiNavigationController`2.SetResult(FlexiMvvm.ViewModels.ResultCode,FlexiMvvm.ViewModels.Result)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiNavigationController`2.RaiseResultSet(FlexiMvvm.ViewModels.ResultCode,FlexiMvvm.ViewModels.Result)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiNavigationController`2.HandleResult(System.Object,FlexiMvvm.Views.ResultSetEventArgs)">
+            <inheritdoc />
+        </member>
+        <member name="T:FlexiMvvm.Views.FlexiPageViewController">
+            <summary>
+            Represents a/an <see cref="T:UIKit.UIPageViewController"/> that is adapted for use with the FlexiMvvm.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiPageViewController.#ctor(UIKit.UIPageViewControllerTransitionStyle,UIKit.UIPageViewControllerNavigationOrientation)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiPageViewController.#ctor(UIKit.UIPageViewControllerTransitionStyle,UIKit.UIPageViewControllerNavigationOrientation,UIKit.UIPageViewControllerSpineLocation)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiPageViewController.#ctor(UIKit.UIPageViewControllerTransitionStyle,UIKit.UIPageViewControllerNavigationOrientation,Foundation.NSDictionary)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiPageViewController.#ctor(UIKit.UIPageViewControllerTransitionStyle,UIKit.UIPageViewControllerNavigationOrientation,UIKit.UIPageViewControllerSpineLocation,System.Single)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiPageViewController.#ctor">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiPageViewController.#ctor(Foundation.NSCoder)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiPageViewController.#ctor(System.String,Foundation.NSBundle)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiPageViewController.#ctor(Foundation.NSObjectFlag)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiPageViewController.#ctor(System.IntPtr)">
+            <inheritdoc />
+        </member>
+        <member name="P:FlexiMvvm.Views.FlexiPageViewController.LifecycleDelegate">
+            <summary>
+            Gets the view lifecycle delegate. Intended for internal use by the FlexiMvvm.
+            </summary>
+        </member>
+        <member name="P:FlexiMvvm.Views.FlexiPageViewController.KeyboardHandler">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiPageViewController.CreateLifecycleDelegate">
+            <summary>
+            Creates a new <see cref="T:FlexiMvvm.Views.Core.IViewLifecycleDelegate"/> instance. Intended for internal use by the FlexiMvvm.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiPageViewController.WillMoveToParentViewController(UIKit.UIViewController)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiPageViewController.ViewDidLoad">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiPageViewController.ViewWillAppear(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiPageViewController.ViewDidAppear(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiPageViewController.ViewWillDisappear(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiPageViewController.ViewDidDisappear(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiPageViewController.DidMoveToParentViewController(UIKit.UIViewController)">
+            <inheritdoc />
+        </member>
+        <member name="T:FlexiMvvm.Views.FlexiPageViewController`1">
+            <summary>
+            Represents a/an <see cref="T:UIKit.UIPageViewController"/> that is adapted for use with the FlexiMvvm
+            and has its own lifecycle-aware view model.
+            </summary>
+            <typeparam name="TViewModel">The type of the view model.</typeparam>
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiPageViewController`1.#ctor(UIKit.UIPageViewControllerTransitionStyle,UIKit.UIPageViewControllerNavigationOrientation)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiPageViewController`1.#ctor(UIKit.UIPageViewControllerTransitionStyle,UIKit.UIPageViewControllerNavigationOrientation,UIKit.UIPageViewControllerSpineLocation)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiPageViewController`1.#ctor(UIKit.UIPageViewControllerTransitionStyle,UIKit.UIPageViewControllerNavigationOrientation,Foundation.NSDictionary)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiPageViewController`1.#ctor(UIKit.UIPageViewControllerTransitionStyle,UIKit.UIPageViewControllerNavigationOrientation,UIKit.UIPageViewControllerSpineLocation,System.Single)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiPageViewController`1.#ctor">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiPageViewController`1.#ctor(Foundation.NSCoder)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiPageViewController`1.#ctor(System.String,Foundation.NSBundle)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiPageViewController`1.#ctor(Foundation.NSObjectFlag)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiPageViewController`1.#ctor(System.IntPtr)">
+            <inheritdoc />
+        </member>
+        <member name="E:FlexiMvvm.Views.FlexiPageViewController`1.ResultSet">
+            <inheritdoc />
+        </member>
+        <member name="P:FlexiMvvm.Views.FlexiPageViewController`1.ViewModel">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiPageViewController`1.CreateLifecycleDelegate">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiPageViewController`1.SetResult(FlexiMvvm.ViewModels.ResultCode,FlexiMvvm.ViewModels.Result)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiPageViewController`1.RaiseResultSet(FlexiMvvm.ViewModels.ResultCode,FlexiMvvm.ViewModels.Result)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiPageViewController`1.HandleResult(System.Object,FlexiMvvm.Views.ResultSetEventArgs)">
+            <inheritdoc />
+        </member>
+        <member name="T:FlexiMvvm.Views.FlexiPageViewController`2">
+            <summary>
+            Represents a/an <see cref="T:UIKit.UIPageViewController"/> that is adapted for use with the FlexiMvvm,
+            has its own lifecycle-aware view model and takes lifecycle-aware view model parameters.
+            </summary>
+            <typeparam name="TViewModel">The type of the view model.</typeparam>
+            <typeparam name="TParameters">The type of the view model parameters.</typeparam>
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiPageViewController`2.#ctor(UIKit.UIPageViewControllerTransitionStyle,UIKit.UIPageViewControllerNavigationOrientation)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiPageViewController`2.#ctor(UIKit.UIPageViewControllerTransitionStyle,UIKit.UIPageViewControllerNavigationOrientation,UIKit.UIPageViewControllerSpineLocation)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiPageViewController`2.#ctor(UIKit.UIPageViewControllerTransitionStyle,UIKit.UIPageViewControllerNavigationOrientation,Foundation.NSDictionary)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiPageViewController`2.#ctor(UIKit.UIPageViewControllerTransitionStyle,UIKit.UIPageViewControllerNavigationOrientation,UIKit.UIPageViewControllerSpineLocation,System.Single)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiPageViewController`2.#ctor">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiPageViewController`2.#ctor(Foundation.NSCoder)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiPageViewController`2.#ctor(System.String,Foundation.NSBundle)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiPageViewController`2.#ctor(Foundation.NSObjectFlag)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiPageViewController`2.#ctor(System.IntPtr)">
+            <inheritdoc />
+        </member>
+        <member name="E:FlexiMvvm.Views.FlexiPageViewController`2.ResultSet">
+            <inheritdoc />
+        </member>
+        <member name="P:FlexiMvvm.Views.FlexiPageViewController`2.ViewModel">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiPageViewController`2.CreateLifecycleDelegate">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiPageViewController`2.SetParameters(`1)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiPageViewController`2.SetResult(FlexiMvvm.ViewModels.ResultCode,FlexiMvvm.ViewModels.Result)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiPageViewController`2.RaiseResultSet(FlexiMvvm.ViewModels.ResultCode,FlexiMvvm.ViewModels.Result)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiPageViewController`2.HandleResult(System.Object,FlexiMvvm.Views.ResultSetEventArgs)">
+            <inheritdoc />
+        </member>
+        <member name="T:FlexiMvvm.Views.FlexiTableViewController">
+            <summary>
+            Represents a/an <see cref="T:UIKit.UITableViewController"/> that is adapted for use with the FlexiMvvm.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTableViewController.#ctor(UIKit.UITableViewStyle)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTableViewController.#ctor">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTableViewController.#ctor(Foundation.NSCoder)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTableViewController.#ctor(System.String,Foundation.NSBundle)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTableViewController.#ctor(Foundation.NSObjectFlag)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTableViewController.#ctor(System.IntPtr)">
+            <inheritdoc />
+        </member>
+        <member name="P:FlexiMvvm.Views.FlexiTableViewController.LifecycleDelegate">
+            <summary>
+            Gets the view lifecycle delegate. Intended for internal use by the FlexiMvvm.
+            </summary>
+        </member>
+        <member name="P:FlexiMvvm.Views.FlexiTableViewController.KeyboardHandler">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTableViewController.CreateLifecycleDelegate">
+            <summary>
+            Creates a new <see cref="T:FlexiMvvm.Views.Core.IViewLifecycleDelegate"/> instance. Intended for internal use by the FlexiMvvm.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTableViewController.WillMoveToParentViewController(UIKit.UIViewController)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTableViewController.ViewDidLoad">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTableViewController.ViewWillAppear(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTableViewController.ViewDidAppear(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTableViewController.ViewWillDisappear(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTableViewController.ViewDidDisappear(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTableViewController.DidMoveToParentViewController(UIKit.UIViewController)">
+            <inheritdoc />
+        </member>
+        <member name="T:FlexiMvvm.Views.FlexiTableViewController`1">
+            <summary>
+            Represents a/an <see cref="T:UIKit.UITableViewController"/> that is adapted for use with the FlexiMvvm
+            and has its own lifecycle-aware view model.
+            </summary>
+            <typeparam name="TViewModel">The type of the view model.</typeparam>
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTableViewController`1.#ctor(UIKit.UITableViewStyle)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTableViewController`1.#ctor">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTableViewController`1.#ctor(Foundation.NSCoder)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTableViewController`1.#ctor(System.String,Foundation.NSBundle)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTableViewController`1.#ctor(Foundation.NSObjectFlag)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTableViewController`1.#ctor(System.IntPtr)">
+            <inheritdoc />
+        </member>
+        <member name="E:FlexiMvvm.Views.FlexiTableViewController`1.ResultSet">
+            <inheritdoc />
+        </member>
+        <member name="P:FlexiMvvm.Views.FlexiTableViewController`1.ViewModel">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTableViewController`1.CreateLifecycleDelegate">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTableViewController`1.SetResult(FlexiMvvm.ViewModels.ResultCode,FlexiMvvm.ViewModels.Result)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTableViewController`1.RaiseResultSet(FlexiMvvm.ViewModels.ResultCode,FlexiMvvm.ViewModels.Result)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTableViewController`1.HandleResult(System.Object,FlexiMvvm.Views.ResultSetEventArgs)">
+            <inheritdoc />
+        </member>
+        <member name="T:FlexiMvvm.Views.FlexiTableViewController`2">
+            <summary>
+            Represents a/an <see cref="T:UIKit.UITableViewController"/> that is adapted for use with the FlexiMvvm,
+            has its own lifecycle-aware view model and takes lifecycle-aware view model parameters.
+            </summary>
+            <typeparam name="TViewModel">The type of the view model.</typeparam>
+            <typeparam name="TParameters">The type of the view model parameters.</typeparam>
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTableViewController`2.#ctor(UIKit.UITableViewStyle)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTableViewController`2.#ctor">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTableViewController`2.#ctor(Foundation.NSCoder)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTableViewController`2.#ctor(System.String,Foundation.NSBundle)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTableViewController`2.#ctor(Foundation.NSObjectFlag)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTableViewController`2.#ctor(System.IntPtr)">
+            <inheritdoc />
+        </member>
+        <member name="E:FlexiMvvm.Views.FlexiTableViewController`2.ResultSet">
+            <inheritdoc />
+        </member>
+        <member name="P:FlexiMvvm.Views.FlexiTableViewController`2.ViewModel">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTableViewController`2.CreateLifecycleDelegate">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTableViewController`2.SetParameters(`1)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTableViewController`2.SetResult(FlexiMvvm.ViewModels.ResultCode,FlexiMvvm.ViewModels.Result)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTableViewController`2.RaiseResultSet(FlexiMvvm.ViewModels.ResultCode,FlexiMvvm.ViewModels.Result)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTableViewController`2.HandleResult(System.Object,FlexiMvvm.Views.ResultSetEventArgs)">
+            <inheritdoc />
+        </member>
+        <member name="T:FlexiMvvm.Views.IIosView">
+            <summary>
+            Defines the contract for a platform-specific view.
+            </summary>
+        </member>
+        <member name="P:FlexiMvvm.Views.IIosView.KeyboardHandler">
+            <summary>
+            Gets the keyboard handler that is responsible for scrolling the view to make the invisible or partially visible
+            focused field fully visible when the keyboard appears. Can be <see langword="null"/>.
+            </summary>
+        </member>
+        <member name="T:FlexiMvvm.Views.INavigationView`1">
+            <summary>
+            Defines the contract for a platform-specific view that participates in navigation.
+            </summary>
+            <typeparam name="TViewModel">The type of the view model.</typeparam>
+        </member>
+        <member name="E:FlexiMvvm.Views.INavigationView`1.ResultSet">
+            <summary>
+            Occurs when the lifecycle-aware view model result is returning to the calling view's model.
+            </summary>
+        </member>
+        <member name="P:FlexiMvvm.Views.INavigationView`1.IsMovingToParentViewController">
+            <summary>
+            Gets a value indicating whether the current view is in the process of being added to a parent view.
+            </summary>
+        </member>
+        <member name="P:FlexiMvvm.Views.INavigationView`1.IsMovingFromParentViewController">
+            <summary>
+            Gets a value indicating whether the current view is in the process of being removed from its parent view.
+            </summary>
+        </member>
+        <member name="P:FlexiMvvm.Views.INavigationView`1.IsBeingPresented">
+            <summary>
+            Gets a value indicating whether the current view is in the process of being presented.
+            </summary>
+        </member>
+        <member name="P:FlexiMvvm.Views.INavigationView`1.IsBeingDismissed">
+            <summary>
+            Gets a value indicating whether the current view is in the process of being dismissed.
+            </summary>
+        </member>
+        <member name="P:FlexiMvvm.Views.INavigationView`1.PresentingViewController">
+            <summary>
+            Gets the view that is presenting this view. Can be <see langword="null"/>.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.INavigationView`1.PresentViewController(UIKit.UIViewController,System.Boolean,System.Action)">
+            <summary>
+            Modally presents a view.
+            </summary>
+            <param name="viewControllerToPresent">The view that displays over the current view content.</param>
+            <param name="animated">Boolean indicating whether to animate presentation or not.</param>
+            <param name="completionHandler">Completion action to execute after the presentation finishes. Can be <see langword="null"/>.</param>
+        </member>
+        <member name="M:FlexiMvvm.Views.INavigationView`1.DismissViewController(System.Boolean,System.Action)">
+            <summary>
+            Dismisses the presented view.
+            </summary>
+            <param name="animated">Boolean that determines if the transition is to be animated.</param>
+            <param name="completionHandler">Completion action to execute when the animation completes. Can be <see langword="null"/>.</param>
+        </member>
+        <member name="M:FlexiMvvm.Views.INavigationView`1.SetResult(FlexiMvvm.ViewModels.ResultCode,FlexiMvvm.ViewModels.Result)">
+            <summary>
+            Sets the lifecycle-aware view model result to be returned to the calling view's model.
+            </summary>
+            <param name="resultCode">Determines whether the result should be set as successful or not due to cancellation by the user.</param>
+            <param name="result">The view model result. Can be <see langword="null"/>.</param>
+        </member>
+        <member name="M:FlexiMvvm.Views.INavigationView`1.RaiseResultSet(FlexiMvvm.ViewModels.ResultCode,FlexiMvvm.ViewModels.Result)">
+            <summary>
+            Raises the <see cref="E:FlexiMvvm.Views.INavigationView`1.ResultSet"/> event with <paramref name="resultCode"/> and <paramref name="result"/> arguments.
+            </summary>
+            <param name="resultCode">Determines whether the result should be set as successful or not due to cancellation by the user.</param>
+            <param name="result">The view model result. Can be <see langword="null"/>.</param>
+        </member>
+        <member name="M:FlexiMvvm.Views.INavigationView`1.HandleResult(System.Object,FlexiMvvm.Views.ResultSetEventArgs)">
+            <summary>
+            The event handler which forwards the lifecycle-aware view model result processing to the lifecycle-aware view model
+            if it implements the <see cref="T:FlexiMvvm.ViewModels.ILifecycleViewModelWithResultHandler"/>.
+            </summary>
+            <param name="sender">The event sender.</param>
+            <param name="args">The event arguments containing the view model result.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="sender"/> or <paramref name="args"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="T:FlexiMvvm.Views.INavigationView`2">
+            <summary>
+            Defines the contract for a platform-specific view that participates in navigation and takes lifecycle-aware view model parameters.
+            </summary>
+            <typeparam name="TViewModel">The type of the view model.</typeparam>
+            <typeparam name="TParameters">The type of the view model parameters.</typeparam>
+        </member>
+        <member name="M:FlexiMvvm.Views.INavigationView`2.SetParameters(`1)">
+            <summary>
+            Sets the lifecycle-aware view model parameters to pass to the initialization method of the lifecycle-aware view model.
+            </summary>
+            <param name="parameters">The view model parameters. Can be <see langword="null"/>.</param>
+        </member>
+        <member name="T:FlexiMvvm.Views.ResultSetEventArgs">
+            <summary>
+            Provides data for the <see cref="E:FlexiMvvm.Views.INavigationView`1.ResultSet"/> event.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.ResultSetEventArgs.#ctor(FlexiMvvm.ViewModels.ResultCode,FlexiMvvm.ViewModels.Result)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FlexiMvvm.Views.ResultSetEventArgs"/> class.
+            </summary>
+            <param name="resultCode">Determines whether the result should be set as successful or not due to cancellation by the user.</param>
+            <param name="result">The view model result. Can be <see langword="null"/>.</param>
+        </member>
+        <member name="P:FlexiMvvm.Views.ResultSetEventArgs.ResultCode">
+            <summary>
+            Gets the result code indicating whether the lifecycle-aware view model result is set successfully or not due to cancellation by the user.
+            </summary>
+        </member>
+        <member name="P:FlexiMvvm.Views.ResultSetEventArgs.Result">
+            <summary>
+            Gets the lifecycle-aware view model result. Can be <see langword="null"/>.
+            </summary>
+        </member>
+        <member name="T:FlexiMvvm.Views.FlexiSplitViewController">
+            <summary>
+            Represents a/an <see cref="T:UIKit.UISplitViewController"/> that is adapted for use with the FlexiMvvm.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiSplitViewController.#ctor">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiSplitViewController.#ctor(Foundation.NSCoder)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiSplitViewController.#ctor(System.String,Foundation.NSBundle)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiSplitViewController.#ctor(Foundation.NSObjectFlag)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiSplitViewController.#ctor(System.IntPtr)">
+            <inheritdoc />
+        </member>
+        <member name="P:FlexiMvvm.Views.FlexiSplitViewController.LifecycleDelegate">
+            <summary>
+            Gets the view lifecycle delegate. Intended for internal use by the FlexiMvvm.
+            </summary>
+        </member>
+        <member name="P:FlexiMvvm.Views.FlexiSplitViewController.KeyboardHandler">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiSplitViewController.CreateLifecycleDelegate">
+            <summary>
+            Creates a new <see cref="T:FlexiMvvm.Views.Core.IViewLifecycleDelegate"/> instance. Intended for internal use by the FlexiMvvm.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiSplitViewController.WillMoveToParentViewController(UIKit.UIViewController)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiSplitViewController.ViewDidLoad">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiSplitViewController.ViewWillAppear(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiSplitViewController.ViewDidAppear(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiSplitViewController.ViewWillDisappear(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiSplitViewController.ViewDidDisappear(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiSplitViewController.DidMoveToParentViewController(UIKit.UIViewController)">
+            <inheritdoc />
+        </member>
+        <member name="T:FlexiMvvm.Views.FlexiSplitViewController`1">
+            <summary>
+            Represents a/an <see cref="T:UIKit.UISplitViewController"/> that is adapted for use with the FlexiMvvm
+            and has its own lifecycle-aware view model.
+            </summary>
+            <typeparam name="TViewModel">The type of the view model.</typeparam>
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiSplitViewController`1.#ctor">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiSplitViewController`1.#ctor(Foundation.NSCoder)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiSplitViewController`1.#ctor(System.String,Foundation.NSBundle)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiSplitViewController`1.#ctor(Foundation.NSObjectFlag)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiSplitViewController`1.#ctor(System.IntPtr)">
+            <inheritdoc />
+        </member>
+        <member name="E:FlexiMvvm.Views.FlexiSplitViewController`1.ResultSet">
+            <inheritdoc />
+        </member>
+        <member name="P:FlexiMvvm.Views.FlexiSplitViewController`1.ViewModel">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiSplitViewController`1.CreateLifecycleDelegate">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiSplitViewController`1.SetResult(FlexiMvvm.ViewModels.ResultCode,FlexiMvvm.ViewModels.Result)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiSplitViewController`1.RaiseResultSet(FlexiMvvm.ViewModels.ResultCode,FlexiMvvm.ViewModels.Result)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiSplitViewController`1.HandleResult(System.Object,FlexiMvvm.Views.ResultSetEventArgs)">
+            <inheritdoc />
+        </member>
+        <member name="T:FlexiMvvm.Views.FlexiSplitViewController`2">
+            <summary>
+            Represents a/an <see cref="T:UIKit.UISplitViewController"/> that is adapted for use with the FlexiMvvm,
+            has its own lifecycle-aware view model and takes lifecycle-aware view model parameters.
+            </summary>
+            <typeparam name="TViewModel">The type of the view model.</typeparam>
+            <typeparam name="TParameters">The type of the view model parameters.</typeparam>
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiSplitViewController`2.#ctor">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiSplitViewController`2.#ctor(Foundation.NSCoder)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiSplitViewController`2.#ctor(System.String,Foundation.NSBundle)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiSplitViewController`2.#ctor(Foundation.NSObjectFlag)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiSplitViewController`2.#ctor(System.IntPtr)">
+            <inheritdoc />
+        </member>
+        <member name="E:FlexiMvvm.Views.FlexiSplitViewController`2.ResultSet">
+            <inheritdoc />
+        </member>
+        <member name="P:FlexiMvvm.Views.FlexiSplitViewController`2.ViewModel">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiSplitViewController`2.CreateLifecycleDelegate">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiSplitViewController`2.SetParameters(`1)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiSplitViewController`2.SetResult(FlexiMvvm.ViewModels.ResultCode,FlexiMvvm.ViewModels.Result)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiSplitViewController`2.RaiseResultSet(FlexiMvvm.ViewModels.ResultCode,FlexiMvvm.ViewModels.Result)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiSplitViewController`2.HandleResult(System.Object,FlexiMvvm.Views.ResultSetEventArgs)">
+            <inheritdoc />
+        </member>
+        <member name="T:FlexiMvvm.Views.FlexiTabBarController">
+            <summary>
+            Represents a/an <see cref="T:UIKit.UITabBarController"/> that is adapted for use with the FlexiMvvm.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTabBarController.#ctor">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTabBarController.#ctor(Foundation.NSCoder)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTabBarController.#ctor(System.String,Foundation.NSBundle)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTabBarController.#ctor(Foundation.NSObjectFlag)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTabBarController.#ctor(System.IntPtr)">
+            <inheritdoc />
+        </member>
+        <member name="P:FlexiMvvm.Views.FlexiTabBarController.LifecycleDelegate">
+            <summary>
+            Gets the view lifecycle delegate. Intended for internal use by the FlexiMvvm.
+            </summary>
+        </member>
+        <member name="P:FlexiMvvm.Views.FlexiTabBarController.KeyboardHandler">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTabBarController.CreateLifecycleDelegate">
+            <summary>
+            Creates a new <see cref="T:FlexiMvvm.Views.Core.IViewLifecycleDelegate"/> instance. Intended for internal use by the FlexiMvvm.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTabBarController.WillMoveToParentViewController(UIKit.UIViewController)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTabBarController.ViewDidLoad">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTabBarController.ViewWillAppear(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTabBarController.ViewDidAppear(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTabBarController.ViewWillDisappear(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTabBarController.ViewDidDisappear(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTabBarController.DidMoveToParentViewController(UIKit.UIViewController)">
+            <inheritdoc />
+        </member>
+        <member name="T:FlexiMvvm.Views.FlexiTabBarController`1">
+            <summary>
+            Represents a/an <see cref="T:UIKit.UITabBarController"/> that is adapted for use with the FlexiMvvm
+            and has its own lifecycle-aware view model.
+            </summary>
+            <typeparam name="TViewModel">The type of the view model.</typeparam>
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTabBarController`1.#ctor">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTabBarController`1.#ctor(Foundation.NSCoder)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTabBarController`1.#ctor(System.String,Foundation.NSBundle)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTabBarController`1.#ctor(Foundation.NSObjectFlag)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTabBarController`1.#ctor(System.IntPtr)">
+            <inheritdoc />
+        </member>
+        <member name="E:FlexiMvvm.Views.FlexiTabBarController`1.ResultSet">
+            <inheritdoc />
+        </member>
+        <member name="P:FlexiMvvm.Views.FlexiTabBarController`1.ViewModel">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTabBarController`1.CreateLifecycleDelegate">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTabBarController`1.SetResult(FlexiMvvm.ViewModels.ResultCode,FlexiMvvm.ViewModels.Result)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTabBarController`1.RaiseResultSet(FlexiMvvm.ViewModels.ResultCode,FlexiMvvm.ViewModels.Result)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTabBarController`1.HandleResult(System.Object,FlexiMvvm.Views.ResultSetEventArgs)">
+            <inheritdoc />
+        </member>
+        <member name="T:FlexiMvvm.Views.FlexiTabBarController`2">
+            <summary>
+            Represents a/an <see cref="T:UIKit.UITabBarController"/> that is adapted for use with the FlexiMvvm,
+            has its own lifecycle-aware view model and takes lifecycle-aware view model parameters.
+            </summary>
+            <typeparam name="TViewModel">The type of the view model.</typeparam>
+            <typeparam name="TParameters">The type of the view model parameters.</typeparam>
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTabBarController`2.#ctor">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTabBarController`2.#ctor(Foundation.NSCoder)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTabBarController`2.#ctor(System.String,Foundation.NSBundle)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTabBarController`2.#ctor(Foundation.NSObjectFlag)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTabBarController`2.#ctor(System.IntPtr)">
+            <inheritdoc />
+        </member>
+        <member name="E:FlexiMvvm.Views.FlexiTabBarController`2.ResultSet">
+            <inheritdoc />
+        </member>
+        <member name="P:FlexiMvvm.Views.FlexiTabBarController`2.ViewModel">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTabBarController`2.CreateLifecycleDelegate">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTabBarController`2.SetParameters(`1)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTabBarController`2.SetResult(FlexiMvvm.ViewModels.ResultCode,FlexiMvvm.ViewModels.Result)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTabBarController`2.RaiseResultSet(FlexiMvvm.ViewModels.ResultCode,FlexiMvvm.ViewModels.Result)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiTabBarController`2.HandleResult(System.Object,FlexiMvvm.Views.ResultSetEventArgs)">
+            <inheritdoc />
+        </member>
+        <member name="T:FlexiMvvm.Views.FlexiViewController">
+            <summary>
+            Represents a/an <see cref="T:UIKit.UIViewController"/> that is adapted for use with the FlexiMvvm.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiViewController.#ctor">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiViewController.#ctor(Foundation.NSCoder)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiViewController.#ctor(System.String,Foundation.NSBundle)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiViewController.#ctor(Foundation.NSObjectFlag)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiViewController.#ctor(System.IntPtr)">
+            <inheritdoc />
+        </member>
+        <member name="P:FlexiMvvm.Views.FlexiViewController.LifecycleDelegate">
+            <summary>
+            Gets the view lifecycle delegate. Intended for internal use by the FlexiMvvm.
+            </summary>
+        </member>
+        <member name="P:FlexiMvvm.Views.FlexiViewController.KeyboardHandler">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiViewController.CreateLifecycleDelegate">
+            <summary>
+            Creates a new <see cref="T:FlexiMvvm.Views.Core.IViewLifecycleDelegate"/> instance. Intended for internal use by the FlexiMvvm.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiViewController.WillMoveToParentViewController(UIKit.UIViewController)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiViewController.ViewDidLoad">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiViewController.ViewWillAppear(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiViewController.ViewDidAppear(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiViewController.ViewWillDisappear(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiViewController.ViewDidDisappear(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiViewController.DidMoveToParentViewController(UIKit.UIViewController)">
+            <inheritdoc />
+        </member>
+        <member name="T:FlexiMvvm.Views.FlexiViewController`1">
+            <summary>
+            Represents a/an <see cref="T:UIKit.UIViewController"/> that is adapted for use with the FlexiMvvm
+            and has its own lifecycle-aware view model.
+            </summary>
+            <typeparam name="TViewModel">The type of the view model.</typeparam>
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiViewController`1.#ctor">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiViewController`1.#ctor(Foundation.NSCoder)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiViewController`1.#ctor(System.String,Foundation.NSBundle)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiViewController`1.#ctor(Foundation.NSObjectFlag)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiViewController`1.#ctor(System.IntPtr)">
+            <inheritdoc />
+        </member>
+        <member name="E:FlexiMvvm.Views.FlexiViewController`1.ResultSet">
+            <inheritdoc />
+        </member>
+        <member name="P:FlexiMvvm.Views.FlexiViewController`1.ViewModel">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiViewController`1.CreateLifecycleDelegate">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiViewController`1.SetResult(FlexiMvvm.ViewModels.ResultCode,FlexiMvvm.ViewModels.Result)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiViewController`1.RaiseResultSet(FlexiMvvm.ViewModels.ResultCode,FlexiMvvm.ViewModels.Result)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiViewController`1.HandleResult(System.Object,FlexiMvvm.Views.ResultSetEventArgs)">
+            <inheritdoc />
+        </member>
+        <member name="T:FlexiMvvm.Views.FlexiViewController`2">
+            <summary>
+            Represents a/an <see cref="T:UIKit.UIViewController"/> that is adapted for use with the FlexiMvvm,
+            has its own lifecycle-aware view model and takes lifecycle-aware view model parameters.
+            </summary>
+            <typeparam name="TViewModel">The type of the view model.</typeparam>
+            <typeparam name="TParameters">The type of the view model parameters.</typeparam>
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiViewController`2.#ctor">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiViewController`2.#ctor(Foundation.NSCoder)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiViewController`2.#ctor(System.String,Foundation.NSBundle)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiViewController`2.#ctor(Foundation.NSObjectFlag)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiViewController`2.#ctor(System.IntPtr)">
+            <inheritdoc />
+        </member>
+        <member name="E:FlexiMvvm.Views.FlexiViewController`2.ResultSet">
+            <inheritdoc />
+        </member>
+        <member name="P:FlexiMvvm.Views.FlexiViewController`2.ViewModel">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiViewController`2.CreateLifecycleDelegate">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiViewController`2.SetParameters(`1)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiViewController`2.SetResult(FlexiMvvm.ViewModels.ResultCode,FlexiMvvm.ViewModels.Result)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiViewController`2.RaiseResultSet(FlexiMvvm.ViewModels.ResultCode,FlexiMvvm.ViewModels.Result)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiViewController`2.HandleResult(System.Object,FlexiMvvm.Views.ResultSetEventArgs)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

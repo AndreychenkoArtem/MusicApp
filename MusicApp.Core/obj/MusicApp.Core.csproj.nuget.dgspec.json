@@ -1,0 +1,93 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/artemandreichenko/RiderProjects/MusicApp/MusicApp.Core/MusicApp.Core.csproj": {}
+  },
+  "projects": {
+    "/Users/artemandreichenko/RiderProjects/MusicApp/MusicApp.Core/MusicApp.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/artemandreichenko/RiderProjects/MusicApp/MusicApp.Core/MusicApp.Core.csproj",
+        "projectName": "MusicApp.Core",
+        "projectPath": "/Users/artemandreichenko/RiderProjects/MusicApp/MusicApp.Core/MusicApp.Core.csproj",
+        "packagesPath": "/Users/artemandreichenko/.nuget/packages/",
+        "outputPath": "/Users/artemandreichenko/RiderProjects/MusicApp/MusicApp.Core/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/artemandreichenko/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "FlexiMvvm.Common.PreRelease": {
+              "target": "Package",
+              "version": "[0.10.8-prerelease, )"
+            },
+            "FlexiMvvm.Generation.PreRelease": {
+              "target": "Package",
+              "version": "[0.10.8-prerelease, )"
+            },
+            "FlexiMvvm.Lifecycle.PreRelease": {
+              "target": "Package",
+              "version": "[0.13.1-prerelease, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.3, )"
+            },
+            "Realm": {
+              "target": "Package",
+              "version": "[4.3.0, )"
+            },
+            "Realm.Fody": {
+              "target": "Package",
+              "version": "[4.3.0, )"
+            },
+            "System.Reactive": {
+              "target": "Package",
+              "version": "[4.4.1, )"
+            },
+            "Xamarin.FFImageLoading": {
+              "target": "Package",
+              "version": "[2.4.11.982, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.301/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

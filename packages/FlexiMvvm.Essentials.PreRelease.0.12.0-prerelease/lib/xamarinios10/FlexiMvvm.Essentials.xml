@@ -1,0 +1,1675 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FlexiMvvm.Essentials</name>
+    </assembly>
+    <members>
+        <member name="T:FlexiMvvm.INotifyCollectionChangedWeakEventSubscriptionExtensions">
+            <summary>Provides a set of static methods for weak subscriptions on <see cref="T:System.Collections.Specialized.INotifyCollectionChanged"/> class events.</summary>
+        </member>
+        <member name="M:FlexiMvvm.INotifyCollectionChangedWeakEventSubscriptionExtensions.CollectionChangedWeakSubscribe(System.Collections.Specialized.INotifyCollectionChanged,System.EventHandler{System.Collections.Specialized.NotifyCollectionChangedEventArgs})">
+            <summary>Weak subscription on <see cref="E:System.Collections.Specialized.INotifyCollectionChanged.CollectionChanged"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:System.Collections.Specialized.INotifyCollectionChanged.CollectionChanged"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="T:FlexiMvvm.INotifyPropertyChangedWeakEventSubscriptionExtensions">
+            <summary>Provides a set of static methods for weak subscriptions on <see cref="T:System.ComponentModel.INotifyPropertyChanged"/> class events.</summary>
+        </member>
+        <member name="M:FlexiMvvm.INotifyPropertyChangedWeakEventSubscriptionExtensions.PropertyChangedWeakSubscribe(System.ComponentModel.INotifyPropertyChanged,System.EventHandler{System.ComponentModel.PropertyChangedEventArgs})">
+            <summary>Weak subscription on <see cref="E:System.ComponentModel.INotifyPropertyChanged.PropertyChanged"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:System.ComponentModel.INotifyPropertyChanged.PropertyChanged"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="T:FlexiMvvm.Views.UIViewExtensions">
+            <summary>
+            Provides a set of static methods for the <see cref="T:FlexiMvvm.Views.UIViewExtensions"/>.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIViewExtensions.AddLayoutSubview(UIKit.UIView,UIKit.UIView)">
+            <summary>
+            Adds the <paramref name="childView"/> to the <paramref name="parentView"/>.
+            </summary>
+            <param name="parentView">The parent view.</param>
+            <param name="childView">The child view.</param>
+            <returns>The parent view instance.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="parentView"/> or <paramref name="childView"/> is <c>null</c>.</exception>
+        </member>
+        <member name="T:FlexiMvvm.Views.Keyboard.KeyboardHandlerWeakEventSubscriptionExtensions">
+            <summary>Provides a set of static methods for weak subscriptions on <see cref="T:FlexiMvvm.Views.Keyboard.KeyboardHandler"/> class events.</summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.Keyboard.KeyboardHandlerWeakEventSubscriptionExtensions.KeyboardDidHideWeakSubscribe(FlexiMvvm.Views.Keyboard.KeyboardHandler,System.EventHandler{FlexiMvvm.Views.Keyboard.KeyboardVisibilityChangedEventArgs})">
+            <summary>Weak subscription on <see cref="E:FlexiMvvm.Views.Keyboard.KeyboardHandler.KeyboardDidHide"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:FlexiMvvm.Views.Keyboard.KeyboardHandler.KeyboardDidHide"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.Keyboard.KeyboardHandlerWeakEventSubscriptionExtensions.KeyboardDidShowWeakSubscribe(FlexiMvvm.Views.Keyboard.KeyboardHandler,System.EventHandler{FlexiMvvm.Views.Keyboard.KeyboardVisibilityChangedEventArgs})">
+            <summary>Weak subscription on <see cref="E:FlexiMvvm.Views.Keyboard.KeyboardHandler.KeyboardDidShow"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:FlexiMvvm.Views.Keyboard.KeyboardHandler.KeyboardDidShow"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.Keyboard.KeyboardHandlerWeakEventSubscriptionExtensions.KeyboardWillHideWeakSubscribe(FlexiMvvm.Views.Keyboard.KeyboardHandler,System.EventHandler{FlexiMvvm.Views.Keyboard.KeyboardVisibilityChangedEventArgs})">
+            <summary>Weak subscription on <see cref="E:FlexiMvvm.Views.Keyboard.KeyboardHandler.KeyboardWillHide"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:FlexiMvvm.Views.Keyboard.KeyboardHandler.KeyboardWillHide"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.Keyboard.KeyboardHandlerWeakEventSubscriptionExtensions.KeyboardWillShowWeakSubscribe(FlexiMvvm.Views.Keyboard.KeyboardHandler,System.EventHandler{FlexiMvvm.Views.Keyboard.KeyboardVisibilityChangedEventArgs})">
+            <summary>Weak subscription on <see cref="E:FlexiMvvm.Views.Keyboard.KeyboardHandler.KeyboardWillShow"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:FlexiMvvm.Views.Keyboard.KeyboardHandler.KeyboardWillShow"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="T:FlexiMvvm.Views.Keyboard.IKeyboardHandler">
+            <summary>
+            Defines the contract for a keyboard handler that is responsible for scrolling the view
+            to make the invisible or partially visible focused field fully visible when the keyboard appears.
+            </summary>
+        </member>
+        <member name="E:FlexiMvvm.Views.Keyboard.IKeyboardHandler.KeyboardWillShow">
+            <summary>
+            Occurs when the keyboard is going to be shown.
+            </summary>
+        </member>
+        <member name="E:FlexiMvvm.Views.Keyboard.IKeyboardHandler.KeyboardDidShow">
+            <summary>
+            Occurs when the keyboard is shown.
+            </summary>
+        </member>
+        <member name="E:FlexiMvvm.Views.Keyboard.IKeyboardHandler.KeyboardWillHide">
+            <summary>
+            Occurs when the keyboard is going to be hidden.
+            </summary>
+        </member>
+        <member name="E:FlexiMvvm.Views.Keyboard.IKeyboardHandler.KeyboardDidHide">
+            <summary>
+            Occurs when the keyboard is hidden.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.Keyboard.IKeyboardHandler.RegisterForKeyboardNotifications">
+            <summary>
+            Starts listening to keyboard notifications for processing by the handler.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.Keyboard.IKeyboardHandler.UnregisterFromKeyboardNotifications">
+            <summary>
+            Stops listening to keyboard notifications. The handler will no longer process them.
+            </summary>
+        </member>
+        <member name="T:FlexiMvvm.Views.Keyboard.KeyboardHandler">
+            <summary>
+            Default implementation of the <see cref="T:FlexiMvvm.Views.Keyboard.IKeyboardHandler"/>. Responsible for scrolling the view
+            to make the invisible or partially visible focused field fully visible when the keyboard appears.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.Keyboard.KeyboardHandler.#ctor(UIKit.UIView)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FlexiMvvm.Views.Keyboard.KeyboardHandler"/> class.
+            </summary>
+            <param name="rootView"><see cref="T:UIKit.UIViewController"/>'s root view that contains focusable fields.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="rootView"/> is <c>null</c>.</exception>
+        </member>
+        <member name="E:FlexiMvvm.Views.Keyboard.KeyboardHandler.KeyboardWillShow">
+            <inheritdoc />
+        </member>
+        <member name="E:FlexiMvvm.Views.Keyboard.KeyboardHandler.KeyboardDidShow">
+            <inheritdoc />
+        </member>
+        <member name="E:FlexiMvvm.Views.Keyboard.KeyboardHandler.KeyboardWillHide">
+            <inheritdoc />
+        </member>
+        <member name="E:FlexiMvvm.Views.Keyboard.KeyboardHandler.KeyboardDidHide">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.Keyboard.KeyboardHandler.Create(UIKit.UIView)">
+            <summary>
+            Creates a new instance of the keyboard handler if <paramref name="rootView"/> is not <c>null</c>; otherwise, returns <c>null</c>.
+            </summary>
+            <param name="rootView"><see cref="T:UIKit.UIViewController"/>'s root view that contains focusable fields.</param>
+            <returns>The keyboard handler instance.</returns>
+        </member>
+        <member name="M:FlexiMvvm.Views.Keyboard.KeyboardHandler.RegisterForKeyboardNotifications">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.Keyboard.KeyboardHandler.UnregisterFromKeyboardNotifications">
+            <inheritdoc />
+        </member>
+        <member name="T:FlexiMvvm.Views.Keyboard.KeyboardVisibilityChangedEventArgs">
+            <summary>
+            Provides data for the <see cref="T:FlexiMvvm.Views.Keyboard.IKeyboardHandler"/> class events.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.Keyboard.KeyboardVisibilityChangedEventArgs.#ctor(CoreGraphics.CGSize)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FlexiMvvm.Views.Keyboard.KeyboardVisibilityChangedEventArgs"/> class.
+            </summary>
+            <param name="keyboardSize">The size of the keyboard.</param>
+        </member>
+        <member name="P:FlexiMvvm.Views.Keyboard.KeyboardVisibilityChangedEventArgs.KeyboardSize">
+            <summary>
+            Gets the size of the keyboard.
+            </summary>
+        </member>
+        <member name="T:FlexiMvvm.Views.UIAccelerometerWeakEventSubscriptionExtensions">
+            <summary>Provides a set of static methods for weak subscriptions on <see cref="T:UIKit.UIAccelerometer"/> class events.</summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIAccelerometerWeakEventSubscriptionExtensions.AccelerationWeakSubscribe(UIKit.UIAccelerometer,System.EventHandler{UIKit.UIAccelerometerEventArgs})">
+            <summary>Weak subscription on <see cref="E:UIKit.UIAccelerometer.Acceleration"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIAccelerometer.Acceleration"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="T:FlexiMvvm.Views.UIActionSheetWeakEventSubscriptionExtensions">
+            <summary>Provides a set of static methods for weak subscriptions on <see cref="T:UIKit.UIActionSheet"/> class events.</summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIActionSheetWeakEventSubscriptionExtensions.CanceledWeakSubscribe(UIKit.UIActionSheet,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UIActionSheet.Canceled"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIActionSheet.Canceled"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIActionSheetWeakEventSubscriptionExtensions.ClickedWeakSubscribe(UIKit.UIActionSheet,System.EventHandler{UIKit.UIButtonEventArgs})">
+            <summary>Weak subscription on <see cref="E:UIKit.UIActionSheet.Clicked"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIActionSheet.Clicked"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIActionSheetWeakEventSubscriptionExtensions.DismissedWeakSubscribe(UIKit.UIActionSheet,System.EventHandler{UIKit.UIButtonEventArgs})">
+            <summary>Weak subscription on <see cref="E:UIKit.UIActionSheet.Dismissed"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIActionSheet.Dismissed"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIActionSheetWeakEventSubscriptionExtensions.PresentedWeakSubscribe(UIKit.UIActionSheet,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UIActionSheet.Presented"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIActionSheet.Presented"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIActionSheetWeakEventSubscriptionExtensions.WillDismissWeakSubscribe(UIKit.UIActionSheet,System.EventHandler{UIKit.UIButtonEventArgs})">
+            <summary>Weak subscription on <see cref="E:UIKit.UIActionSheet.WillDismiss"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIActionSheet.WillDismiss"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIActionSheetWeakEventSubscriptionExtensions.WillPresentWeakSubscribe(UIKit.UIActionSheet,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UIActionSheet.WillPresent"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIActionSheet.WillPresent"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="T:FlexiMvvm.Views.UIAlertViewWeakEventSubscriptionExtensions">
+            <summary>Provides a set of static methods for weak subscriptions on <see cref="T:UIKit.UIAlertView"/> class events.</summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIAlertViewWeakEventSubscriptionExtensions.CanceledWeakSubscribe(UIKit.UIAlertView,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UIAlertView.Canceled"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIAlertView.Canceled"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIAlertViewWeakEventSubscriptionExtensions.ClickedWeakSubscribe(UIKit.UIAlertView,System.EventHandler{UIKit.UIButtonEventArgs})">
+            <summary>Weak subscription on <see cref="E:UIKit.UIAlertView.Clicked"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIAlertView.Clicked"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIAlertViewWeakEventSubscriptionExtensions.DismissedWeakSubscribe(UIKit.UIAlertView,System.EventHandler{UIKit.UIButtonEventArgs})">
+            <summary>Weak subscription on <see cref="E:UIKit.UIAlertView.Dismissed"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIAlertView.Dismissed"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIAlertViewWeakEventSubscriptionExtensions.PresentedWeakSubscribe(UIKit.UIAlertView,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UIAlertView.Presented"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIAlertView.Presented"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIAlertViewWeakEventSubscriptionExtensions.WillDismissWeakSubscribe(UIKit.UIAlertView,System.EventHandler{UIKit.UIButtonEventArgs})">
+            <summary>Weak subscription on <see cref="E:UIKit.UIAlertView.WillDismiss"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIAlertView.WillDismiss"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIAlertViewWeakEventSubscriptionExtensions.WillPresentWeakSubscribe(UIKit.UIAlertView,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UIAlertView.WillPresent"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIAlertView.WillPresent"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="T:FlexiMvvm.Views.UIBarButtonItemWeakEventSubscriptionExtensions">
+            <summary>Provides a set of static methods for weak subscriptions on <see cref="T:UIKit.UIBarButtonItem"/> class events.</summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIBarButtonItemWeakEventSubscriptionExtensions.ClickedWeakSubscribe(UIKit.UIBarButtonItem,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UIBarButtonItem.Clicked"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIBarButtonItem.Clicked"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="T:FlexiMvvm.Views.UICollisionBehaviorWeakEventSubscriptionExtensions">
+            <summary>Provides a set of static methods for weak subscriptions on <see cref="T:UIKit.UICollisionBehavior"/> class events.</summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.UICollisionBehaviorWeakEventSubscriptionExtensions.BeganBoundaryContactWeakSubscribe(UIKit.UICollisionBehavior,System.EventHandler{UIKit.UICollisionBeganBoundaryContactEventArgs})">
+            <summary>Weak subscription on <see cref="E:UIKit.UICollisionBehavior.BeganBoundaryContact"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UICollisionBehavior.BeganBoundaryContact"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UICollisionBehaviorWeakEventSubscriptionExtensions.BeganContactWeakSubscribe(UIKit.UICollisionBehavior,System.EventHandler{UIKit.UICollisionBeganContactEventArgs})">
+            <summary>Weak subscription on <see cref="E:UIKit.UICollisionBehavior.BeganContact"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UICollisionBehavior.BeganContact"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UICollisionBehaviorWeakEventSubscriptionExtensions.EndedBoundaryContactWeakSubscribe(UIKit.UICollisionBehavior,System.EventHandler{UIKit.UICollisionEndedBoundaryContactEventArgs})">
+            <summary>Weak subscription on <see cref="E:UIKit.UICollisionBehavior.EndedBoundaryContact"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UICollisionBehavior.EndedBoundaryContact"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UICollisionBehaviorWeakEventSubscriptionExtensions.EndedContactWeakSubscribe(UIKit.UICollisionBehavior,System.EventHandler{UIKit.UICollisionEndedContactEventArgs})">
+            <summary>Weak subscription on <see cref="E:UIKit.UICollisionBehavior.EndedContact"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UICollisionBehavior.EndedContact"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="T:FlexiMvvm.Views.UIControlWeakEventSubscriptionExtensions">
+            <summary>Provides a set of static methods for weak subscriptions on <see cref="T:UIKit.UIControl"/> class events.</summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIControlWeakEventSubscriptionExtensions.AllEditingEventsWeakSubscribe(UIKit.UIControl,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UIControl.AllEditingEvents"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIControl.AllEditingEvents"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIControlWeakEventSubscriptionExtensions.AllEventsWeakSubscribe(UIKit.UIControl,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UIControl.AllEvents"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIControl.AllEvents"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIControlWeakEventSubscriptionExtensions.AllTouchEventsWeakSubscribe(UIKit.UIControl,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UIControl.AllTouchEvents"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIControl.AllTouchEvents"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIControlWeakEventSubscriptionExtensions.EditingChangedWeakSubscribe(UIKit.UIControl,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UIControl.EditingChanged"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIControl.EditingChanged"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIControlWeakEventSubscriptionExtensions.EditingDidBeginWeakSubscribe(UIKit.UIControl,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UIControl.EditingDidBegin"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIControl.EditingDidBegin"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIControlWeakEventSubscriptionExtensions.EditingDidEndWeakSubscribe(UIKit.UIControl,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UIControl.EditingDidEnd"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIControl.EditingDidEnd"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIControlWeakEventSubscriptionExtensions.EditingDidEndOnExitWeakSubscribe(UIKit.UIControl,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UIControl.EditingDidEndOnExit"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIControl.EditingDidEndOnExit"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIControlWeakEventSubscriptionExtensions.PrimaryActionTriggeredWeakSubscribe(UIKit.UIControl,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UIControl.PrimaryActionTriggered"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIControl.PrimaryActionTriggered"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIControlWeakEventSubscriptionExtensions.TouchCancelWeakSubscribe(UIKit.UIControl,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UIControl.TouchCancel"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIControl.TouchCancel"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIControlWeakEventSubscriptionExtensions.TouchDownWeakSubscribe(UIKit.UIControl,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UIControl.TouchDown"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIControl.TouchDown"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIControlWeakEventSubscriptionExtensions.TouchDownRepeatWeakSubscribe(UIKit.UIControl,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UIControl.TouchDownRepeat"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIControl.TouchDownRepeat"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIControlWeakEventSubscriptionExtensions.TouchDragEnterWeakSubscribe(UIKit.UIControl,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UIControl.TouchDragEnter"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIControl.TouchDragEnter"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIControlWeakEventSubscriptionExtensions.TouchDragExitWeakSubscribe(UIKit.UIControl,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UIControl.TouchDragExit"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIControl.TouchDragExit"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIControlWeakEventSubscriptionExtensions.TouchDragInsideWeakSubscribe(UIKit.UIControl,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UIControl.TouchDragInside"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIControl.TouchDragInside"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIControlWeakEventSubscriptionExtensions.TouchDragOutsideWeakSubscribe(UIKit.UIControl,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UIControl.TouchDragOutside"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIControl.TouchDragOutside"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIControlWeakEventSubscriptionExtensions.TouchUpInsideWeakSubscribe(UIKit.UIControl,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UIControl.TouchUpInside"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIControl.TouchUpInside"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIControlWeakEventSubscriptionExtensions.TouchUpOutsideWeakSubscribe(UIKit.UIControl,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UIControl.TouchUpOutside"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIControl.TouchUpOutside"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIControlWeakEventSubscriptionExtensions.ValueChangedWeakSubscribe(UIKit.UIControl,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UIControl.ValueChanged"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIControl.ValueChanged"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="T:FlexiMvvm.Views.UIDocumentInteractionControllerWeakEventSubscriptionExtensions">
+            <summary>Provides a set of static methods for weak subscriptions on <see cref="T:UIKit.UIDocumentInteractionController"/> class events.</summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIDocumentInteractionControllerWeakEventSubscriptionExtensions.DidDismissOpenInMenuWeakSubscribe(UIKit.UIDocumentInteractionController,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UIDocumentInteractionController.DidDismissOpenInMenu"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIDocumentInteractionController.DidDismissOpenInMenu"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIDocumentInteractionControllerWeakEventSubscriptionExtensions.DidDismissOptionsMenuWeakSubscribe(UIKit.UIDocumentInteractionController,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UIDocumentInteractionController.DidDismissOptionsMenu"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIDocumentInteractionController.DidDismissOptionsMenu"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIDocumentInteractionControllerWeakEventSubscriptionExtensions.DidEndPreviewWeakSubscribe(UIKit.UIDocumentInteractionController,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UIDocumentInteractionController.DidEndPreview"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIDocumentInteractionController.DidEndPreview"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIDocumentInteractionControllerWeakEventSubscriptionExtensions.DidEndSendingToApplicationWeakSubscribe(UIKit.UIDocumentInteractionController,System.EventHandler{UIKit.UIDocumentSendingToApplicationEventArgs})">
+            <summary>Weak subscription on <see cref="E:UIKit.UIDocumentInteractionController.DidEndSendingToApplication"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIDocumentInteractionController.DidEndSendingToApplication"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIDocumentInteractionControllerWeakEventSubscriptionExtensions.WillBeginPreviewWeakSubscribe(UIKit.UIDocumentInteractionController,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UIDocumentInteractionController.WillBeginPreview"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIDocumentInteractionController.WillBeginPreview"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIDocumentInteractionControllerWeakEventSubscriptionExtensions.WillBeginSendingToApplicationWeakSubscribe(UIKit.UIDocumentInteractionController,System.EventHandler{UIKit.UIDocumentSendingToApplicationEventArgs})">
+            <summary>Weak subscription on <see cref="E:UIKit.UIDocumentInteractionController.WillBeginSendingToApplication"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIDocumentInteractionController.WillBeginSendingToApplication"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIDocumentInteractionControllerWeakEventSubscriptionExtensions.WillPresentOpenInMenuWeakSubscribe(UIKit.UIDocumentInteractionController,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UIDocumentInteractionController.WillPresentOpenInMenu"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIDocumentInteractionController.WillPresentOpenInMenu"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIDocumentInteractionControllerWeakEventSubscriptionExtensions.WillPresentOptionsMenuWeakSubscribe(UIKit.UIDocumentInteractionController,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UIDocumentInteractionController.WillPresentOptionsMenu"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIDocumentInteractionController.WillPresentOptionsMenu"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="T:FlexiMvvm.Views.UIDocumentMenuViewControllerWeakEventSubscriptionExtensions">
+            <summary>Provides a set of static methods for weak subscriptions on <see cref="T:UIKit.UIDocumentMenuViewController"/> class events.</summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIDocumentMenuViewControllerWeakEventSubscriptionExtensions.DidPickDocumentPickerWeakSubscribe(UIKit.UIDocumentMenuViewController,System.EventHandler{UIKit.UIDocumentMenuDocumentPickedEventArgs})">
+            <summary>Weak subscription on <see cref="E:UIKit.UIDocumentMenuViewController.DidPickDocumentPicker"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIDocumentMenuViewController.DidPickDocumentPicker"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIDocumentMenuViewControllerWeakEventSubscriptionExtensions.WasCancelledWeakSubscribe(UIKit.UIDocumentMenuViewController,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UIDocumentMenuViewController.WasCancelled"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIDocumentMenuViewController.WasCancelled"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="T:FlexiMvvm.Views.UIDocumentPickerViewControllerWeakEventSubscriptionExtensions">
+            <summary>Provides a set of static methods for weak subscriptions on <see cref="T:UIKit.UIDocumentPickerViewController"/> class events.</summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIDocumentPickerViewControllerWeakEventSubscriptionExtensions.DidPickDocumentWeakSubscribe(UIKit.UIDocumentPickerViewController,System.EventHandler{UIKit.UIDocumentPickedEventArgs})">
+            <summary>Weak subscription on <see cref="E:UIKit.UIDocumentPickerViewController.DidPickDocument"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIDocumentPickerViewController.DidPickDocument"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIDocumentPickerViewControllerWeakEventSubscriptionExtensions.WasCancelledWeakSubscribe(UIKit.UIDocumentPickerViewController,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UIDocumentPickerViewController.WasCancelled"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIDocumentPickerViewController.WasCancelled"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="T:FlexiMvvm.Views.UIImagePickerControllerWeakEventSubscriptionExtensions">
+            <summary>Provides a set of static methods for weak subscriptions on <see cref="T:UIKit.UIImagePickerController"/> class events.</summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIImagePickerControllerWeakEventSubscriptionExtensions.CanceledWeakSubscribe(UIKit.UIImagePickerController,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UIImagePickerController.Canceled"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIImagePickerController.Canceled"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIImagePickerControllerWeakEventSubscriptionExtensions.FinishedPickingImageWeakSubscribe(UIKit.UIImagePickerController,System.EventHandler{UIKit.UIImagePickerImagePickedEventArgs})">
+            <summary>Weak subscription on <see cref="E:UIKit.UIImagePickerController.FinishedPickingImage"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIImagePickerController.FinishedPickingImage"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIImagePickerControllerWeakEventSubscriptionExtensions.FinishedPickingMediaWeakSubscribe(UIKit.UIImagePickerController,System.EventHandler{UIKit.UIImagePickerMediaPickedEventArgs})">
+            <summary>Weak subscription on <see cref="E:UIKit.UIImagePickerController.FinishedPickingMedia"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIImagePickerController.FinishedPickingMedia"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="T:FlexiMvvm.Views.UIPageViewControllerWeakEventSubscriptionExtensions">
+            <summary>Provides a set of static methods for weak subscriptions on <see cref="T:UIKit.UIPageViewController"/> class events.</summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIPageViewControllerWeakEventSubscriptionExtensions.DidFinishAnimatingWeakSubscribe(UIKit.UIPageViewController,System.EventHandler{UIKit.UIPageViewFinishedAnimationEventArgs})">
+            <summary>Weak subscription on <see cref="E:UIKit.UIPageViewController.DidFinishAnimating"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIPageViewController.DidFinishAnimating"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIPageViewControllerWeakEventSubscriptionExtensions.WillTransitionWeakSubscribe(UIKit.UIPageViewController,System.EventHandler{UIKit.UIPageViewControllerTransitionEventArgs})">
+            <summary>Weak subscription on <see cref="E:UIKit.UIPageViewController.WillTransition"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIPageViewController.WillTransition"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="T:FlexiMvvm.Views.UIPopoverControllerWeakEventSubscriptionExtensions">
+            <summary>Provides a set of static methods for weak subscriptions on <see cref="T:UIKit.UIPopoverController"/> class events.</summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIPopoverControllerWeakEventSubscriptionExtensions.DidDismissWeakSubscribe(UIKit.UIPopoverController,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UIPopoverController.DidDismiss"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIPopoverController.DidDismiss"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIPopoverControllerWeakEventSubscriptionExtensions.WillRepositionWeakSubscribe(UIKit.UIPopoverController,System.EventHandler{UIKit.UIPopoverControllerRepositionEventArgs})">
+            <summary>Weak subscription on <see cref="E:UIKit.UIPopoverController.WillReposition"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIPopoverController.WillReposition"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="T:FlexiMvvm.Views.UIPopoverPresentationControllerWeakEventSubscriptionExtensions">
+            <summary>Provides a set of static methods for weak subscriptions on <see cref="T:UIKit.UIPopoverPresentationController"/> class events.</summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIPopoverPresentationControllerWeakEventSubscriptionExtensions.DidDismissWeakSubscribe(UIKit.UIPopoverPresentationController,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UIPopoverPresentationController.DidDismiss"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIPopoverPresentationController.DidDismiss"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIPopoverPresentationControllerWeakEventSubscriptionExtensions.PrepareForPresentationWeakSubscribe(UIKit.UIPopoverPresentationController,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UIPopoverPresentationController.PrepareForPresentation"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIPopoverPresentationController.PrepareForPresentation"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIPopoverPresentationControllerWeakEventSubscriptionExtensions.WillRepositionWeakSubscribe(UIKit.UIPopoverPresentationController,System.EventHandler{UIKit.UIPopoverPresentationControllerRepositionEventArgs})">
+            <summary>Weak subscription on <see cref="E:UIKit.UIPopoverPresentationController.WillReposition"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIPopoverPresentationController.WillReposition"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="T:FlexiMvvm.Views.UIPreviewInteractionWeakEventSubscriptionExtensions">
+            <summary>Provides a set of static methods for weak subscriptions on <see cref="T:UIKit.UIPreviewInteraction"/> class events.</summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIPreviewInteractionWeakEventSubscriptionExtensions.DidCancelWeakSubscribe(UIKit.UIPreviewInteraction,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UIPreviewInteraction.DidCancel"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIPreviewInteraction.DidCancel"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIPreviewInteractionWeakEventSubscriptionExtensions.DidUpdateCommitWeakSubscribe(UIKit.UIPreviewInteraction,System.EventHandler{UIKit.NSPreviewInteractionPreviewUpdateEventArgs})">
+            <summary>Weak subscription on <see cref="E:UIKit.UIPreviewInteraction.DidUpdateCommit"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIPreviewInteraction.DidUpdateCommit"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIPreviewInteractionWeakEventSubscriptionExtensions.DidUpdatePreviewTransitionWeakSubscribe(UIKit.UIPreviewInteraction,System.EventHandler{UIKit.NSPreviewInteractionPreviewUpdateEventArgs})">
+            <summary>Weak subscription on <see cref="E:UIKit.UIPreviewInteraction.DidUpdatePreviewTransition"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIPreviewInteraction.DidUpdatePreviewTransition"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="T:FlexiMvvm.Views.UIPrintInteractionControllerWeakEventSubscriptionExtensions">
+            <summary>Provides a set of static methods for weak subscriptions on <see cref="T:UIKit.UIPrintInteractionController"/> class events.</summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIPrintInteractionControllerWeakEventSubscriptionExtensions.DidDismissPrinterOptionsWeakSubscribe(UIKit.UIPrintInteractionController,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UIPrintInteractionController.DidDismissPrinterOptions"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIPrintInteractionController.DidDismissPrinterOptions"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIPrintInteractionControllerWeakEventSubscriptionExtensions.DidFinishJobWeakSubscribe(UIKit.UIPrintInteractionController,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UIPrintInteractionController.DidFinishJob"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIPrintInteractionController.DidFinishJob"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIPrintInteractionControllerWeakEventSubscriptionExtensions.DidPresentPrinterOptionsWeakSubscribe(UIKit.UIPrintInteractionController,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UIPrintInteractionController.DidPresentPrinterOptions"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIPrintInteractionController.DidPresentPrinterOptions"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIPrintInteractionControllerWeakEventSubscriptionExtensions.WillDismissPrinterOptionsWeakSubscribe(UIKit.UIPrintInteractionController,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UIPrintInteractionController.WillDismissPrinterOptions"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIPrintInteractionController.WillDismissPrinterOptions"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIPrintInteractionControllerWeakEventSubscriptionExtensions.WillPresentPrinterOptionsWeakSubscribe(UIKit.UIPrintInteractionController,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UIPrintInteractionController.WillPresentPrinterOptions"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIPrintInteractionController.WillPresentPrinterOptions"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIPrintInteractionControllerWeakEventSubscriptionExtensions.WillStartJobWeakSubscribe(UIKit.UIPrintInteractionController,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UIPrintInteractionController.WillStartJob"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIPrintInteractionController.WillStartJob"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="T:FlexiMvvm.Views.UIScrollViewWeakEventSubscriptionExtensions">
+            <summary>Provides a set of static methods for weak subscriptions on <see cref="T:UIKit.UIScrollView"/> class events.</summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIScrollViewWeakEventSubscriptionExtensions.DecelerationEndedWeakSubscribe(UIKit.UIScrollView,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UIScrollView.DecelerationEnded"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIScrollView.DecelerationEnded"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIScrollViewWeakEventSubscriptionExtensions.DecelerationStartedWeakSubscribe(UIKit.UIScrollView,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UIScrollView.DecelerationStarted"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIScrollView.DecelerationStarted"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIScrollViewWeakEventSubscriptionExtensions.DidZoomWeakSubscribe(UIKit.UIScrollView,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UIScrollView.DidZoom"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIScrollView.DidZoom"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIScrollViewWeakEventSubscriptionExtensions.DraggingEndedWeakSubscribe(UIKit.UIScrollView,System.EventHandler{UIKit.DraggingEventArgs})">
+            <summary>Weak subscription on <see cref="E:UIKit.UIScrollView.DraggingEnded"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIScrollView.DraggingEnded"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIScrollViewWeakEventSubscriptionExtensions.DraggingStartedWeakSubscribe(UIKit.UIScrollView,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UIScrollView.DraggingStarted"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIScrollView.DraggingStarted"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIScrollViewWeakEventSubscriptionExtensions.ScrollAnimationEndedWeakSubscribe(UIKit.UIScrollView,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UIScrollView.ScrollAnimationEnded"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIScrollView.ScrollAnimationEnded"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIScrollViewWeakEventSubscriptionExtensions.ScrolledWeakSubscribe(UIKit.UIScrollView,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UIScrollView.Scrolled"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIScrollView.Scrolled"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIScrollViewWeakEventSubscriptionExtensions.ScrolledToTopWeakSubscribe(UIKit.UIScrollView,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UIScrollView.ScrolledToTop"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIScrollView.ScrolledToTop"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIScrollViewWeakEventSubscriptionExtensions.WillEndDraggingWeakSubscribe(UIKit.UIScrollView,System.EventHandler{UIKit.WillEndDraggingEventArgs})">
+            <summary>Weak subscription on <see cref="E:UIKit.UIScrollView.WillEndDragging"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIScrollView.WillEndDragging"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIScrollViewWeakEventSubscriptionExtensions.ZoomingEndedWeakSubscribe(UIKit.UIScrollView,System.EventHandler{UIKit.ZoomingEndedEventArgs})">
+            <summary>Weak subscription on <see cref="E:UIKit.UIScrollView.ZoomingEnded"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIScrollView.ZoomingEnded"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIScrollViewWeakEventSubscriptionExtensions.ZoomingStartedWeakSubscribe(UIKit.UIScrollView,System.EventHandler{UIKit.UIScrollViewZoomingEventArgs})">
+            <summary>Weak subscription on <see cref="E:UIKit.UIScrollView.ZoomingStarted"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIScrollView.ZoomingStarted"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="T:FlexiMvvm.Views.UISearchBarWeakEventSubscriptionExtensions">
+            <summary>Provides a set of static methods for weak subscriptions on <see cref="T:UIKit.UISearchBar"/> class events.</summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.UISearchBarWeakEventSubscriptionExtensions.BookmarkButtonClickedWeakSubscribe(UIKit.UISearchBar,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UISearchBar.BookmarkButtonClicked"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UISearchBar.BookmarkButtonClicked"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UISearchBarWeakEventSubscriptionExtensions.CancelButtonClickedWeakSubscribe(UIKit.UISearchBar,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UISearchBar.CancelButtonClicked"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UISearchBar.CancelButtonClicked"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UISearchBarWeakEventSubscriptionExtensions.ListButtonClickedWeakSubscribe(UIKit.UISearchBar,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UISearchBar.ListButtonClicked"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UISearchBar.ListButtonClicked"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UISearchBarWeakEventSubscriptionExtensions.OnEditingStartedWeakSubscribe(UIKit.UISearchBar,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UISearchBar.OnEditingStarted"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UISearchBar.OnEditingStarted"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UISearchBarWeakEventSubscriptionExtensions.OnEditingStoppedWeakSubscribe(UIKit.UISearchBar,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UISearchBar.OnEditingStopped"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UISearchBar.OnEditingStopped"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UISearchBarWeakEventSubscriptionExtensions.SearchButtonClickedWeakSubscribe(UIKit.UISearchBar,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UISearchBar.SearchButtonClicked"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UISearchBar.SearchButtonClicked"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UISearchBarWeakEventSubscriptionExtensions.SelectedScopeButtonIndexChangedWeakSubscribe(UIKit.UISearchBar,System.EventHandler{UIKit.UISearchBarButtonIndexEventArgs})">
+            <summary>Weak subscription on <see cref="E:UIKit.UISearchBar.SelectedScopeButtonIndexChanged"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UISearchBar.SelectedScopeButtonIndexChanged"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UISearchBarWeakEventSubscriptionExtensions.TextChangedWeakSubscribe(UIKit.UISearchBar,System.EventHandler{UIKit.UISearchBarTextChangedEventArgs})">
+            <summary>Weak subscription on <see cref="E:UIKit.UISearchBar.TextChanged"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UISearchBar.TextChanged"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="T:FlexiMvvm.Views.UISplitViewControllerWeakEventSubscriptionExtensions">
+            <summary>Provides a set of static methods for weak subscriptions on <see cref="T:UIKit.UISplitViewController"/> class events.</summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.UISplitViewControllerWeakEventSubscriptionExtensions.WillChangeDisplayModeWeakSubscribe(UIKit.UISplitViewController,System.EventHandler{UIKit.UISplitViewControllerDisplayModeEventArgs})">
+            <summary>Weak subscription on <see cref="E:UIKit.UISplitViewController.WillChangeDisplayMode"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UISplitViewController.WillChangeDisplayMode"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UISplitViewControllerWeakEventSubscriptionExtensions.WillHideViewControllerWeakSubscribe(UIKit.UISplitViewController,System.EventHandler{UIKit.UISplitViewHideEventArgs})">
+            <summary>Weak subscription on <see cref="E:UIKit.UISplitViewController.WillHideViewController"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UISplitViewController.WillHideViewController"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UISplitViewControllerWeakEventSubscriptionExtensions.WillPresentViewControllerWeakSubscribe(UIKit.UISplitViewController,System.EventHandler{UIKit.UISplitViewPresentEventArgs})">
+            <summary>Weak subscription on <see cref="E:UIKit.UISplitViewController.WillPresentViewController"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UISplitViewController.WillPresentViewController"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UISplitViewControllerWeakEventSubscriptionExtensions.WillShowViewControllerWeakSubscribe(UIKit.UISplitViewController,System.EventHandler{UIKit.UISplitViewShowEventArgs})">
+            <summary>Weak subscription on <see cref="E:UIKit.UISplitViewController.WillShowViewController"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UISplitViewController.WillShowViewController"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="T:FlexiMvvm.Views.UITabBarWeakEventSubscriptionExtensions">
+            <summary>Provides a set of static methods for weak subscriptions on <see cref="T:UIKit.UITabBar"/> class events.</summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.UITabBarWeakEventSubscriptionExtensions.DidBeginCustomizingItemsWeakSubscribe(UIKit.UITabBar,System.EventHandler{UIKit.UITabBarItemsEventArgs})">
+            <summary>Weak subscription on <see cref="E:UIKit.UITabBar.DidBeginCustomizingItems"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UITabBar.DidBeginCustomizingItems"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UITabBarWeakEventSubscriptionExtensions.DidEndCustomizingItemsWeakSubscribe(UIKit.UITabBar,System.EventHandler{UIKit.UITabBarFinalItemsEventArgs})">
+            <summary>Weak subscription on <see cref="E:UIKit.UITabBar.DidEndCustomizingItems"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UITabBar.DidEndCustomizingItems"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UITabBarWeakEventSubscriptionExtensions.ItemSelectedWeakSubscribe(UIKit.UITabBar,System.EventHandler{UIKit.UITabBarItemEventArgs})">
+            <summary>Weak subscription on <see cref="E:UIKit.UITabBar.ItemSelected"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UITabBar.ItemSelected"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UITabBarWeakEventSubscriptionExtensions.WillBeginCustomizingItemsWeakSubscribe(UIKit.UITabBar,System.EventHandler{UIKit.UITabBarItemsEventArgs})">
+            <summary>Weak subscription on <see cref="E:UIKit.UITabBar.WillBeginCustomizingItems"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UITabBar.WillBeginCustomizingItems"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UITabBarWeakEventSubscriptionExtensions.WillEndCustomizingItemsWeakSubscribe(UIKit.UITabBar,System.EventHandler{UIKit.UITabBarFinalItemsEventArgs})">
+            <summary>Weak subscription on <see cref="E:UIKit.UITabBar.WillEndCustomizingItems"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UITabBar.WillEndCustomizingItems"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="T:FlexiMvvm.Views.UITabBarControllerWeakEventSubscriptionExtensions">
+            <summary>Provides a set of static methods for weak subscriptions on <see cref="T:UIKit.UITabBarController"/> class events.</summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.UITabBarControllerWeakEventSubscriptionExtensions.FinishedCustomizingViewControllersWeakSubscribe(UIKit.UITabBarController,System.EventHandler{UIKit.UITabBarCustomizeChangeEventArgs})">
+            <summary>Weak subscription on <see cref="E:UIKit.UITabBarController.FinishedCustomizingViewControllers"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UITabBarController.FinishedCustomizingViewControllers"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UITabBarControllerWeakEventSubscriptionExtensions.OnCustomizingViewControllersWeakSubscribe(UIKit.UITabBarController,System.EventHandler{UIKit.UITabBarCustomizeEventArgs})">
+            <summary>Weak subscription on <see cref="E:UIKit.UITabBarController.OnCustomizingViewControllers"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UITabBarController.OnCustomizingViewControllers"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UITabBarControllerWeakEventSubscriptionExtensions.OnEndCustomizingViewControllersWeakSubscribe(UIKit.UITabBarController,System.EventHandler{UIKit.UITabBarCustomizeChangeEventArgs})">
+            <summary>Weak subscription on <see cref="E:UIKit.UITabBarController.OnEndCustomizingViewControllers"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UITabBarController.OnEndCustomizingViewControllers"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UITabBarControllerWeakEventSubscriptionExtensions.ViewControllerSelectedWeakSubscribe(UIKit.UITabBarController,System.EventHandler{UIKit.UITabBarSelectionEventArgs})">
+            <summary>Weak subscription on <see cref="E:UIKit.UITabBarController.ViewControllerSelected"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UITabBarController.ViewControllerSelected"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="T:FlexiMvvm.Views.UITextFieldWeakEventSubscriptionExtensions">
+            <summary>Provides a set of static methods for weak subscriptions on <see cref="T:UIKit.UITextField"/> class events.</summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.UITextFieldWeakEventSubscriptionExtensions.EndedWeakSubscribe(UIKit.UITextField,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UITextField.Ended"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UITextField.Ended"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UITextFieldWeakEventSubscriptionExtensions.StartedWeakSubscribe(UIKit.UITextField,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UITextField.Started"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UITextField.Started"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="T:FlexiMvvm.Views.UITextViewWeakEventSubscriptionExtensions">
+            <summary>Provides a set of static methods for weak subscriptions on <see cref="T:UIKit.UITextView"/> class events.</summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.UITextViewWeakEventSubscriptionExtensions.ChangedWeakSubscribe(UIKit.UITextView,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UITextView.Changed"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UITextView.Changed"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UITextViewWeakEventSubscriptionExtensions.DecelerationEndedWeakSubscribe(UIKit.UITextView,System.EventHandler)">
+            <summary>Weak subscription on <see cref="!:UIKit.UITextView.DecelerationEnded"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="!:UIKit.UITextView.DecelerationEnded"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UITextViewWeakEventSubscriptionExtensions.DecelerationStartedWeakSubscribe(UIKit.UITextView,System.EventHandler)">
+            <summary>Weak subscription on <see cref="!:UIKit.UITextView.DecelerationStarted"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="!:UIKit.UITextView.DecelerationStarted"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UITextViewWeakEventSubscriptionExtensions.DidZoomWeakSubscribe(UIKit.UITextView,System.EventHandler)">
+            <summary>Weak subscription on <see cref="!:UIKit.UITextView.DidZoom"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="!:UIKit.UITextView.DidZoom"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UITextViewWeakEventSubscriptionExtensions.DraggingEndedWeakSubscribe(UIKit.UITextView,System.EventHandler{UIKit.DraggingEventArgs})">
+            <summary>Weak subscription on <see cref="!:UIKit.UITextView.DraggingEnded"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="!:UIKit.UITextView.DraggingEnded"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UITextViewWeakEventSubscriptionExtensions.DraggingStartedWeakSubscribe(UIKit.UITextView,System.EventHandler)">
+            <summary>Weak subscription on <see cref="!:UIKit.UITextView.DraggingStarted"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="!:UIKit.UITextView.DraggingStarted"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UITextViewWeakEventSubscriptionExtensions.EndedWeakSubscribe(UIKit.UITextView,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UITextView.Ended"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UITextView.Ended"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UITextViewWeakEventSubscriptionExtensions.ScrollAnimationEndedWeakSubscribe(UIKit.UITextView,System.EventHandler)">
+            <summary>Weak subscription on <see cref="!:UIKit.UITextView.ScrollAnimationEnded"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="!:UIKit.UITextView.ScrollAnimationEnded"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UITextViewWeakEventSubscriptionExtensions.ScrolledWeakSubscribe(UIKit.UITextView,System.EventHandler)">
+            <summary>Weak subscription on <see cref="!:UIKit.UITextView.Scrolled"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="!:UIKit.UITextView.Scrolled"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UITextViewWeakEventSubscriptionExtensions.ScrolledToTopWeakSubscribe(UIKit.UITextView,System.EventHandler)">
+            <summary>Weak subscription on <see cref="!:UIKit.UITextView.ScrolledToTop"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="!:UIKit.UITextView.ScrolledToTop"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UITextViewWeakEventSubscriptionExtensions.SelectionChangedWeakSubscribe(UIKit.UITextView,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UITextView.SelectionChanged"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UITextView.SelectionChanged"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UITextViewWeakEventSubscriptionExtensions.StartedWeakSubscribe(UIKit.UITextView,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UITextView.Started"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UITextView.Started"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UITextViewWeakEventSubscriptionExtensions.WillEndDraggingWeakSubscribe(UIKit.UITextView,System.EventHandler{UIKit.WillEndDraggingEventArgs})">
+            <summary>Weak subscription on <see cref="!:UIKit.UITextView.WillEndDragging"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="!:UIKit.UITextView.WillEndDragging"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UITextViewWeakEventSubscriptionExtensions.ZoomingEndedWeakSubscribe(UIKit.UITextView,System.EventHandler{UIKit.ZoomingEndedEventArgs})">
+            <summary>Weak subscription on <see cref="!:UIKit.UITextView.ZoomingEnded"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="!:UIKit.UITextView.ZoomingEnded"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UITextViewWeakEventSubscriptionExtensions.ZoomingStartedWeakSubscribe(UIKit.UITextView,System.EventHandler{UIKit.UIScrollViewZoomingEventArgs})">
+            <summary>Weak subscription on <see cref="!:UIKit.UITextView.ZoomingStarted"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="!:UIKit.UITextView.ZoomingStarted"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="T:FlexiMvvm.Views.UIVideoEditorControllerWeakEventSubscriptionExtensions">
+            <summary>Provides a set of static methods for weak subscriptions on <see cref="T:UIKit.UIVideoEditorController"/> class events.</summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIVideoEditorControllerWeakEventSubscriptionExtensions.FailedWeakSubscribe(UIKit.UIVideoEditorController,System.EventHandler{Foundation.NSErrorEventArgs})">
+            <summary>Weak subscription on <see cref="E:UIKit.UIVideoEditorController.Failed"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIVideoEditorController.Failed"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIVideoEditorControllerWeakEventSubscriptionExtensions.SavedWeakSubscribe(UIKit.UIVideoEditorController,System.EventHandler{UIKit.UIPathEventArgs})">
+            <summary>Weak subscription on <see cref="E:UIKit.UIVideoEditorController.Saved"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIVideoEditorController.Saved"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIVideoEditorControllerWeakEventSubscriptionExtensions.UserCancelledWeakSubscribe(UIKit.UIVideoEditorController,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UIVideoEditorController.UserCancelled"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIVideoEditorController.UserCancelled"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="T:FlexiMvvm.Views.UIWebViewWeakEventSubscriptionExtensions">
+            <summary>Provides a set of static methods for weak subscriptions on <see cref="T:UIKit.UIWebView"/> class events.</summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIWebViewWeakEventSubscriptionExtensions.LoadErrorWeakSubscribe(UIKit.UIWebView,System.EventHandler{UIKit.UIWebErrorArgs})">
+            <summary>Weak subscription on <see cref="E:UIKit.UIWebView.LoadError"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIWebView.LoadError"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIWebViewWeakEventSubscriptionExtensions.LoadFinishedWeakSubscribe(UIKit.UIWebView,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UIWebView.LoadFinished"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIWebView.LoadFinished"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.UIWebViewWeakEventSubscriptionExtensions.LoadStartedWeakSubscribe(UIKit.UIWebView,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:UIKit.UIWebView.LoadStarted"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:UIKit.UIWebView.LoadStarted"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="T:JetBrains.Annotations.CanBeNullAttribute">
+            <summary>
+            Indicates that the value of the marked element could be <c>null</c> sometimes,
+            so the check for <c>null</c> is necessary before its usage.
+            </summary>
+            <example><code>
+            [CanBeNull] object Test() => null;
+            
+            void UseTest() {
+              var p = Test();
+              var s = p.ToString(); // Warning: Possible 'System.NullReferenceException'
+            }
+            </code></example>
+        </member>
+        <member name="T:JetBrains.Annotations.NotNullAttribute">
+            <summary>
+            Indicates that the value of the marked element could never be <c>null</c>.
+            </summary>
+            <example><code>
+            [NotNull] object Foo() {
+              return null; // Warning: Possible 'null' assignment
+            }
+            </code></example>
+        </member>
+        <member name="T:JetBrains.Annotations.ItemNotNullAttribute">
+            <summary>
+            Can be appplied to symbols of types derived from IEnumerable as well as to symbols of Task
+            and Lazy classes to indicate that the value of a collection item, of the Task.Result property
+            or of the Lazy.Value property can never be null.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.ItemCanBeNullAttribute">
+            <summary>
+            Can be appplied to symbols of types derived from IEnumerable as well as to symbols of Task
+            and Lazy classes to indicate that the value of a collection item, of the Task.Result property
+            or of the Lazy.Value property can be null.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.StringFormatMethodAttribute">
+            <summary>
+            Indicates that the marked method builds string by format pattern and (optional) arguments.
+            Parameter, which contains format string, should be given in constructor. The format string
+            should be in <see cref="M:System.String.Format(System.IFormatProvider,System.String,System.Object[])"/>-like form.
+            </summary>
+            <example><code>
+            [StringFormatMethod("message")]
+            void ShowError(string message, params object[] args) { /* do something */ }
+            
+            void Foo() {
+              ShowError("Failed: {0}"); // Warning: Non-existing argument in format string
+            }
+            </code></example>
+        </member>
+        <member name="M:JetBrains.Annotations.StringFormatMethodAttribute.#ctor(System.String)">
+            <param name="formatParameterName">
+            Specifies which parameter of an annotated method should be treated as format-string
+            </param>
+        </member>
+        <member name="T:JetBrains.Annotations.ValueProviderAttribute">
+            <summary>
+            For a parameter that is expected to be one of the limited set of values.
+            Specify fields of which type should be used as values for this parameter.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.InvokerParameterNameAttribute">
+            <summary>
+            Indicates that the function argument should be string literal and match one
+            of the parameters of the caller function. For example, ReSharper annotates
+            the parameter of <see cref="T:System.ArgumentNullException"/>.
+            </summary>
+            <example><code>
+            void Foo(string param) {
+              if (param == null)
+                throw new ArgumentNullException("par"); // Warning: Cannot resolve symbol
+            }
+            </code></example>
+        </member>
+        <member name="T:JetBrains.Annotations.NotifyPropertyChangedInvocatorAttribute">
+             <summary>
+             Indicates that the method is contained in a type that implements
+             <c>System.ComponentModel.INotifyPropertyChanged</c> interface and this method
+             is used to notify that some property value changed.
+             </summary>
+             <remarks>
+             The method should be non-static and conform to one of the supported signatures:
+             <list>
+             <item><c>NotifyChanged(string)</c></item>
+             <item><c>NotifyChanged(params string[])</c></item>
+             <item><c>NotifyChanged{T}(Expression{Func{T}})</c></item>
+             <item><c>NotifyChanged{T,U}(Expression{Func{T,U}})</c></item>
+             <item><c>SetProperty{T}(ref T, T, string)</c></item>
+             </list>
+             </remarks>
+             <example><code>
+             public class Foo : INotifyPropertyChanged {
+               public event PropertyChangedEventHandler PropertyChanged;
+             
+               [NotifyPropertyChangedInvocator]
+               protected virtual void NotifyChanged(string propertyName) { ... }
+            
+               string _name;
+             
+               public string Name {
+                 get { return _name; }
+                 set { _name = value; NotifyChanged("LastName"); /* Warning */ }
+               }
+             }
+             </code>
+             Examples of generated notifications:
+             <list>
+             <item><c>NotifyChanged("Property")</c></item>
+             <item><c>NotifyChanged(() =&gt; Property)</c></item>
+             <item><c>NotifyChanged((VM x) =&gt; x.Property)</c></item>
+             <item><c>SetProperty(ref myField, value, "Property")</c></item>
+             </list>
+             </example>
+        </member>
+        <member name="T:JetBrains.Annotations.ContractAnnotationAttribute">
+            <summary>
+            Describes dependency between method input and output.
+            </summary>
+            <syntax>
+            <p>Function Definition Table syntax:</p>
+            <list>
+            <item>FDT      ::= FDTRow [;FDTRow]*</item>
+            <item>FDTRow   ::= Input =&gt; Output | Output &lt;= Input</item>
+            <item>Input    ::= ParameterName: Value [, Input]*</item>
+            <item>Output   ::= [ParameterName: Value]* {halt|stop|void|nothing|Value}</item>
+            <item>Value    ::= true | false | null | notnull | canbenull</item>
+            </list>
+            If method has single input parameter, it's name could be omitted.<br/>
+            Using <c>halt</c> (or <c>void</c>/<c>nothing</c>, which is the same) for method output
+            means that the methos doesn't return normally (throws or terminates the process).<br/>
+            Value <c>canbenull</c> is only applicable for output parameters.<br/>
+            You can use multiple <c>[ContractAnnotation]</c> for each FDT row, or use single attribute
+            with rows separated by semicolon. There is no notion of order rows, all rows are checked
+            for applicability and applied per each program state tracked by R# analysis.<br/>
+            </syntax>
+            <examples><list>
+            <item><code>
+            [ContractAnnotation("=&gt; halt")]
+            public void TerminationMethod()
+            </code></item>
+            <item><code>
+            [ContractAnnotation("halt &lt;= condition: false")]
+            public void Assert(bool condition, string text) // regular assertion method
+            </code></item>
+            <item><code>
+            [ContractAnnotation("s:null =&gt; true")]
+            public bool IsNullOrEmpty(string s) // string.IsNullOrEmpty()
+            </code></item>
+            <item><code>
+            // A method that returns null if the parameter is null,
+            // and not null if the parameter is not null
+            [ContractAnnotation("null =&gt; null; notnull =&gt; notnull")]
+            public object Transform(object data) 
+            </code></item>
+            <item><code>
+            [ContractAnnotation("=&gt; true, result: notnull; =&gt; false, result: null")]
+            public bool TryParse(string s, out Person result)
+            </code></item>
+            </list></examples>
+        </member>
+        <member name="T:JetBrains.Annotations.LocalizationRequiredAttribute">
+            <summary>
+            Indicates that marked element should be localized or not.
+            </summary>
+            <example><code>
+            [LocalizationRequiredAttribute(true)]
+            class Foo {
+              string str = "my string"; // Warning: Localizable string
+            }
+            </code></example>
+        </member>
+        <member name="T:JetBrains.Annotations.CannotApplyEqualityOperatorAttribute">
+            <summary>
+            Indicates that the value of the marked type (or its derivatives)
+            cannot be compared using '==' or '!=' operators and <c>Equals()</c>
+            should be used instead. However, using '==' or '!=' for comparison
+            with <c>null</c> is always permitted.
+            </summary>
+            <example><code>
+            [CannotApplyEqualityOperator]
+            class NoEquality { }
+            
+            class UsesNoEquality {
+              void Test() {
+                var ca1 = new NoEquality();
+                var ca2 = new NoEquality();
+                if (ca1 != null) { // OK
+                  bool condition = ca1 == ca2; // Warning
+                }
+              }
+            }
+            </code></example>
+        </member>
+        <member name="T:JetBrains.Annotations.BaseTypeRequiredAttribute">
+            <summary>
+            When applied to a target attribute, specifies a requirement for any type marked
+            with the target attribute to implement or inherit specific type or types.
+            </summary>
+            <example><code>
+            [BaseTypeRequired(typeof(IComponent)] // Specify requirement
+            class ComponentAttribute : Attribute { }
+            
+            [Component] // ComponentAttribute requires implementing IComponent interface
+            class MyComponent : IComponent { }
+            </code></example>
+        </member>
+        <member name="T:JetBrains.Annotations.UsedImplicitlyAttribute">
+            <summary>
+            Indicates that the marked symbol is used implicitly (e.g. via reflection, in external library),
+            so this symbol will not be marked as unused (as well as by other usage inspections).
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.MeansImplicitUseAttribute">
+            <summary>
+            Should be used on attributes and causes ReSharper to not mark symbols marked with such attributes
+            as unused (as well as by other usage inspections)
+            </summary>
+        </member>
+        <member name="F:JetBrains.Annotations.ImplicitUseKindFlags.Access">
+            <summary>Only entity marked with attribute considered used.</summary>
+        </member>
+        <member name="F:JetBrains.Annotations.ImplicitUseKindFlags.Assign">
+            <summary>Indicates implicit assignment to a member.</summary>
+        </member>
+        <member name="F:JetBrains.Annotations.ImplicitUseKindFlags.InstantiatedWithFixedConstructorSignature">
+            <summary>
+            Indicates implicit instantiation of a type with fixed constructor signature.
+            That means any unused constructor parameters won't be reported as such.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Annotations.ImplicitUseKindFlags.InstantiatedNoFixedConstructorSignature">
+            <summary>Indicates implicit instantiation of a type.</summary>
+        </member>
+        <member name="T:JetBrains.Annotations.ImplicitUseTargetFlags">
+            <summary>
+            Specify what is considered used implicitly when marked
+            with <see cref="T:JetBrains.Annotations.MeansImplicitUseAttribute"/> or <see cref="T:JetBrains.Annotations.UsedImplicitlyAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Annotations.ImplicitUseTargetFlags.Members">
+            <summary>Members of entity marked with attribute are considered used.</summary>
+        </member>
+        <member name="F:JetBrains.Annotations.ImplicitUseTargetFlags.WithMembers">
+            <summary>Entity marked with attribute and all its members considered used.</summary>
+        </member>
+        <member name="T:JetBrains.Annotations.PublicAPIAttribute">
+            <summary>
+            This attribute is intended to mark publicly available API
+            which should not be removed and so is treated as used.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.InstantHandleAttribute">
+            <summary>
+            Tells code analysis engine if the parameter is completely handled when the invoked method is on stack.
+            If the parameter is a delegate, indicates that delegate is executed while the method is executed.
+            If the parameter is an enumerable, indicates that it is enumerated while the method is executed.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.PureAttribute">
+            <summary>
+            Indicates that a method does not make any observable state changes.
+            The same as <c>System.Diagnostics.Contracts.PureAttribute</c>.
+            </summary>
+            <example><code>
+            [Pure] int Multiply(int x, int y) => x * y;
+            
+            void M() {
+              Multiply(123, 42); // Waring: Return value of pure method is not used
+            }
+            </code></example>
+        </member>
+        <member name="T:JetBrains.Annotations.MustUseReturnValueAttribute">
+            <summary>
+            Indicates that the return value of method invocation must be used.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.ProvidesContextAttribute">
+            <summary>
+            Indicates the type member or parameter of some type, that should be used instead of all other ways
+            to get the value that type. This annotation is useful when you have some "context" value evaluated
+            and stored somewhere, meaning that all other ways to get this value must be consolidated with existing one.
+            </summary>
+            <example><code>
+            class Foo {
+              [ProvidesContext] IBarService _barService = ...;
+            
+              void ProcessNode(INode node) {
+                DoSomething(node, node.GetGlobalServices().Bar);
+                //              ^ Warning: use value of '_barService' field
+              }
+            }
+            </code></example>
+        </member>
+        <member name="T:JetBrains.Annotations.PathReferenceAttribute">
+            <summary>
+            Indicates that a parameter is a path to a file or a folder within a web project.
+            Path can be relative or absolute, starting from web root (~).
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.SourceTemplateAttribute">
+            <summary>
+            An extension method marked with this attribute is processed by ReSharper code completion
+            as a 'Source Template'. When extension method is completed over some expression, it's source code
+            is automatically expanded like a template at call site.
+            </summary>
+            <remarks>
+            Template method body can contain valid source code and/or special comments starting with '$'.
+            Text inside these comments is added as source code when the template is applied. Template parameters
+            can be used either as additional method parameters or as identifiers wrapped in two '$' signs.
+            Use the <see cref="T:JetBrains.Annotations.MacroAttribute"/> attribute to specify macros for parameters.
+            </remarks>
+            <example>
+            In this example, the 'forEach' method is a source template available over all values
+            of enumerable types, producing ordinary C# 'foreach' statement and placing caret inside block:
+            <code>
+            [SourceTemplate]
+            public static void forEach&lt;T&gt;(this IEnumerable&lt;T&gt; xs) {
+              foreach (var x in xs) {
+                 //$ $END$
+              }
+            }
+            </code>
+            </example>
+        </member>
+        <member name="T:JetBrains.Annotations.MacroAttribute">
+            <summary>
+            Allows specifying a macro for a parameter of a <see cref="T:JetBrains.Annotations.SourceTemplateAttribute">source template</see>.
+            </summary>
+            <remarks>
+            You can apply the attribute on the whole method or on any of its additional parameters. The macro expression
+            is defined in the <see cref="P:JetBrains.Annotations.MacroAttribute.Expression"/> property. When applied on a method, the target
+            template parameter is defined in the <see cref="P:JetBrains.Annotations.MacroAttribute.Target"/> property. To apply the macro silently
+            for the parameter, set the <see cref="P:JetBrains.Annotations.MacroAttribute.Editable"/> property value = -1.
+            </remarks>
+            <example>
+            Applying the attribute on a source template method:
+            <code>
+            [SourceTemplate, Macro(Target = "item", Expression = "suggestVariableName()")]
+            public static void forEach&lt;T&gt;(this IEnumerable&lt;T&gt; collection) {
+              foreach (var item in collection) {
+                //$ $END$
+              }
+            }
+            </code>
+            Applying the attribute on a template method parameter:
+            <code>
+            [SourceTemplate]
+            public static void something(this Entity x, [Macro(Expression = "guid()", Editable = -1)] string newguid) {
+              /*$ var $x$Id = "$newguid$" + x.ToString();
+              x.DoSomething($x$Id); */
+            }
+            </code>
+            </example>
+        </member>
+        <member name="P:JetBrains.Annotations.MacroAttribute.Expression">
+            <summary>
+            Allows specifying a macro that will be executed for a <see cref="T:JetBrains.Annotations.SourceTemplateAttribute">source template</see>
+            parameter when the template is expanded.
+            </summary>
+        </member>
+        <member name="P:JetBrains.Annotations.MacroAttribute.Editable">
+            <summary>
+            Allows specifying which occurrence of the target parameter becomes editable when the template is deployed.
+            </summary>
+            <remarks>
+            If the target parameter is used several times in the template, only one occurrence becomes editable;
+            other occurrences are changed synchronously. To specify the zero-based index of the editable occurrence,
+            use values >= 0. To make the parameter non-editable when the template is expanded, use -1.
+            </remarks>>
+        </member>
+        <member name="P:JetBrains.Annotations.MacroAttribute.Target">
+            <summary>
+            Identifies the target parameter of a <see cref="T:JetBrains.Annotations.SourceTemplateAttribute">source template</see> if the
+            <see cref="T:JetBrains.Annotations.MacroAttribute"/> is applied on a template method.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.AspMvcActionAttribute">
+            <summary>
+            ASP.NET MVC attribute. If applied to a parameter, indicates that the parameter
+            is an MVC action. If applied to a method, the MVC action name is calculated
+            implicitly from the context. Use this attribute for custom wrappers similar to
+            <c>System.Web.Mvc.Html.ChildActionExtensions.RenderAction(HtmlHelper, String)</c>.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.AspMvcAreaAttribute">
+            <summary>
+            ASP.NET MVC attribute. Indicates that a parameter is an MVC area.
+            Use this attribute for custom wrappers similar to
+            <c>System.Web.Mvc.Html.ChildActionExtensions.RenderAction(HtmlHelper, String)</c>.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.AspMvcControllerAttribute">
+            <summary>
+            ASP.NET MVC attribute. If applied to a parameter, indicates that the parameter is
+            an MVC controller. If applied to a method, the MVC controller name is calculated
+            implicitly from the context. Use this attribute for custom wrappers similar to
+            <c>System.Web.Mvc.Html.ChildActionExtensions.RenderAction(HtmlHelper, String, String)</c>.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.AspMvcMasterAttribute">
+            <summary>
+            ASP.NET MVC attribute. Indicates that a parameter is an MVC Master. Use this attribute
+            for custom wrappers similar to <c>System.Web.Mvc.Controller.View(String, String)</c>.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.AspMvcModelTypeAttribute">
+            <summary>
+            ASP.NET MVC attribute. Indicates that a parameter is an MVC model type. Use this attribute
+            for custom wrappers similar to <c>System.Web.Mvc.Controller.View(String, Object)</c>.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.AspMvcPartialViewAttribute">
+            <summary>
+            ASP.NET MVC attribute. If applied to a parameter, indicates that the parameter is an MVC
+            partial view. If applied to a method, the MVC partial view name is calculated implicitly
+            from the context. Use this attribute for custom wrappers similar to
+            <c>System.Web.Mvc.Html.RenderPartialExtensions.RenderPartial(HtmlHelper, String)</c>.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.AspMvcSuppressViewErrorAttribute">
+            <summary>
+            ASP.NET MVC attribute. Allows disabling inspections for MVC views within a class or a method.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.AspMvcDisplayTemplateAttribute">
+            <summary>
+            ASP.NET MVC attribute. Indicates that a parameter is an MVC display template.
+            Use this attribute for custom wrappers similar to 
+            <c>System.Web.Mvc.Html.DisplayExtensions.DisplayForModel(HtmlHelper, String)</c>.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.AspMvcEditorTemplateAttribute">
+            <summary>
+            ASP.NET MVC attribute. Indicates that a parameter is an MVC editor template.
+            Use this attribute for custom wrappers similar to
+            <c>System.Web.Mvc.Html.EditorExtensions.EditorForModel(HtmlHelper, String)</c>.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.AspMvcTemplateAttribute">
+            <summary>
+            ASP.NET MVC attribute. Indicates that a parameter is an MVC template.
+            Use this attribute for custom wrappers similar to
+            <c>System.ComponentModel.DataAnnotations.UIHintAttribute(System.String)</c>.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.AspMvcViewAttribute">
+            <summary>
+            ASP.NET MVC attribute. If applied to a parameter, indicates that the parameter
+            is an MVC view component. If applied to a method, the MVC view name is calculated implicitly
+            from the context. Use this attribute for custom wrappers similar to
+            <c>System.Web.Mvc.Controller.View(Object)</c>.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.AspMvcViewComponentAttribute">
+            <summary>
+            ASP.NET MVC attribute. If applied to a parameter, indicates that the parameter
+            is an MVC view component name.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.AspMvcViewComponentViewAttribute">
+            <summary>
+            ASP.NET MVC attribute. If applied to a parameter, indicates that the parameter
+            is an MVC view component view. If applied to a method, the MVC view component view name is default.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.AspMvcActionSelectorAttribute">
+            <summary>
+            ASP.NET MVC attribute. When applied to a parameter of an attribute,
+            indicates that this parameter is an MVC action name.
+            </summary>
+            <example><code>
+            [ActionName("Foo")]
+            public ActionResult Login(string returnUrl) {
+              ViewBag.ReturnUrl = Url.Action("Foo"); // OK
+              return RedirectToAction("Bar"); // Error: Cannot resolve action
+            }
+            </code></example>
+        </member>
+        <member name="T:JetBrains.Annotations.RazorSectionAttribute">
+            <summary>
+            Razor attribute. Indicates that a parameter or a method is a Razor section.
+            Use this attribute for custom wrappers similar to 
+            <c>System.Web.WebPages.WebPageBase.RenderSection(String)</c>.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.CollectionAccessAttribute">
+            <summary>
+            Indicates how method, constructor invocation or property access
+            over collection type affects content of the collection.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Annotations.CollectionAccessType.None">
+            <summary>Method does not use or modify content of the collection.</summary>
+        </member>
+        <member name="F:JetBrains.Annotations.CollectionAccessType.Read">
+            <summary>Method only reads content of the collection but does not modify it.</summary>
+        </member>
+        <member name="F:JetBrains.Annotations.CollectionAccessType.ModifyExistingContent">
+            <summary>Method can change content of the collection but does not add new elements.</summary>
+        </member>
+        <member name="F:JetBrains.Annotations.CollectionAccessType.UpdatedContent">
+            <summary>Method can add new elements to the collection.</summary>
+        </member>
+        <member name="T:JetBrains.Annotations.AssertionMethodAttribute">
+            <summary>
+            Indicates that the marked method is assertion method, i.e. it halts control flow if
+            one of the conditions is satisfied. To set the condition, mark one of the parameters with 
+            <see cref="T:JetBrains.Annotations.AssertionConditionAttribute"/> attribute.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.AssertionConditionAttribute">
+            <summary>
+            Indicates the condition parameter of the assertion method. The method itself should be
+            marked by <see cref="T:JetBrains.Annotations.AssertionMethodAttribute"/> attribute. The mandatory argument of
+            the attribute is the assertion type.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.AssertionConditionType">
+            <summary>
+            Specifies assertion type. If the assertion method argument satisfies the condition,
+            then the execution continues. Otherwise, execution is assumed to be halted.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Annotations.AssertionConditionType.IS_TRUE">
+            <summary>Marked parameter should be evaluated to true.</summary>
+        </member>
+        <member name="F:JetBrains.Annotations.AssertionConditionType.IS_FALSE">
+            <summary>Marked parameter should be evaluated to false.</summary>
+        </member>
+        <member name="F:JetBrains.Annotations.AssertionConditionType.IS_NULL">
+            <summary>Marked parameter should be evaluated to null value.</summary>
+        </member>
+        <member name="F:JetBrains.Annotations.AssertionConditionType.IS_NOT_NULL">
+            <summary>Marked parameter should be evaluated to not null value.</summary>
+        </member>
+        <member name="T:JetBrains.Annotations.TerminatesProgramAttribute">
+            <summary>
+            Indicates that the marked method unconditionally terminates control flow execution.
+            For example, it could unconditionally throw exception.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.LinqTunnelAttribute">
+            <summary>
+            Indicates that method is pure LINQ method, with postponed enumeration (like Enumerable.Select,
+            .Where). This annotation allows inference of [InstantHandle] annotation for parameters
+            of delegate type by analyzing LINQ method chains.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.NoEnumerationAttribute">
+            <summary>
+            Indicates that IEnumerable, passed as parameter, is not enumerated.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.RegexPatternAttribute">
+            <summary>
+            Indicates that parameter is regular expression pattern.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.NoReorderAttribute">
+            <summary>
+            Prevents the Member Reordering feature from tossing members of the marked class.
+            </summary>
+            <remarks>
+            The attribute must be mentioned in your member reordering patterns
+            </remarks>
+        </member>
+        <member name="T:JetBrains.Annotations.XamlItemsControlAttribute">
+            <summary>
+            XAML attribute. Indicates the type that has <c>ItemsSource</c> property and should be treated
+            as <c>ItemsControl</c>-derived type, to enable inner items <c>DataContext</c> type resolve.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.XamlItemBindingOfItemsControlAttribute">
+            <summary>
+            XAML attribute. Indicates the property of some <c>BindingBase</c>-derived type, that
+            is used to bind some item of <c>ItemsControl</c>-derived type. This annotation will
+            enable the <c>DataContext</c> type resolve for XAML bindings for such properties.
+            </summary>
+            <remarks>
+            Property should have the tree ancestor of the <c>ItemsControl</c> type or
+            marked with the <see cref="T:JetBrains.Annotations.XamlItemsControlAttribute"/> attribute.
+            </remarks>
+        </member>
+    </members>
+</doc>

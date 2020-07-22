@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
+        <ProjectGuid>{C1CC3C0D-7083-4559-A315-31EEC59C9B06}</ProjectGuid>
+        <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+        <OutputType>Exe</OutputType>
+        <RootNamespace>MusicApp.iOS</RootNamespace>
+        <AssemblyName>MusicApp.iOS</AssemblyName>
+        <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>full</DebugType>
+        <Optimize>false</Optimize>
+        <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
+        <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+        <CodesignKey>iPhone Developer</CodesignKey>
+        <MtouchDebug>true</MtouchDebug>
+        <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
+        <MtouchFastDev>true</MtouchFastDev>
+        <IOSDebuggerPort>38310</IOSDebuggerPort>
+        <MtouchLink>None</MtouchLink>
+        <MtouchArch>x86_64</MtouchArch>
+        <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
+        <PlatformTarget>x86</PlatformTarget>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
+        <DebugType>pdbonly</DebugType>
+        <Optimize>true</Optimize>
+        <OutputPath>bin\iPhone\Release</OutputPath>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+        <CodesignKey>iPhone Developer</CodesignKey>
+        <MtouchUseLlvm>true</MtouchUseLlvm>
+        <MtouchFloat32>true</MtouchFloat32>
+        <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+        <MtouchLink>SdkOnly</MtouchLink>
+        <MtouchArch>ARM64</MtouchArch>
+        <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
+        <PlatformTarget>x86</PlatformTarget>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
+        <DebugType>pdbonly</DebugType>
+        <Optimize>true</Optimize>
+        <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+        <CodesignKey>iPhone Developer</CodesignKey>
+        <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
+        <MtouchLink>None</MtouchLink>
+        <MtouchArch>x86_64</MtouchArch>
+        <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
+        <PlatformTarget>x86</PlatformTarget>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>full</DebugType>
+        <Optimize>false</Optimize>
+        <OutputPath>bin\iPhone\Debug</OutputPath>
+        <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+        <CodesignKey>iPhone Developer</CodesignKey>
+        <DeviceSpecificBuild>true</DeviceSpecificBuild>
+        <MtouchDebug>true</MtouchDebug>
+        <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
+        <MtouchFastDev>true</MtouchFastDev>
+        <MtouchFloat32>true</MtouchFloat32>
+        <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+        <IOSDebuggerPort>57771</IOSDebuggerPort>
+        <MtouchLink>SdkOnly</MtouchLink>
+        <MtouchArch>ARM64</MtouchArch>
+        <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
+        <PlatformTarget>x86</PlatformTarget>
+    </PropertyGroup>
+    <ItemGroup>
+        <Reference Include="Cirrious.FluentLayouts.Touch, Version=2.6.0.0, Culture=neutral, PublicKeyToken=null">
+          <HintPath>..\..\packages\Cirrious.FluentLayout.2.9.0\lib\Xamarin.iOS10\Cirrious.FluentLayouts.Touch.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="FFImageLoading, Version=2.4.11.982, Culture=neutral, PublicKeyToken=null">
+          <HintPath>..\..\packages\Xamarin.FFImageLoading.2.4.11.982\lib\Xamarin.iOS10\FFImageLoading.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="FFImageLoading.Platform, Version=2.4.11.982, Culture=neutral, PublicKeyToken=null">
+          <HintPath>..\..\packages\Xamarin.FFImageLoading.2.4.11.982\lib\Xamarin.iOS10\FFImageLoading.Platform.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="FlexiMvvm.Bindings, Version=0.13.0.0, Culture=neutral, PublicKeyToken=null">
+          <HintPath>..\..\packages\FlexiMvvm.Bindings.PreRelease.0.13.0-prerelease\lib\xamarinios10\FlexiMvvm.Bindings.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="FlexiMvvm.Collections, Version=0.12.0.0, Culture=neutral, PublicKeyToken=null">
+          <HintPath>..\..\packages\FlexiMvvm.Collections.PreRelease.0.12.0-prerelease\lib\xamarinios10\FlexiMvvm.Collections.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="FlexiMvvm.Common, Version=0.10.8.0, Culture=neutral, PublicKeyToken=null">
+          <HintPath>..\..\packages\FlexiMvvm.Common.PreRelease.0.10.8-prerelease\lib\netstandard2.0\FlexiMvvm.Common.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="FlexiMvvm.Essentials, Version=0.14.0.0, Culture=neutral, PublicKeyToken=null">
+          <HintPath>..\..\packages\FlexiMvvm.Essentials.PreRelease.0.14.0-prerelease\lib\xamarinios10\FlexiMvvm.Essentials.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="FlexiMvvm.FullStack, Version=0.12.0.0, Culture=neutral, PublicKeyToken=null">
+          <HintPath>..\..\packages\FlexiMvvm.FullStack.PreRelease.0.12.0-prerelease\lib\xamarinios10\FlexiMvvm.FullStack.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="FlexiMvvm.Lifecycle, Version=0.13.1.0, Culture=neutral, PublicKeyToken=null">
+          <HintPath>..\..\packages\FlexiMvvm.Lifecycle.PreRelease.0.13.1-prerelease\lib\xamarinios10\FlexiMvvm.Lifecycle.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
+          <HintPath>..\..\..\..\.nuget\packages\newtonsoft.json\12.0.3\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
+        </Reference>
+        <Reference Include="System" />
+        <Reference Include="System.CodeDom, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
+          <HintPath>..\..\packages\System.CodeDom.4.5.0\lib\netstandard2.0\System.CodeDom.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="System.Reactive, Version=4.4.0.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263">
+          <HintPath>..\..\packages\System.Reactive.4.4.1\lib\netstandard2.0\System.Reactive.dll</HintPath>
+        </Reference>
+        <Reference Include="System.Xml" />
+        <Reference Include="System.Core" />
+        <Reference Include="WebP.Touch, Version=1.0.6628.22311, Culture=neutral, PublicKeyToken=null">
+          <HintPath>..\..\packages\WebP.Touch.1.0.8\lib\Xamarin.iOS10\WebP.Touch.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="Xamarin.iOS" />
+    </ItemGroup>
+    <ItemGroup>
+        <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
+        <ImageAsset Include="Assets.xcassets\Contents.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <InterfaceDefinition Include="LaunchScreen.storyboard" />
+    </ItemGroup>
+    <ItemGroup>
+        <None Include="Info.plist" />
+        <None Include="Entitlements.plist" />
+        <None Include="packages.config" />
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Include="Base\!Controllers\BindableViewControllerBase.cs" />
+        <Compile Include="Base\!Controllers\NavigationControllerBase.cs" />
+        <Compile Include="Base\!Views\TableViewBindableItemCellBase.cs" />
+        <Compile Include="Bootstrappers\InitialBootstrapper.cs" />
+        <Compile Include="Bootstrappers\PlatformBootstrapper.cs" />
+        <Compile Include="Extensions\!Bindings\MvxCachedImageViewBindingExtensions.cs" />
+        <Compile Include="Extensions\!Controllers\NavigationServiceExtensions.cs" />
+        <Compile Include="Extensions\!Controls\ControlsStyleExtensions.cs" />
+        <Compile Include="Main.cs" />
+        <Compile Include="AppDelegate.cs" />
+        <Compile Include="Navigation\NavigationService.cs" />
+        <Compile Include="Providers\BarButtonItemFactory.cs" />
+        <Compile Include="Theme\AppDimens.cs" />
+        <Compile Include="Theme\AppImages.cs" />
+        <Compile Include="Theme\StylizedStringAttributes.cs" />
+        <Compile Include="Theme\StylizedStringCase.cs" />
+        <Compile Include="Views\ArtistAlbums\ArtistAlbumsItemView.cs" />
+        <Compile Include="Views\ArtistAlbums\ArtistAlbumsItemViewCell.cs" />
+        <Compile Include="Views\ArtistAlbums\ArtistAlbumsView.cs" />
+        <Compile Include="Views\ArtistAlbums\ArtistAlbumsViewController.cs" />
+        <Compile Include="Views\MainMusic\MainMusicItemView.cs" />
+        <Compile Include="Views\MainMusic\MainMusicItemViewCell.cs" />
+        <Compile Include="Views\MainMusic\MainMusicView.cs" />
+        <Compile Include="Views\MainMusic\MainMusicViewController.cs" />
+        <Compile Include="Views\RootNavigationController.cs" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\..\MusicApp.Core\MusicApp.Core.csproj">
+        <Project>{a6794ad6-17a9-424e-9b90-cdb65c7878ca}</Project>
+        <Name>MusicApp.Core</Name>
+      </ProjectReference>
+    </ItemGroup>
+    <ItemGroup>
+        <ImageAsset Include="Assets.xcassets\ic_back_24.imageset\Contents.json"/>
+        <ImageAsset Include="Assets.xcassets\ic_back_24.imageset\ic_back_24.pdf"/>
+    </ItemGroup>
+    <Import Project="..\MusicApp\MusicApp.projitems" Label="Shared" Condition="Exists('..\MusicApp\MusicApp.projitems')" />
+    <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+</Project>

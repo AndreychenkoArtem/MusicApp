@@ -1,0 +1,2217 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FlexiMvvm.Lifecycle</name>
+    </assembly>
+    <members>
+        <member name="T:FlexiMvvm.Commands.CommandProvider">
+            <summary>
+            Represents a provider that returns an existing command instance by name or creates a new one.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Commands.CommandProvider.Get(System.Action,System.Func{System.Boolean},System.String)">
+            <summary>
+            Returns an existing <see cref="T:FlexiMvvm.Commands.Command"/> instance by <paramref name="name"/> or creates a new one. <paramref name="execute"/> is expected to be synchronous.
+            </summary>
+            <param name="execute">The synchronous <see cref="T:System.Action"/> to invoke when <see cref="M:FlexiMvvm.Commands.Command.Execute"/> is called.</param>
+            <param name="canExecute">The <see cref="T:System.Func`1"/> to invoke when <see cref="M:FlexiMvvm.Commands.Command.CanExecute"/> is called. Can be <see langword="null"/>.</param>
+            <param name="name">A unique name that is used to get a command instance.</param>
+            <returns>The command instance.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="execute"/> or <paramref name="name"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Commands.CommandProvider.Get``1(System.Action{``0},System.Func{``0,System.Boolean},System.String)">
+            <summary>
+            Returns an existing <see cref="T:FlexiMvvm.Commands.Command`1"/> instance by <paramref name="name"/> or creates a new one. <paramref name="execute"/> is expected to be synchronous.
+            </summary>
+            <typeparam name="T">The type of the command parameter.</typeparam>
+            <param name="execute">The synchronous <see cref="T:System.Action`1"/> to invoke when <see cref="M:FlexiMvvm.Commands.Command`1.Execute(`0)"/> is called.</param>
+            <param name="canExecute">The <see cref="T:System.Func`2"/> to invoke when <see cref="M:FlexiMvvm.Commands.Command`1.CanExecute(`0)"/> is called. Can be <see langword="null"/>.</param>
+            <param name="name">A unique name that is used to get a command instance.</param>
+            <returns>The command instance.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="execute"/> or <paramref name="name"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Commands.CommandProvider.GetForAsync(System.Func{System.Threading.Tasks.Task},System.Func{System.Boolean},System.String)">
+            <summary>
+            Returns an existing <see cref="T:FlexiMvvm.Commands.Command"/> instance by <paramref name="name"/> or creates a new one. <paramref name="execute"/> is expected to be asynchronous.
+            </summary>
+            <param name="execute">The asynchronous <see cref="T:System.Func`1"/> to invoke when <see cref="M:FlexiMvvm.Commands.Command.Execute"/> is called.</param>
+            <param name="canExecute">The <see cref="T:System.Func`1"/> to invoke when <see cref="M:FlexiMvvm.Commands.Command.CanExecute"/> is called. Can be <see langword="null"/>.</param>
+            <param name="name">A unique name that is used to get a command instance.</param>
+            <returns>The command instance.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="execute"/> or <paramref name="name"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Commands.CommandProvider.GetForAsync``1(System.Func{``0,System.Threading.Tasks.Task},System.Func{``0,System.Boolean},System.String)">
+            <summary>
+            Returns an existing <see cref="T:FlexiMvvm.Commands.Command`1"/> instance by <paramref name="name"/> or creates a new one. <paramref name="execute"/> is expected to be asynchronous.
+            </summary>
+            <typeparam name="T">The type of the command parameter.</typeparam>
+            <param name="execute">The asynchronous <see cref="T:System.Func`2"/> to invoke when <see cref="M:FlexiMvvm.Commands.Command`1.Execute(`0)"/> is called.</param>
+            <param name="canExecute">The <see cref="T:System.Func`2"/> to invoke when <see cref="M:FlexiMvvm.Commands.Command`1.CanExecute(`0)"/> is called. Can be <see langword="null"/>.</param>
+            <param name="name">A unique name that is used to get a command instance.</param>
+            <returns>The command instance.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="execute"/> or <paramref name="name"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="T:FlexiMvvm.Commands.RelayCommand">
+            <summary>
+            Represents a <see cref="T:FlexiMvvm.Commands.Command"/> that delegates execution and execution check to its owner and takes no parameters.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Commands.RelayCommand.#ctor(System.Action,System.Func{System.Boolean},System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FlexiMvvm.Commands.RelayCommand"/> class.
+            </summary>
+            <param name="execute">The <see cref="T:System.Action"/> to invoke when <see cref="M:FlexiMvvm.Commands.Command.Execute"/> is called.</param>
+            <param name="canExecute">
+            The <see cref="T:System.Func`1"/> to invoke when <see cref="M:FlexiMvvm.Commands.Command.CanExecute"/> is called. Can be <see langword="null"/>.
+            <para><see cref="M:FlexiMvvm.Commands.Command.CanExecute"/> will return <see langword="true"/> if <paramref name="canExecute"/> is <see langword="null"/>.</para>
+            </param>
+            <param name="name">The diagnostic command name. Can be <see langword="null"/>.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="execute"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Commands.RelayCommand.Execute">
+            <summary>
+            Executes the command if <see cref="M:FlexiMvvm.Commands.RelayCommand.CanExecute"/> returns <see langword="true"/>.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Commands.RelayCommand.CanExecute">
+            <summary>
+            Determines whether the command can be executed.
+            </summary>
+            <returns><see langword="true"/> if the command can be executed; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="T:FlexiMvvm.Commands.RelayCommand`1">
+            <summary>
+            Represents a <see cref="T:FlexiMvvm.Commands.Command`1"/> that delegates execution and execution check to its owner and takes a parameter.
+            </summary>
+            <typeparam name="T">The type of the command parameter.</typeparam>
+        </member>
+        <member name="M:FlexiMvvm.Commands.RelayCommand`1.#ctor(System.Action{`0},System.Func{`0,System.Boolean},System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FlexiMvvm.Commands.RelayCommand`1"/> class.
+            </summary>
+            <param name="execute">The <see cref="T:System.Action`1"/> to invoke when <see cref="M:FlexiMvvm.Commands.Command`1.Execute(`0)"/> is called.</param>
+            <param name="canExecute">
+            The <see cref="T:System.Func`2"/> to invoke when <see cref="M:FlexiMvvm.Commands.Command`1.CanExecute(`0)"/> is called. Can be <see langword="null"/>.
+            <para><see cref="M:FlexiMvvm.Commands.Command`1.CanExecute(`0)"/> will return <see langword="true"/> if <paramref name="canExecute"/> is <see langword="null"/>.</para>
+            </param>
+            <param name="name">The diagnostic command name. Can be <see langword="null"/>.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="execute"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Commands.RelayCommand`1.Execute(`0)">
+            <summary>
+            Executes the command with the passed <paramref name="parameter"/> if <see cref="M:FlexiMvvm.Commands.RelayCommand`1.CanExecute(`0)"/> returns <see langword="true"/>.
+            </summary>
+            <param name="parameter">The command parameter.</param>
+        </member>
+        <member name="M:FlexiMvvm.Commands.RelayCommand`1.CanExecute(`0)">
+            <summary>
+            Determines whether the command can be executed with the passed <paramref name="parameter"/>.
+            </summary>
+            <param name="parameter">The parameter used by the command to determine if it can be executed.</param>
+            <returns><see langword="true"/> if the command can be executed; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="T:FlexiMvvm.Persistence.BundleFactory">
+            <summary>
+            Represents a factory that creates a new bundle instance.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.BundleFactory.Create">
+            <summary>
+            Creates a new <see cref="T:FlexiMvvm.Persistence.IBundle"/> instance.
+            </summary>
+            <returns>The bundle instance.</returns>
+        </member>
+        <member name="E:FlexiMvvm.Persistence.Core.InMemoryBundle.PropertyChanged">
+            <inheritdoc />
+        </member>
+        <member name="P:FlexiMvvm.Persistence.Core.InMemoryBundle.Count">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.ContainsKey(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.GetBool(System.Boolean,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.GetBoolArray(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.GetByteArray(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.GetChar(System.Char,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.GetCharArray(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.GetDateTime(System.DateTime,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.GetDateTimeOffset(System.DateTimeOffset,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.GetDouble(System.Double,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.GetDoubleArray(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.GetEnum``1(``0,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.GetFloat(System.Single,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.GetFloatArray(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.GetInt(System.Int32,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.GetIntArray(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.GetLong(System.Int64,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.GetLongArray(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.GetShort(System.Int16,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.GetShortArray(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.GetString(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.GetStringArray(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.SetBool(System.Boolean,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.SetBoolArray(System.Boolean[],System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.SetByteArray(System.Byte[],System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.SetChar(System.Char,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.SetCharArray(System.Char[],System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.SetDateTime(System.DateTime,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.SetDateTimeOffset(System.DateTimeOffset,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.SetDouble(System.Double,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.SetDoubleArray(System.Double[],System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.SetEnum``1(``0,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.SetFloat(System.Single,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.SetFloatArray(System.Single[],System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.SetInt(System.Int32,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.SetIntArray(System.Int32[],System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.SetLong(System.Int64,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.SetLongArray(System.Int64[],System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.SetShort(System.Int16,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.SetShortArray(System.Int16[],System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.SetString(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.InMemoryBundle.SetStringArray(System.String[],System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:FlexiMvvm.Persistence.Core.IStateOwner">
+            <summary>
+            Defines the contract for an object whose state needs to be persisted in view's persistent storage.
+            <para>This interface is intended for internal use by the FlexiMvvm.</para>
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.IStateOwner.ImportState(FlexiMvvm.Persistence.IBundle)">
+            <summary>
+            Imports the <paramref name="state"/> of the object from view's persistent storage.
+            </summary>
+            <param name="state">The state bundle. Can be <see langword="null"/>.</param>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.IStateOwner.ExportState">
+            <summary>
+            Exports the state of the object to view's persistent storage.
+            </summary>
+            <returns>The state bundle instance if the object has a state; otherwise, <see langword="null"/>.</returns>
+        </member>
+        <member name="E:FlexiMvvm.Persistence.Core.AndroidBundle.PropertyChanged">
+            <inheritdoc />
+        </member>
+        <member name="P:FlexiMvvm.Persistence.Core.AndroidBundle.Count">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.AndroidBundle.ContainsKey(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.AndroidBundle.GetBool(System.Boolean,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.AndroidBundle.GetBoolArray(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.AndroidBundle.GetByteArray(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.AndroidBundle.GetChar(System.Char,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.AndroidBundle.GetCharArray(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.AndroidBundle.GetDateTime(System.DateTime,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.AndroidBundle.GetDateTimeOffset(System.DateTimeOffset,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.AndroidBundle.GetDouble(System.Double,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.AndroidBundle.GetDoubleArray(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.AndroidBundle.GetEnum``1(``0,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.AndroidBundle.GetFloat(System.Single,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.AndroidBundle.GetFloatArray(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.AndroidBundle.GetInt(System.Int32,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.AndroidBundle.GetIntArray(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.AndroidBundle.GetLong(System.Int64,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.AndroidBundle.GetLongArray(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.AndroidBundle.GetShort(System.Int16,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.AndroidBundle.GetShortArray(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.AndroidBundle.GetString(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.AndroidBundle.GetStringArray(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.AndroidBundle.SetBool(System.Boolean,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.AndroidBundle.SetBoolArray(System.Boolean[],System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.AndroidBundle.SetByteArray(System.Byte[],System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.AndroidBundle.SetChar(System.Char,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.AndroidBundle.SetCharArray(System.Char[],System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.AndroidBundle.SetDateTime(System.DateTime,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.AndroidBundle.SetDateTimeOffset(System.DateTimeOffset,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.AndroidBundle.SetDouble(System.Double,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.AndroidBundle.SetDoubleArray(System.Double[],System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.AndroidBundle.SetEnum``1(``0,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.AndroidBundle.SetFloat(System.Single,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.AndroidBundle.SetFloatArray(System.Single[],System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.AndroidBundle.SetInt(System.Int32,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.AndroidBundle.SetIntArray(System.Int32[],System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.AndroidBundle.SetLong(System.Int64,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.AndroidBundle.SetLongArray(System.Int64[],System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.AndroidBundle.SetShort(System.Int16,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.AndroidBundle.SetShortArray(System.Int16[],System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.AndroidBundle.SetString(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Persistence.Core.AndroidBundle.SetStringArray(System.String[],System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:FlexiMvvm.Persistence.IBundle">
+            <summary>
+            Defines the contract for a container that stores data as a set of key/value pairs in view's persistent storage.
+            </summary>
+        </member>
+        <member name="P:FlexiMvvm.Persistence.IBundle.Count">
+            <summary>
+            Gets the number of key/value pairs contained in the bundle.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.ContainsKey(System.String)">
+            <summary>
+            Determines whether the bundle contains the specified <paramref name="key"/>.
+            </summary>
+            <param name="key">The key to locate in the bundle.</param>
+            <returns><see langword="true"/> if the bundle contains an element with the specified key; otherwise, <see langword="false"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.GetBool(System.Boolean,System.String)">
+            <summary>
+            Returns the value for a given <paramref name="key"/>, or <paramref name="defaultValue"/> if no matching <paramref name="key"/> is found in the bundle.
+            </summary>
+            <param name="defaultValue">The default value to return if no matching key is found in the bundle.</param>
+            <param name="key">The key of the value to get.</param>
+            <returns>The value for the key, or <paramref name="defaultValue"/> if no matching key was found.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.GetBoolArray(System.String)">
+            <summary>
+            Returns the value for a given <paramref name="key"/>, or <see langword="null"/> if no matching <paramref name="key"/> is found in the bundle.
+            </summary>
+            <param name="key">The key of the value to get.</param>
+            <returns>The value for the key, or <see langword="null"/> if no matching key was found.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.GetByteArray(System.String)">
+            <summary>
+            Returns the value for a given <paramref name="key"/>, or <see langword="null"/> if no matching <paramref name="key"/> is found in the bundle.
+            </summary>
+            <param name="key">The key of the value to get.</param>
+            <returns>The value for the key, or <see langword="null"/> if no matching key was found.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.GetChar(System.Char,System.String)">
+            <summary>
+            Returns the value for a given <paramref name="key"/>, or <paramref name="defaultValue"/> if no matching <paramref name="key"/> is found in the bundle.
+            </summary>
+            <param name="defaultValue">The default value to return if no matching key is found in the bundle.</param>
+            <param name="key">The key of the value to get.</param>
+            <returns>The value for the key, or <paramref name="defaultValue"/> if no matching key was found.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.GetCharArray(System.String)">
+            <summary>
+            Returns the value for a given <paramref name="key"/>, or <see langword="null"/> if no matching <paramref name="key"/> is found in the bundle.
+            </summary>
+            <param name="key">The key of the value to get.</param>
+            <returns>The value for the key, or <see langword="null"/> if no matching key was found.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.GetDateTime(System.DateTime,System.String)">
+            <summary>
+            Returns the value for a given <paramref name="key"/>, or <paramref name="defaultValue"/> if no matching <paramref name="key"/> is found in the bundle.
+            </summary>
+            <param name="defaultValue">The default value to return if no matching key is found in the bundle.</param>
+            <param name="key">The key of the value to get.</param>
+            <returns>The value for the key, or <paramref name="defaultValue"/> if no matching key was found.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.GetDateTimeOffset(System.DateTimeOffset,System.String)">
+            <summary>
+            Returns the value for a given <paramref name="key"/>, or <paramref name="defaultValue"/> if no matching <paramref name="key"/> is found in the bundle.
+            </summary>
+            <param name="defaultValue">The default value to return if no matching key is found in the bundle.</param>
+            <param name="key">The key of the value to get.</param>
+            <returns>The value for the key, or <paramref name="defaultValue"/> if no matching key was found.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.GetDouble(System.Double,System.String)">
+            <summary>
+            Returns the value for a given <paramref name="key"/>, or <paramref name="defaultValue"/> if no matching <paramref name="key"/> is found in the bundle.
+            </summary>
+            <param name="defaultValue">The default value to return if no matching key is found in the bundle.</param>
+            <param name="key">The key of the value to get.</param>
+            <returns>The value for the key, or <paramref name="defaultValue"/> if no matching key was found.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.GetDoubleArray(System.String)">
+            <summary>
+            Returns the value for a given <paramref name="key"/>, or <see langword="null"/> if no matching <paramref name="key"/> is found in the bundle.
+            </summary>
+            <param name="key">The key of the value to get.</param>
+            <returns>The value for the key, or <see langword="null"/> if no matching key was found.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.GetEnum``1(``0,System.String)">
+            <summary>
+            Returns the value for a given <paramref name="key"/>, or <paramref name="defaultValue"/> if no matching <paramref name="key"/> is found in the bundle.
+            </summary>
+            <typeparam name="T">The type of the enumeration.</typeparam>
+            <param name="defaultValue">The default value to return if no matching key is found in the bundle.</param>
+            <param name="key">The key of the value to get.</param>
+            <returns>The value for the key, or <paramref name="defaultValue"/> if no matching key was found.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.GetFloat(System.Single,System.String)">
+            <summary>
+            Returns the value for a given <paramref name="key"/>, or <paramref name="defaultValue"/> if no matching <paramref name="key"/> is found in the bundle.
+            </summary>
+            <param name="defaultValue">The default value to return if no matching key is found in the bundle.</param>
+            <param name="key">The key of the value to get.</param>
+            <returns>The value for the key, or <paramref name="defaultValue"/> if no matching key was found.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.GetFloatArray(System.String)">
+            <summary>
+            Returns the value for a given <paramref name="key"/>, or <see langword="null"/> if no matching <paramref name="key"/> is found in the bundle.
+            </summary>
+            <param name="key">The key of the value to get.</param>
+            <returns>The value for the key, or <see langword="null"/> if no matching key was found.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.GetInt(System.Int32,System.String)">
+            <summary>
+            Returns the value for a given <paramref name="key"/>, or <paramref name="defaultValue"/> if no matching <paramref name="key"/> is found in the bundle.
+            </summary>
+            <param name="defaultValue">The default value to return if no matching key is found in the bundle.</param>
+            <param name="key">The key of the value to get.</param>
+            <returns>The value for the key, or <paramref name="defaultValue"/> if no matching key was found.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.GetIntArray(System.String)">
+            <summary>
+            Returns the value for a given <paramref name="key"/>, or <see langword="null"/> if no matching <paramref name="key"/> is found in the bundle.
+            </summary>
+            <param name="key">The key of the value to get.</param>
+            <returns>The value for the key, or <see langword="null"/> if no matching key was found.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.GetLong(System.Int64,System.String)">
+            <summary>
+            Returns the value for a given <paramref name="key"/>, or <paramref name="defaultValue"/> if no matching <paramref name="key"/> is found in the bundle.
+            </summary>
+            <param name="defaultValue">The default value to return if no matching key is found in the bundle.</param>
+            <param name="key">The key of the value to get.</param>
+            <returns>The value for the key, or <paramref name="defaultValue"/> if no matching key was found.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.GetLongArray(System.String)">
+            <summary>
+            Returns the value for a given <paramref name="key"/>, or <see langword="null"/> if no matching <paramref name="key"/> is found in the bundle.
+            </summary>
+            <param name="key">The key of the value to get.</param>
+            <returns>The value for the key, or <see langword="null"/> if no matching key was found.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.GetShort(System.Int16,System.String)">
+            <summary>
+            Returns the value for a given <paramref name="key"/>, or <paramref name="defaultValue"/> if no matching <paramref name="key"/> is found in the bundle.
+            </summary>
+            <param name="defaultValue">The default value to return if no matching key is found in the bundle.</param>
+            <param name="key">The key of the value to get.</param>
+            <returns>The value for the key, or <paramref name="defaultValue"/> if no matching key was found.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.GetShortArray(System.String)">
+            <summary>
+            Returns the value for a given <paramref name="key"/>, or <see langword="null"/> if no matching <paramref name="key"/> is found in the bundle.
+            </summary>
+            <param name="key">The key of the value to get.</param>
+            <returns>The value for the key, or <see langword="null"/> if no matching key was found.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.GetString(System.String,System.String)">
+            <summary>
+            Returns the value for a given <paramref name="key"/>, or <paramref name="defaultValue"/> if no matching <paramref name="key"/> is found in the bundle.
+            </summary>
+            <param name="defaultValue">The default value to return if no matching key is found in the bundle.</param>
+            <param name="key">The key of the value to get.</param>
+            <returns>The value for the key, or <paramref name="defaultValue"/> if no matching key was found.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.GetStringArray(System.String)">
+            <summary>
+            Returns the value for a given <paramref name="key"/>, or <see langword="null"/> if no matching <paramref name="key"/> is found in the bundle.
+            </summary>
+            <param name="key">The key of the value to get.</param>
+            <returns>The value for the key, or <see langword="null"/> if no matching key was found.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.SetBool(System.Boolean,System.String)">
+            <summary>
+            Sets the value for a given <paramref name="key"/>, replacing the existing value if it is not equal to the new one.
+            </summary>
+            <param name="value">The value to set in the bundle.</param>
+            <param name="key">The key of the value to set.</param>
+            <returns><see langword="true"/> if the new value was set; otherwise, <see langword="false"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.SetBoolArray(System.Boolean[],System.String)">
+            <summary>
+            Sets the value for a given <paramref name="key"/>, replacing the existing value if its reference is not equal to the new one.
+            </summary>
+            <param name="value">The value to set in the bundle. Can be <see langword="null"/>.</param>
+            <param name="key">The key of the value to set.</param>
+            <returns><see langword="true"/> if the new value was set; otherwise, <see langword="false"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.SetByteArray(System.Byte[],System.String)">
+            <summary>
+            Sets the value for a given <paramref name="key"/>, replacing the existing value if its reference is not equal to the new one.
+            </summary>
+            <param name="value">The value to set in the bundle. Can be <see langword="null"/>.</param>
+            <param name="key">The key of the value to set.</param>
+            <returns><see langword="true"/> if the new value was set; otherwise, <see langword="false"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.SetChar(System.Char,System.String)">
+            <summary>
+            Sets the value for a given <paramref name="key"/>, replacing the existing value if it is not equal to the new one.
+            </summary>
+            <param name="value">The value to set in the bundle.</param>
+            <param name="key">The key of the value to set.</param>
+            <returns><see langword="true"/> if the new value was set; otherwise, <see langword="false"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.SetCharArray(System.Char[],System.String)">
+            <summary>
+            Sets the value for a given <paramref name="key"/>, replacing the existing value if its reference is not equal to the new one.
+            </summary>
+            <param name="value">The value to set in the bundle. Can be <see langword="null"/>.</param>
+            <param name="key">The key of the value to set.</param>
+            <returns><see langword="true"/> if the new value was set; otherwise, <see langword="false"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.SetDateTime(System.DateTime,System.String)">
+            <summary>
+            Sets the value for a given <paramref name="key"/>, replacing the existing value if it is not equal to the new one.
+            </summary>
+            <param name="value">The value to set in the bundle.</param>
+            <param name="key">The key of the value to set.</param>
+            <returns><see langword="true"/> if the new value was set; otherwise, <see langword="false"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.SetDateTimeOffset(System.DateTimeOffset,System.String)">
+            <summary>
+            Sets the value for a given <paramref name="key"/>, replacing the existing value if it is not equal to the new one.
+            </summary>
+            <param name="value">The value to set in the bundle.</param>
+            <param name="key">The key of the value to set.</param>
+            <returns><see langword="true"/> if the new value was set; otherwise, <see langword="false"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.SetDouble(System.Double,System.String)">
+            <summary>
+            Sets the value for a given <paramref name="key"/>, replacing the existing value if it is not equal to the new one.
+            </summary>
+            <param name="value">The value to set in the bundle.</param>
+            <param name="key">The key of the value to set.</param>
+            <returns><see langword="true"/> if the new value was set; otherwise, <see langword="false"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.SetDoubleArray(System.Double[],System.String)">
+            <summary>
+            Sets the value for a given <paramref name="key"/>, replacing the existing value if its reference is not equal to the new one.
+            </summary>
+            <param name="value">The value to set in the bundle. Can be <see langword="null"/>.</param>
+            <param name="key">The key of the value to set.</param>
+            <returns><see langword="true"/> if the new value was set; otherwise, <see langword="false"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.SetEnum``1(``0,System.String)">
+            <summary>
+            Sets the value for a given <paramref name="key"/>, replacing the existing value if it is not equal to the new one.
+            </summary>
+            <typeparam name="T">The type of the enumeration.</typeparam>
+            <param name="value">The value to set in the bundle.</param>
+            <param name="key">The key of the value to set.</param>
+            <returns><see langword="true"/> if the new value was set; otherwise, <see langword="false"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.SetFloat(System.Single,System.String)">
+            <summary>
+            Sets the value for a given <paramref name="key"/>, replacing the existing value if it is not equal to the new one.
+            </summary>
+            <param name="value">The value to set in the bundle.</param>
+            <param name="key">The key of the value to set.</param>
+            <returns><see langword="true"/> if the new value was set; otherwise, <see langword="false"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.SetFloatArray(System.Single[],System.String)">
+            <summary>
+            Sets the value for a given <paramref name="key"/>, replacing the existing value if its reference is not equal to the new one.
+            </summary>
+            <param name="value">The value to set in the bundle. Can be <see langword="null"/>.</param>
+            <param name="key">The key of the value to set.</param>
+            <returns><see langword="true"/> if the new value was set; otherwise, <see langword="false"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.SetInt(System.Int32,System.String)">
+            <summary>
+            Sets the value for a given <paramref name="key"/>, replacing the existing value if it is not equal to the new one.
+            </summary>
+            <param name="value">The value to set in the bundle.</param>
+            <param name="key">The key of the value to set.</param>
+            <returns><see langword="true"/> if the new value was set; otherwise, <see langword="false"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.SetIntArray(System.Int32[],System.String)">
+            <summary>
+            Sets the value for a given <paramref name="key"/>, replacing the existing value if its reference is not equal to the new one.
+            </summary>
+            <param name="value">The value to set in the bundle. Can be <see langword="null"/>.</param>
+            <param name="key">The key of the value to set.</param>
+            <returns><see langword="true"/> if the new value was set; otherwise, <see langword="false"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.SetLong(System.Int64,System.String)">
+            <summary>
+            Sets the value for a given <paramref name="key"/>, replacing the existing value if it is not equal to the new one.
+            </summary>
+            <param name="value">The value to set in the bundle.</param>
+            <param name="key">The key of the value to set.</param>
+            <returns><see langword="true"/> if the new value was set; otherwise, <see langword="false"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.SetLongArray(System.Int64[],System.String)">
+            <summary>
+            Sets the value for a given <paramref name="key"/>, replacing the existing value if its reference is not equal to the new one.
+            </summary>
+            <param name="value">The value to set in the bundle. Can be <see langword="null"/>.</param>
+            <param name="key">The key of the value to set.</param>
+            <returns><see langword="true"/> if the new value was set; otherwise, <see langword="false"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.SetShort(System.Int16,System.String)">
+            <summary>
+            Sets the value for a given <paramref name="key"/>, replacing the existing value if it is not equal to the new one.
+            </summary>
+            <param name="value">The value to set in the bundle.</param>
+            <param name="key">The key of the value to set.</param>
+            <returns><see langword="true"/> if the new value was set; otherwise, <see langword="false"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.SetShortArray(System.Int16[],System.String)">
+            <summary>
+            Sets the value for a given <paramref name="key"/>, replacing the existing value if its reference is not equal to the new one.
+            </summary>
+            <param name="value">The value to set in the bundle. Can be <see langword="null"/>.</param>
+            <param name="key">The key of the value to set.</param>
+            <returns><see langword="true"/> if the new value was set; otherwise, <see langword="false"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.SetString(System.String,System.String)">
+            <summary>
+            Sets the value for a given <paramref name="key"/>, replacing the existing value if it is not equal to the new one.
+            </summary>
+            <param name="value">The value to set in the bundle. Can be <see langword="null"/>.</param>
+            <param name="key">The key of the value to set.</param>
+            <returns><see langword="true"/> if the new value was set; otherwise, <see langword="false"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Persistence.IBundle.SetStringArray(System.String[],System.String)">
+            <summary>
+            Sets the value for a given <paramref name="key"/>, replacing the existing value if its reference is not equal to the new one.
+            </summary>
+            <param name="value">The value to set in the bundle. Can be <see langword="null"/>.</param>
+            <param name="key">The key of the value to set.</param>
+            <returns><see langword="true"/> if the new value was set; otherwise, <see langword="false"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="T:FlexiMvvm.ViewModels.InteractionWeakEventSubscriptionExtensions">
+            <summary>Provides a set of static methods for weak subscriptions on <see cref="T:FlexiMvvm.ViewModels.Interaction"/> class events.</summary>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.InteractionWeakEventSubscriptionExtensions.RequestedWeakSubscribe(FlexiMvvm.ViewModels.Interaction,System.EventHandler)">
+            <summary>Weak subscription on <see cref="E:FlexiMvvm.ViewModels.Interaction.Requested"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:FlexiMvvm.ViewModels.Interaction.Requested"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="T:FlexiMvvm.ViewModels.GenericInteractionWeakEventSubscriptionExtensions">
+            <summary>Provides a set of static methods for weak subscriptions on <see cref="T:FlexiMvvm.ViewModels.Interaction`1"/> class events.</summary>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.GenericInteractionWeakEventSubscriptionExtensions.RequestedWeakSubscribe``1(FlexiMvvm.ViewModels.Interaction{``0},System.EventHandler{FlexiMvvm.ViewModels.InteractionRequestedEventArgs{``0}})">
+            <summary>Weak subscription on <see cref="E:FlexiMvvm.ViewModels.Interaction`1.Requested"/> event.</summary>
+            <returns>Weak event subscription instance.</returns>
+            <param name="eventSource">The source of the event.</param>
+            <param name="eventHandler">Represents the method that will handle the <see cref="E:FlexiMvvm.ViewModels.Interaction`1.Requested"/> event.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="eventSource" /> is null.-or-<paramref name="eventHandler" /> is null.</exception>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.Core.InMemoryLifecycleViewModelStore.Get``1(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.Core.InMemoryLifecycleViewModelStore.Add``1(System.String,``0)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.Core.InMemoryLifecycleViewModelStore.Remove(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.Core.LifecycleViewModelStoreFragment.Get``1(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.Core.LifecycleViewModelStoreFragment.Add``1(System.String,``0)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.Core.LifecycleViewModelStoreFragment.Remove(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:FlexiMvvm.ViewModels.DefaultLifecycleViewModelFactory">
+            <summary>
+            Represents an <see cref="T:FlexiMvvm.ViewModels.ILifecycleViewModelFactory"/> that creates a new lifecycle-aware view model instance using the <see cref="T:System.IServiceProvider"/>.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.DefaultLifecycleViewModelFactory.#ctor(System.IServiceProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FlexiMvvm.ViewModels.DefaultLifecycleViewModelFactory"/> class.
+            </summary>
+            <param name="serviceProvider">The service provider that is used to create a view model instance.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="serviceProvider"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.DefaultLifecycleViewModelFactory.Create``1">
+            <inheritdoc />
+        </member>
+        <member name="T:FlexiMvvm.ViewModels.ILifecycleViewModel">
+            <summary>
+            Defines the contract for a lifecycle-aware view model.
+            </summary>
+        </member>
+        <member name="T:FlexiMvvm.ViewModels.ILifecycleViewModelWithoutParameters">
+            <summary>
+            Defines the contract for a lifecycle-aware view model that takes no parameters.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.ILifecycleViewModelWithoutParameters.InitializeAsync(System.Boolean)">
+            <summary>
+            An asynchronous lifecycle method for the lifecycle-aware view model initialization.
+            </summary>
+            <param name="recreated">Determines whether the view model has been destroyed to recover memory and recreated with a restored state if it was persisted.</param>
+            <returns>A task that represents the asynchronous initialization operation.</returns>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.ILifecycleViewModelWithoutParameters.Initialize(System.Boolean)">
+            <summary>
+            A synchronous lifecycle method for the lifecycle-aware view model initialization.
+            </summary>
+            <param name="recreated">Determines whether the view model has been destroyed to recover memory and recreated with a restored state if it was persisted.</param>
+        </member>
+        <member name="T:FlexiMvvm.ViewModels.ILifecycleViewModelWithParameters`1">
+            <summary>
+            Defines the contract for a lifecycle-aware view model that takes parameters.
+            </summary>
+            <typeparam name="TParameters">The type of the view model parameters.</typeparam>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.ILifecycleViewModelWithParameters`1.InitializeAsync(`0,System.Boolean)">
+            <summary>
+            An asynchronous lifecycle method for the lifecycle-aware view model initialization with <paramref name="parameters"/>.
+            </summary>
+            <param name="parameters">The view model parameters. Can be <see langword="null"/>.</param>
+            <param name="recreated">Determines whether the view model has been destroyed to recover memory and recreated with a restored state if it was persisted.</param>
+            <returns>A task that represents the asynchronous initialization operation.</returns>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.ILifecycleViewModelWithParameters`1.Initialize(`0,System.Boolean)">
+            <summary>
+            A synchronous lifecycle method for the lifecycle-aware view model initialization with <paramref name="parameters"/>.
+            </summary>
+            <param name="parameters">The view model parameters. Can be <see langword="null"/>.</param>
+            <param name="recreated">Determines whether the view model has been destroyed to recover memory and recreated with a restored state if it was persisted.</param>
+        </member>
+        <member name="T:FlexiMvvm.ViewModels.ILifecycleViewModelWithResult`1">
+            <summary>
+            Defines the contract for a lifecycle-aware view model that returns a result.
+            </summary>
+            <typeparam name="TResult">The type of the view model result.</typeparam>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.ILifecycleViewModelWithResult`1.SetResult(FlexiMvvm.ViewModels.ResultCode,`0)">
+            <summary>
+            Sets the lifecycle-aware view model result.
+            </summary>
+            <param name="resultCode">Determines whether the result should be set as successful or not due to cancellation by the user.</param>
+            <param name="result">The view model result. Can be <see langword="null"/>.</param>
+        </member>
+        <member name="T:FlexiMvvm.ViewModels.ILifecycleViewModelWithResultHandler">
+            <summary>
+            Defines the contract for a lifecycle-aware view model that can handle a lifecycle-aware view model result.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.ILifecycleViewModelWithResultHandler.HandleResult(FlexiMvvm.ViewModels.ResultCode,FlexiMvvm.ViewModels.Result)">
+            <summary>
+            Handles the lifecycle-aware view model result.
+            </summary>
+            <param name="resultCode">Determines whether the view model result is set successfully or not due to cancellation by the user.</param>
+            <param name="result">The view model result to handle. Can be <see langword="null"/>.</param>
+        </member>
+        <member name="T:FlexiMvvm.ViewModels.ILifecycleViewModelFactory">
+            <summary>
+            Defines the contract for a factory that creates a new lifecycle-aware view model instance.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.ILifecycleViewModelFactory.Create``1">
+            <summary>
+            Creates a new lifecycle-aware <typeparamref name="TViewModel"/> instance.
+            </summary>
+            <typeparam name="TViewModel">The type of the view model to create.</typeparam>
+            <returns>The view model instance.</returns>
+        </member>
+        <member name="T:FlexiMvvm.ViewModels.ILifecycleViewModelStore">
+            <summary>
+            Defines the contract for a store that keeps lifecycle-aware view models.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.ILifecycleViewModelStore.Get``1(System.String)">
+            <summary>
+            Returns an existing lifecycle-aware <typeparamref name="TViewModel"/> instance from the store.
+            </summary>
+            <typeparam name="TViewModel">The type of the view model to get.</typeparam>
+            <param name="key">The view model unique key.</param>
+            <returns>The view model instance if it exists; otherwise, <see langword="null"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.ILifecycleViewModelStore.Add``1(System.String,``0)">
+            <summary>
+            Adds a lifecycle-aware <typeparamref name="TViewModel"/> instance to the store by <paramref name="key"/>.
+            </summary>
+            <typeparam name="TViewModel">The type of the view model to add.</typeparam>
+            <param name="key">The view model unique key.</param>
+            <param name="viewModel">The view model to add.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> or <paramref name="viewModel"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentException">The store already has a view model with the specified <paramref name="key"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.ILifecycleViewModelStore.Remove(System.String)">
+            <summary>
+            Removes an existing lifecycle-aware view model instance from the store by <paramref name="key"/>.
+            </summary>
+            <param name="key">The view model unique key.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="key"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="T:FlexiMvvm.ViewModels.Interaction">
+            <summary>
+            Defines the contract for a view model to view interaction.
+            </summary>
+        </member>
+        <member name="E:FlexiMvvm.ViewModels.Interaction.Requested">
+            <summary>
+            Occurs when the view model requested interaction.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.Interaction.RaiseRequested">
+            <summary>
+            Raises the <see cref="E:FlexiMvvm.ViewModels.Interaction.Requested"/> event.
+            </summary>
+        </member>
+        <member name="T:FlexiMvvm.ViewModels.Interaction`1">
+            <summary>
+            Defines the contract for a view model to view interaction with passing a request.
+            </summary>
+            <typeparam name="T">The type of the request.</typeparam>
+        </member>
+        <member name="E:FlexiMvvm.ViewModels.Interaction`1.Requested">
+            <summary>
+            Occurs when the view model requested interaction.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.Interaction`1.RaiseRequested(`0)">
+            <summary>
+            Raises the <see cref="E:FlexiMvvm.ViewModels.Interaction`1.Requested"/> event with passing the <paramref name="request"/>.
+            </summary>
+            <param name="request">The request to be passed in the event arguments.</param>
+        </member>
+        <member name="T:FlexiMvvm.ViewModels.InteractionRequestedEventArgs`1">
+            <summary>
+            Provides data for the <see cref="E:FlexiMvvm.ViewModels.Interaction`1.Requested"/> event.
+            </summary>
+            <typeparam name="T">The type of the request.</typeparam>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.InteractionRequestedEventArgs`1.#ctor(`0)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FlexiMvvm.ViewModels.InteractionRequestedEventArgs`1"/> class.
+            </summary>
+            <param name="request">The request to be passed by the view model to view.</param>
+        </member>
+        <member name="P:FlexiMvvm.ViewModels.InteractionRequestedEventArgs`1.Request">
+            <summary>
+            Gets the request sent by the view model.
+            </summary>
+        </member>
+        <member name="T:FlexiMvvm.ViewModels.IViewModel">
+            <summary>
+            Defines the contract for a view model. Typically, such view models are used as children of <see cref="T:FlexiMvvm.ViewModels.ILifecycleViewModel"/>.
+            </summary>
+        </member>
+        <member name="T:FlexiMvvm.ViewModels.LifecycleViewModel">
+            <summary>
+            Base class for a lifecycle-aware view model implementation that takes no parameters.
+            </summary>
+        </member>
+        <member name="P:FlexiMvvm.ViewModels.LifecycleViewModel.State">
+            <summary>
+            Gets the bundle that stores the lifecycle-aware view model state as a set of key/value pairs.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.LifecycleViewModel.InitializeAsync(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.LifecycleViewModel.Initialize(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="T:FlexiMvvm.ViewModels.LifecycleViewModel`1">
+            <summary>
+            Base class for a lifecycle-aware view model implementation that takes parameters.
+            </summary>
+            <typeparam name="TParameters">The type of the view model parameters.</typeparam>
+        </member>
+        <member name="P:FlexiMvvm.ViewModels.LifecycleViewModel`1.State">
+            <summary>
+            Gets the bundle that stores the lifecycle-aware view model state as a set of key/value pairs.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.LifecycleViewModel`1.InitializeAsync(`0,System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.LifecycleViewModel`1.Initialize(`0,System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="T:FlexiMvvm.ViewModels.LifecycleViewModelProvider">
+            <summary>
+            Represents a provider that returns an existing lifecycle-aware view model instance or creates a new one.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.LifecycleViewModelProvider.Get``1(FlexiMvvm.ViewModels.ILifecycleViewModelStore,System.String,FlexiMvvm.ViewModels.ILifecycleViewModelFactory,FlexiMvvm.Persistence.IBundle,System.Boolean@)">
+            <summary>
+            Returns an existing lifecycle-aware <typeparamref name="TViewModel"/> instance by <paramref name="key"/> if it is presented in the <paramref name="store"/>,
+            or creates a new one using the <paramref name="factory"/> with restoring its <paramref name="state"/>.
+            </summary>
+            <typeparam name="TViewModel">The type of the view model to get.</typeparam>
+            <param name="store">The view model store.</param>
+            <param name="key">The view model unique key.</param>
+            <param name="factory">The view model factory.</param>
+            <param name="state">The view model state bundle.</param>
+            <param name="created"><see langword="true"/> if the view model is created by the <paramref name="factory"/>; otherwise, <see langword="false"/>.</param>
+            <returns>The view model instance.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="store"/> or <paramref name="key"/> or <paramref name="factory"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.InvalidOperationException">The <paramref name="factory"/> returned <see langword="null"/> value for the <typeparamref name="TViewModel"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.LifecycleViewModelProvider.SetFactory(FlexiMvvm.ViewModels.ILifecycleViewModelFactory)">
+            <summary>
+            Sets the lifecycle-aware view model <paramref name="factory"/> that is used to create a view model instance.
+            </summary>
+            <param name="factory">The view model factory.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="factory"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="T:FlexiMvvm.ViewModels.LifecycleViewModelStoreFactory">
+            <summary>
+            Represents a factory that creates a new lifecycle-aware view model store instance.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.LifecycleViewModelStoreFactory.Create">
+            <summary>
+            Creates a new <see cref="T:FlexiMvvm.ViewModels.ILifecycleViewModelStore"/> instance.
+            </summary>
+            <returns>The view model store instance.</returns>
+        </member>
+        <member name="T:FlexiMvvm.ViewModels.Parameters">
+            <summary>
+            Represents a container for storing lifecycle-aware view model parameters.
+            </summary>
+        </member>
+        <member name="P:FlexiMvvm.ViewModels.Parameters.Bundle">
+            <summary>
+            Gets the bundle that stores lifecycle-aware view model parameters as a set of key/value pairs.
+            </summary>
+        </member>
+        <member name="T:FlexiMvvm.ViewModels.Result">
+            <summary>
+            Represents a container for storing a lifecycle-aware view model result.
+            </summary>
+        </member>
+        <member name="P:FlexiMvvm.ViewModels.Result.Bundle">
+            <summary>
+            Gets the bundle that stores the lifecycle-aware view model result as a set of key/value pairs.
+            </summary>
+        </member>
+        <member name="T:FlexiMvvm.ViewModels.ResultCode">
+            <summary>
+            Determines whether a lifecycle-aware view model result is set successfully or not due to cancellation by the user.
+            </summary>
+        </member>
+        <member name="F:FlexiMvvm.ViewModels.ResultCode.Ok">
+            <summary>
+            Indicates that the lifecycle-aware view model result is set successfully.
+            </summary>
+        </member>
+        <member name="F:FlexiMvvm.ViewModels.ResultCode.Canceled">
+            <summary>
+            Indicates that the lifecycle-aware view model result is not set due to cancellation by the user.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.ResultCode.op_Equality(FlexiMvvm.ViewModels.ResultCode,FlexiMvvm.ViewModels.ResultCode)">
+            <summary>
+            Determines whether result codes are equal.
+            </summary>
+            <param name="code1">First result code to compare.</param>
+            <param name="code2">Second result code to compare.</param>
+            <returns><see langword="true"/> if result codes are equal; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.ResultCode.op_Inequality(FlexiMvvm.ViewModels.ResultCode,FlexiMvvm.ViewModels.ResultCode)">
+            <summary>
+            Determines whether result codes are not equal.
+            </summary>
+            <param name="code1">First result code to compare.</param>
+            <param name="code2">Second result code to compare.</param>
+            <returns><see langword="true"/> if result codes are not equal; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.ResultCode.Equals(System.Object)">
+            <summary>
+            Determines whether the current result code is equal to the <paramref name="obj"/> one.
+            </summary>
+            <param name="obj">The result code to compare.</param>
+            <returns><see langword="true"/> if the <paramref name="obj"/> is <see cref="T:FlexiMvvm.ViewModels.ResultCode"/> and result codes are equal; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.ResultCode.Equals(FlexiMvvm.ViewModels.ResultCode)">
+            <summary>
+            Determines whether the current result code is equal to the <paramref name="other"/> one.
+            </summary>
+            <param name="other">The result code to compare.</param>
+            <returns><see langword="true"/> if result codes are equal; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.ResultCode.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.ResultCode.op_Implicit(Android.App.Result)~FlexiMvvm.ViewModels.ResultCode">
+            <summary>
+            Converts the <paramref name="resultCode"/> instance to the <see cref="T:FlexiMvvm.ViewModels.ResultCode"/> type.
+            </summary>
+            <param name="resultCode">The result code to convert.</param>
+        </member>
+        <member name="M:FlexiMvvm.ViewModels.ResultCode.op_Implicit(FlexiMvvm.ViewModels.ResultCode)~Android.App.Result">
+            <summary>
+            Converts the <paramref name="resultCode"/> instance to the <see cref="T:Android.App.Result"/> type.
+            </summary>
+            <param name="resultCode">The result code to convert.</param>
+        </member>
+        <member name="T:FlexiMvvm.ViewModels.ViewModel">
+            <summary>
+            Base class for a view model implementation. Typically, such view models are used as children of <see cref="T:FlexiMvvm.ViewModels.ILifecycleViewModel"/>.
+            </summary>
+        </member>
+        <member name="P:FlexiMvvm.ViewModels.ViewModel.CommandProvider">
+            <summary>
+            Gets the command provider.
+            </summary>
+        </member>
+        <member name="T:FlexiMvvm.Navigation.NavigationStrategy">
+            <summary>
+            Provides strategies for forward and backward navigation.
+            </summary>
+        </member>
+        <member name="P:FlexiMvvm.Navigation.NavigationStrategy.Forward">
+            <summary>
+            Gets the forward navigation strategy.
+            </summary>
+        </member>
+        <member name="P:FlexiMvvm.Navigation.NavigationStrategy.Backward">
+            <summary>
+            Gets the backward navigation strategy.
+            </summary>
+        </member>
+        <member name="T:FlexiMvvm.Navigation.NavigationViewProvider">
+            <summary>
+            Allows to get an existing navigation view by a lifecycle-aware view model.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Navigation.NavigationViewProvider.Get(FlexiMvvm.ViewModels.ILifecycleViewModel)">
+            <summary>
+            Returns an existing <see cref="T:FlexiMvvm.Views.INavigationView`1"/> instance by <paramref name="viewModel"/>.
+            </summary>
+            <param name="viewModel">The view model that is used to get its view.</param>
+            <returns>The navigation view instance.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="viewModel"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.InvalidOperationException">The view instance is missing for the provided <paramref name="viewModel"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Navigation.NavigationViewProvider.TryGetView(FlexiMvvm.ViewModels.ILifecycleViewModel,FlexiMvvm.Views.INavigationView{FlexiMvvm.ViewModels.ILifecycleViewModel}@)">
+            <summary>
+            Gets an existing <see cref="T:FlexiMvvm.Views.INavigationView`1"/> instance by <paramref name="viewModel"/>.
+            </summary>
+            <param name="viewModel">The view model that is used to get its view.</param>
+            <param name="view">The navigation view corresponding to the provided model.</param>
+            <returns><see langword="true"/> if the view still exists and has not yet been garbage collected or disposed; otherwise, <see langword="false"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="viewModel"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Navigation.NavigationViewProvider.Get(FlexiMvvm.ViewModels.ILifecycleViewModelWithResultHandler)">
+            <summary>
+            Returns an existing <see cref="T:FlexiMvvm.Views.INavigationView`1"/> instance by <paramref name="viewModel"/> that can handle a lifecycle-aware view model result.
+            </summary>
+            <param name="viewModel">The view model that is used to get its view.</param>
+            <returns>The navigation view instance.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="viewModel"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.InvalidOperationException">The view instance is missing for the provided <paramref name="viewModel"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Navigation.NavigationViewProvider.TryGetView(FlexiMvvm.ViewModels.ILifecycleViewModelWithResultHandler,FlexiMvvm.Views.INavigationView{FlexiMvvm.ViewModels.ILifecycleViewModelWithResultHandler}@)">
+            <summary>
+            Gets an existing <see cref="T:FlexiMvvm.Views.INavigationView`1"/> instance by <paramref name="viewModel"/> that can handle a lifecycle-aware view model result.
+            </summary>
+            <param name="viewModel">The view model that is used to get its view.</param>
+            <param name="view">The navigation view corresponding to the provided model.</param>
+            <returns><see langword="true"/> if the view still exists and has not yet been garbage collected or disposed; otherwise, <see langword="false"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="viewModel"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Navigation.NavigationViewProvider.Get``1(FlexiMvvm.ViewModels.ILifecycleViewModelWithResult{``0})">
+            <summary>
+            Returns an existing <see cref="T:FlexiMvvm.Views.INavigationView`1"/> instance by <paramref name="viewModel"/> that can return a lifecycle-aware view model result.
+            </summary>
+            <typeparam name="TResult">The type of the view model result.</typeparam>
+            <param name="viewModel">The view model that is used to get its view.</param>
+            <returns>The navigation view instance.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="viewModel"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.InvalidOperationException">The view instance is missing for the provided <paramref name="viewModel"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Navigation.NavigationViewProvider.TryGetView``1(FlexiMvvm.ViewModels.ILifecycleViewModelWithResult{``0},FlexiMvvm.Views.INavigationView{FlexiMvvm.ViewModels.ILifecycleViewModelWithResult{``0}}@)">
+            <summary>
+            Gets an existing <see cref="T:FlexiMvvm.Views.INavigationView`1"/> instance by <paramref name="viewModel"/> that can return a lifecycle-aware view model result.
+            </summary>
+            <typeparam name="TResult">The type of the view model result.</typeparam>
+            <param name="viewModel">The view model that is used to get its view.</param>
+            <param name="view">The navigation view corresponding to the provided model.</param>
+            <returns><see langword="true"/> if the view still exists and has not yet been garbage collected or disposed; otherwise, <see langword="false"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="viewModel"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Navigation.NavigationViewProvider.GetActivity``2(``1)">
+            <summary>
+            Returns an existing navigation <typeparamref name="TView"/> derived from the <see cref="T:AndroidX.Fragment.App.FragmentActivity"/> by <paramref name="viewModel"/>.
+            </summary>
+            <typeparam name="TView">The type of the view.</typeparam>
+            <typeparam name="TViewModel">The type of the view model.</typeparam>
+            <param name="viewModel">The view model that is used to get its view.</param>
+            <returns>The navigation view instance.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="viewModel"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.InvalidOperationException">The view instance is missing for the provided <paramref name="viewModel"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Navigation.NavigationViewProvider.TryGetActivity``2(``0,``1@)">
+            <summary>
+            Gets an existing navigation <typeparamref name="TView"/> derived from the <see cref="T:AndroidX.Fragment.App.FragmentActivity"/> by <paramref name="viewModel"/>.
+            </summary>
+            <typeparam name="TViewModel">The type of the view model.</typeparam>
+            <typeparam name="TView">The type of the view.</typeparam>
+            <param name="viewModel">The view model that is used to get its view.</param>
+            <param name="view">The navigation view corresponding to the provided model.</param>
+            <returns><see langword="true"/> if the view still exists and has not yet been garbage collected or disposed; otherwise, <see langword="false"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="viewModel"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Navigation.NavigationViewProvider.GetFragment``2(``1)">
+            <summary>
+            Returns an existing navigation <typeparamref name="TView"/> derived from the <see cref="T:AndroidX.Fragment.App.Fragment"/> by <paramref name="viewModel"/>.
+            </summary>
+            <typeparam name="TView">The type of the view.</typeparam>
+            <typeparam name="TViewModel">The type of the view model.</typeparam>
+            <param name="viewModel">The view model that is used to get its view.</param>
+            <returns>The navigation view instance.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="viewModel"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.InvalidOperationException">The view instance is missing for the provided <paramref name="viewModel"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Navigation.NavigationViewProvider.TryGetFragment``2(``0,``1@)">
+            <summary>
+            Gets an existing navigation <typeparamref name="TView"/> derived from the <see cref="T:AndroidX.Fragment.App.Fragment"/> by <paramref name="viewModel"/>.
+            </summary>
+            <typeparam name="TViewModel">The type of the view model.</typeparam>
+            <typeparam name="TView">The type of the view.</typeparam>
+            <param name="viewModel">The view model that is used to get its view.</param>
+            <param name="view">The navigation view corresponding to the provided model.</param>
+            <returns><see langword="true"/> if the view still exists and has not yet been garbage collected or disposed; otherwise, <see langword="false"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="viewModel"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Navigation.NavigationViewProvider.TryGetDialogFragment``2(``0,``1@)">
+            <summary>
+            Gets an existing navigation <typeparamref name="TView"/> derived from the <see cref="T:AndroidX.Fragment.App.DialogFragment"/> by <paramref name="viewModel"/>.
+            </summary>
+            <typeparam name="TViewModel">The type of the view model.</typeparam>
+            <typeparam name="TView">The type of the view.</typeparam>
+            <param name="viewModel">The view model that is used to get its view.</param>
+            <param name="view">The navigation view corresponding to the provided model.</param>
+            <returns><see langword="true"/> if the view still exists and has not yet been garbage collected or disposed; otherwise, <see langword="false"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="viewModel"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="T:FlexiMvvm.Navigation.NavigationViewExtensions">
+            <summary>
+            Provides a set of static methods for the <see cref="T:FlexiMvvm.Views.INavigationView`1"/>.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Navigation.NavigationViewExtensions.GetActivity(FlexiMvvm.Views.INavigationView{FlexiMvvm.ViewModels.ILifecycleViewModel})">
+            <summary>
+            Returns self if <paramref name="view"/> is <see cref="T:AndroidX.Fragment.App.FragmentActivity"/> or
+            <see cref="P:AndroidX.Fragment.App.Fragment.Activity"/> property value if <paramref name="view"/> is <see cref="T:AndroidX.Fragment.App.Fragment"/>.
+            </summary>
+            <param name="view">The navigation view.</param>
+            <returns>The activity instance. Can be <see langword="null"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="view"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentException">
+            The <paramref name="view" /> is derived from a class other than the <see cref="T:AndroidX.Fragment.App.FragmentActivity"/> or <see cref="T:AndroidX.Fragment.App.Fragment"/>.
+            </exception>
+        </member>
+        <member name="T:FlexiMvvm.Navigation.BackwardNavigationDelegate">
+            <summary>
+            Defines the contract for backward navigation.
+            </summary>
+            <param name="sourceView">The source navigation view from which navigation is performed from.</param>
+        </member>
+        <member name="T:FlexiMvvm.Navigation.BackwardNavigationStrategy">
+            <summary>
+            Provides a set of backward navigation strategies.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Navigation.BackwardNavigationStrategy.Finish">
+            <summary>
+            Backward navigation using the <see cref="M:FlexiMvvm.Views.INavigationView`1.Finish"/> method.
+            </summary>
+            <returns>The backward navigation delegate.</returns>
+        </member>
+        <member name="T:FlexiMvvm.Navigation.ForwardNavigationDelegate">
+            <summary>
+            Defines the contract for forward navigation.
+            </summary>
+            <param name="sourceView">The source navigation view from which navigation is performed from.</param>
+            <param name="targetViewIntent">The description of the target view for navigation.</param>
+            <param name="requestCode">A unique numeric code generated by the <see cref="P:FlexiMvvm.Views.INavigationView`1.RequestCode"/> property.</param>
+        </member>
+        <member name="T:FlexiMvvm.Navigation.ForwardNavigationStrategy">
+            <summary>
+            Provides a set of forward navigation strategies.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Navigation.ForwardNavigationStrategy.StartActivity(Android.OS.Bundle)">
+            <summary>
+            Forward navigation using the <see cref="M:FlexiMvvm.Views.INavigationView`1.StartActivity(Android.Content.Intent,Android.OS.Bundle)"/> method.
+            </summary>
+            <param name="options">Additional options for how the target view should be started. Can be <see langword="null"/>.</param>
+            <returns>The forward navigation delegate.</returns>
+        </member>
+        <member name="M:FlexiMvvm.Navigation.ForwardNavigationStrategy.StartActivityForResult(Android.OS.Bundle)">
+            <summary>
+            Forward navigation using the <see cref="M:FlexiMvvm.Views.INavigationView`1.StartActivityForResult(Android.Content.Intent,System.Int32,Android.OS.Bundle)"/> method.
+            </summary>
+            <param name="options">Additional options for how the target view should be started. Can be <see langword="null"/>.</param>
+            <returns>The forward navigation delegate.</returns>
+        </member>
+        <member name="T:FlexiMvvm.Navigation.NavigationService">
+            <summary>
+            Base class for an application navigation implementation.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Navigation.NavigationService.Navigate(FlexiMvvm.Views.INavigationView{FlexiMvvm.ViewModels.ILifecycleViewModel},Android.Content.Intent,FlexiMvvm.Navigation.ForwardNavigationDelegate)">
+            <summary>
+            Performs forward navigation from the <paramref name="sourceView"/> to the target one.
+            </summary>
+            <param name="sourceView">The source navigation view from which navigation is performed from.</param>
+            <param name="targetViewIntent">The description of the target view for navigation.</param>
+            <param name="navigationStrategy">
+            The strategy used for performing navigation. Can be <see langword="null"/>.
+            <para>The default is <see cref="M:FlexiMvvm.Navigation.ForwardNavigationStrategy.StartActivity(Android.OS.Bundle)"/>.</para>
+            </param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="sourceView"/> or <paramref name="targetViewIntent"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Navigation.NavigationService.Navigate``1(FlexiMvvm.Views.INavigationView{FlexiMvvm.ViewModels.ILifecycleViewModel},FlexiMvvm.Navigation.ForwardNavigationDelegate)">
+            <summary>
+            Performs forward navigation from the <paramref name="sourceView"/> to the target one.
+            </summary>
+            <typeparam name="TTargetView">The type of the target view.</typeparam>
+            <param name="sourceView">The source navigation view from which navigation is performed from.</param>
+            <param name="navigationStrategy">
+            The strategy used for performing navigation. Can be <see langword="null"/>.
+            <para>The default is <see cref="M:FlexiMvvm.Navigation.ForwardNavigationStrategy.StartActivity(Android.OS.Bundle)"/>.</para>
+            </param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="sourceView"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentException">
+            The <paramref name="sourceView" /> is derived from a class other than the <see cref="T:AndroidX.Fragment.App.FragmentActivity"/> or <see cref="T:AndroidX.Fragment.App.Fragment"/>.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            <see cref="M:FlexiMvvm.Navigation.NavigationViewExtensions.GetActivity(FlexiMvvm.Views.INavigationView{FlexiMvvm.ViewModels.ILifecycleViewModel})"/> returned <see langword="null"/> value for the provided <paramref name="sourceView"/>.
+            </exception>
+        </member>
+        <member name="M:FlexiMvvm.Navigation.NavigationService.Navigate``2(FlexiMvvm.Views.INavigationView{FlexiMvvm.ViewModels.ILifecycleViewModel},``1,FlexiMvvm.Navigation.ForwardNavigationDelegate)">
+            <summary>
+            Performs forward navigation from the <paramref name="sourceView"/> to the target one with the provided lifecycle-aware view model <paramref name="parameters"/>.
+            </summary>
+            <typeparam name="TTargetView">The type of the target view.</typeparam>
+            <typeparam name="TParameters">The type of the target view model parameters.</typeparam>
+            <param name="sourceView">The source navigation view from which navigation is performed from.</param>
+            <param name="parameters">The target view model parameters. Can be <see langword="null"/>.</param>
+            <param name="navigationStrategy">
+            The strategy used for performing navigation. Can be <see langword="null"/>.
+            <para>The default is <see cref="M:FlexiMvvm.Navigation.ForwardNavigationStrategy.StartActivity(Android.OS.Bundle)"/>.</para>
+            </param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="sourceView"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentException">
+            The <paramref name="sourceView" /> is derived from a class other than the <see cref="T:AndroidX.Fragment.App.FragmentActivity"/> or <see cref="T:AndroidX.Fragment.App.Fragment"/>.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            <see cref="M:FlexiMvvm.Navigation.NavigationViewExtensions.GetActivity(FlexiMvvm.Views.INavigationView{FlexiMvvm.ViewModels.ILifecycleViewModel})"/> returned <see langword="null"/> value for the provided <paramref name="sourceView"/>.
+            </exception>
+        </member>
+        <member name="M:FlexiMvvm.Navigation.NavigationService.NavigateForResult``1(FlexiMvvm.Views.INavigationView{FlexiMvvm.ViewModels.ILifecycleViewModelWithResultHandler},Android.Content.Intent,FlexiMvvm.Navigation.ForwardNavigationDelegate)">
+            <summary>
+            Performs forward navigation from the <paramref name="sourceView"/> to the target one with handling a lifecycle-aware view model result when it finished.
+            </summary>
+            <typeparam name="TResultMapper">The type of the target view model result mapper.</typeparam>
+            <param name="sourceView">The source navigation view from which navigation is performed from.</param>
+            <param name="targetViewIntent">The description of the target view for navigation.</param>
+            <param name="navigationStrategy">
+            The strategy used for performing navigation. Can be <see langword="null"/>.
+            <para>The default is <see cref="M:FlexiMvvm.Navigation.ForwardNavigationStrategy.StartActivityForResult(Android.OS.Bundle)"/>.</para>
+            </param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="sourceView"/> or <paramref name="targetViewIntent"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Navigation.NavigationService.NavigateForResult``2(FlexiMvvm.Views.INavigationView{FlexiMvvm.ViewModels.ILifecycleViewModelWithResultHandler},FlexiMvvm.Navigation.ForwardNavigationDelegate)">
+            <summary>
+            Performs forward navigation from the <paramref name="sourceView"/> to the target one with handling a lifecycle-aware view model result when it finished.
+            </summary>
+            <typeparam name="TTargetView">The type of the target view.</typeparam>
+            <typeparam name="TResult">The type of the target view model result.</typeparam>
+            <param name="sourceView">The source navigation view from which navigation is performed from.</param>
+            <param name="navigationStrategy">
+            The strategy used for performing navigation. Can be <see langword="null"/>.
+            <para>The default is <see cref="M:FlexiMvvm.Navigation.ForwardNavigationStrategy.StartActivityForResult(Android.OS.Bundle)"/>.</para>
+            </param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="sourceView"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentException">
+            The <paramref name="sourceView" /> is derived from a class other than the <see cref="T:AndroidX.Fragment.App.FragmentActivity"/> or <see cref="T:AndroidX.Fragment.App.Fragment"/>.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            <see cref="M:FlexiMvvm.Navigation.NavigationViewExtensions.GetActivity(FlexiMvvm.Views.INavigationView{FlexiMvvm.ViewModels.ILifecycleViewModel})"/> returned <see langword="null"/> value for the provided <paramref name="sourceView"/>.
+            </exception>
+        </member>
+        <member name="M:FlexiMvvm.Navigation.NavigationService.NavigateForResult``3(FlexiMvvm.Views.INavigationView{FlexiMvvm.ViewModels.ILifecycleViewModelWithResultHandler},``1,FlexiMvvm.Navigation.ForwardNavigationDelegate)">
+            <summary>
+            Performs forward navigation from the <paramref name="sourceView"/> to the target one with the provided lifecycle-aware view model <paramref name="parameters"/>
+            and handling a lifecycle-aware view model result when it finished.
+            </summary>
+            <typeparam name="TTargetView">The type of the target view.</typeparam>
+            <typeparam name="TParameters">The type of the target view model parameters.</typeparam>
+            <typeparam name="TResult">The type of the target view model result.</typeparam>
+            <param name="sourceView">The source navigation view from which navigation is performed from.</param>
+            <param name="parameters">The target view model parameters. Can be <see langword="null"/>.</param>
+            <param name="navigationStrategy">
+            The strategy used for performing navigation. Can be <see langword="null"/>.
+            <para>The default is <see cref="M:FlexiMvvm.Navigation.ForwardNavigationStrategy.StartActivityForResult(Android.OS.Bundle)"/>.</para>
+            </param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="sourceView"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentException">
+            The <paramref name="sourceView" /> is derived from a class other than the <see cref="T:AndroidX.Fragment.App.FragmentActivity"/> or <see cref="T:AndroidX.Fragment.App.Fragment"/>.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            <see cref="M:FlexiMvvm.Navigation.NavigationViewExtensions.GetActivity(FlexiMvvm.Views.INavigationView{FlexiMvvm.ViewModels.ILifecycleViewModel})"/> returned <see langword="null"/> value for the provided <paramref name="sourceView"/>.
+            </exception>
+        </member>
+        <member name="M:FlexiMvvm.Navigation.NavigationService.NavigateBack(FlexiMvvm.Views.INavigationView{FlexiMvvm.ViewModels.ILifecycleViewModel},FlexiMvvm.Navigation.BackwardNavigationDelegate)">
+            <summary>
+            Performs backward navigation from the <paramref name="sourceView"/>.
+            </summary>
+            <param name="sourceView">The source navigation view from which navigation is performed from.</param>
+            <param name="navigationStrategy">
+            The strategy used for performing navigation. Can be <see langword="null"/>.
+            <para>The default is <see cref="M:FlexiMvvm.Navigation.BackwardNavigationStrategy.Finish"/>.</para>
+            </param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="sourceView"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Navigation.NavigationService.NavigateBack``1(FlexiMvvm.Views.INavigationView{FlexiMvvm.ViewModels.ILifecycleViewModelWithResult{``0}},FlexiMvvm.ViewModels.ResultCode,``0,FlexiMvvm.Navigation.BackwardNavigationDelegate)">
+            <summary>
+            Performs backward navigation from the <paramref name="sourceView"/> with returning a lifecycle-aware view model result.
+            </summary>
+            <typeparam name="TResult">The type of the source view model result.</typeparam>
+            <param name="sourceView">The source navigation view from which navigation is performed from.</param>
+            <param name="resultCode">Determines whether the result should be set as successful or canceled.</param>
+            <param name="result">The source view model result. Can be <see langword="null"/>.</param>
+            <param name="navigationStrategy">
+            The strategy used for performing navigation. Can be <see langword="null"/>.
+            <para>The default is <see cref="M:FlexiMvvm.Navigation.BackwardNavigationStrategy.Finish"/>.</para>
+            </param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="sourceView"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="T:FlexiMvvm.Views.Core.ILifecycleViewModelOwner`1">
+            <summary>
+            Defines the contract for a lifecycle-aware view model owner.
+            <para>This interface is intended for internal use by the FlexiMvvm.</para>
+            </summary>
+            <typeparam name="TViewModel">The type of the view model.</typeparam>
+        </member>
+        <member name="M:FlexiMvvm.Views.Core.ILifecycleViewModelOwner`1.SetViewModel(`0)">
+            <summary>
+            Sets the lifecycle-aware view model to its owner.
+            </summary>
+            <param name="viewModel">The view model to set.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="viewModel"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.Core.ILifecycleViewModelOwner`1.InitializeViewModelAsync(System.Boolean)">
+            <summary>
+            Initializes the lifecycle-aware view model by calling its corresponding method.
+            </summary>
+            <param name="recreated">Determines whether the view model has been destroyed to recover memory and recreated with a restored state if it was persisted.</param>
+            <returns>A task that represents the asynchronous initialization operation.</returns>
+        </member>
+        <member name="T:FlexiMvvm.Views.Core.IViewLifecycleDelegate">
+            <summary>
+            Defines the contract for a view lifecycle delegate. Can perform custom actions when view's lifecycle method is called.
+            <para>This interface is intended for internal use by the FlexiMvvm.</para>
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.Core.IViewLifecycleDelegate.OnCreate(Android.OS.Bundle)">
+            <summary>
+            Can perform custom actions when <see cref="M:Android.App.Activity.OnCreate(Android.OS.Bundle)"/> or <see cref="M:Android.App.Fragment.OnCreate(Android.OS.Bundle)"/> method is called.
+            </summary>
+            <param name="savedInstanceState">
+            If the activity is being re-initialized after previously being shut down then this <paramref name="savedInstanceState"/> contains the data
+            it most recently supplied in <see cref="M:Android.App.Activity.OnSaveInstanceState(Android.OS.Bundle)"/>. Can be <see langword="null"/>.
+            </param>
+        </member>
+        <member name="M:FlexiMvvm.Views.Core.IViewLifecycleDelegate.OnStart">
+            <summary>
+            Can perform custom actions when <see cref="M:Android.App.Activity.OnStart"/> or <see cref="M:Android.App.Fragment.OnStart"/> method is called.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.Core.IViewLifecycleDelegate.OnResume">
+            <summary>
+            Can perform custom actions when <see cref="M:Android.App.Activity.OnResume"/> or <see cref="M:Android.App.Fragment.OnResume"/> method is called.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.Core.IViewLifecycleDelegate.OnPause">
+            <summary>
+            Can perform custom actions when <see cref="M:Android.App.Activity.OnPause"/> or <see cref="M:Android.App.Fragment.OnPause"/> method is called.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.Core.IViewLifecycleDelegate.OnStop">
+            <summary>
+            Can perform custom actions when <see cref="M:Android.App.Activity.OnStop"/> or <see cref="M:Android.App.Fragment.OnStop"/> method is called.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.Core.IViewLifecycleDelegate.OnActivityResult(System.Int32,Android.App.Result,Android.Content.Intent)">
+            <summary>
+            Can perform custom actions when <see cref="M:Android.App.Activity.OnActivityResult(System.Int32,Android.App.Result,Android.Content.Intent)"/> or <see cref="!:Fragment.OnActivityResult(int, int, Intent?)"/> method is called.
+            </summary>
+            <param name="requestCode">A unique numeric code generated by the <see cref="P:FlexiMvvm.Views.INavigationView`1.RequestCode"/> property.</param>
+            <param name="resultCode">Determines whether the view model result is set successfully or not due to cancellation by the user.</param>
+            <param name="data">Contains a set of key/value pairs that is used as source data for the view model result. Can be <see langword="null"/>.</param>
+        </member>
+        <member name="M:FlexiMvvm.Views.Core.IViewLifecycleDelegate.OnSaveInstanceState(Android.OS.Bundle)">
+            <summary>
+            Can perform custom actions when <see cref="M:Android.App.Activity.OnSaveInstanceState(Android.OS.Bundle)"/> or <see cref="M:Android.App.Fragment.OnSaveInstanceState(Android.OS.Bundle)"/> method is called.
+            </summary>
+            <param name="outState">The bundle in which to place your saved state.</param>
+        </member>
+        <member name="M:FlexiMvvm.Views.Core.IViewLifecycleDelegate.OnDestroyView">
+            <summary>
+            Can perform custom actions when <see cref="M:Android.App.Fragment.OnDestroyView"/> method is called.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.Core.IViewLifecycleDelegate.OnDestroy">
+            <summary>
+            Can perform custom actions when <see cref="M:Android.App.Activity.OnDestroy"/> or <see cref="M:Android.App.Fragment.OnDestroy"/> method is called.
+            </summary>
+        </member>
+        <member name="T:FlexiMvvm.Views.Core.ViewLifecycleDelegate`1">
+            <summary>
+            Base view lifecycle delegate.
+            <para>This class is intended for internal use by the FlexiMvvm.</para>
+            </summary>
+            <typeparam name="TView">The type of the view that forwards its lifecycle calls.</typeparam>
+        </member>
+        <member name="M:FlexiMvvm.Views.Core.ViewLifecycleDelegate`1.#ctor(`0)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FlexiMvvm.Views.Core.ViewLifecycleDelegate`1"/> class.
+            </summary>
+            <param name="view">The view that forwards its lifecycle calls to the delegate.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="view"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="P:FlexiMvvm.Views.Core.ViewLifecycleDelegate`1.View">
+            <summary>
+            Gets the view that forwards its lifecycle calls.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.Core.ViewLifecycleDelegate`1.OnCreate(Android.OS.Bundle)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.Core.ViewLifecycleDelegate`1.OnStart">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.Core.ViewLifecycleDelegate`1.OnResume">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.Core.ViewLifecycleDelegate`1.OnPause">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.Core.ViewLifecycleDelegate`1.OnStop">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.Core.ViewLifecycleDelegate`1.OnActivityResult(System.Int32,Android.App.Result,Android.Content.Intent)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.Core.ViewLifecycleDelegate`1.OnSaveInstanceState(Android.OS.Bundle)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.Core.ViewLifecycleDelegate`1.OnDestroyView">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.Core.ViewLifecycleDelegate`1.OnDestroy">
+            <inheritdoc />
+        </member>
+        <member name="T:FlexiMvvm.Views.Core.ViewLifecycleDelegate`2">
+            <summary>
+            A lifecycle delegate that is responsible for view model lifecycle and persistence handling.
+            <para>This class is intended for internal use by the FlexiMvvm.</para>
+            </summary>
+            <typeparam name="TView">The type of the view that forwards its lifecycle calls.</typeparam>
+            <typeparam name="TViewModel">The type of the view model.</typeparam>
+        </member>
+        <member name="M:FlexiMvvm.Views.Core.ViewLifecycleDelegate`2.#ctor(`0)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FlexiMvvm.Views.Core.ViewLifecycleDelegate`2"/> class.
+            </summary>
+            <param name="view">The view that forwards its lifecycle calls to the delegate.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="view"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.Core.ViewLifecycleDelegate`2.OnCreate(Android.OS.Bundle)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.Core.ViewLifecycleDelegate`2.OnStart">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.Core.ViewLifecycleDelegate`2.OnActivityResult(System.Int32,Android.App.Result,Android.Content.Intent)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.Core.ViewLifecycleDelegate`2.OnSaveInstanceState(Android.OS.Bundle)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.Core.ViewLifecycleDelegate`2.OnDestroy">
+            <inheritdoc />
+        </member>
+        <member name="T:FlexiMvvm.Views.IView`1">
+            <summary>
+            Defines the contract for a view that owns a lifecycle-aware view model.
+            </summary>
+            <typeparam name="TViewModel">The type of the view model.</typeparam>
+        </member>
+        <member name="P:FlexiMvvm.Views.IView`1.ViewModel">
+            <summary>
+            Gets the lifecycle-aware view model.
+            </summary>
+        </member>
+        <member name="T:FlexiMvvm.Views.BundleExtensions">
+            <summary>
+            Provides a set of static methods for the <see cref="T:Android.OS.Bundle"/>.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.BundleExtensions.GetParameters``1(Android.OS.Bundle)">
+            <summary>
+            Gets the lifecycle-aware view model parameters from the <paramref name="bundle"/>.
+            </summary>
+            <typeparam name="TParameters">The type of the view model parameters.</typeparam>
+            <param name="bundle">The bundle to extract the view model parameters from.</param>
+            <returns>The view model parameters instance if the <paramref name="bundle"/> contains the parameters; otherwise, <see langword="null"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="bundle"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.BundleExtensions.PutParameters``1(Android.OS.Bundle,``0)">
+            <summary>
+            Puts the lifecycle-aware view model parameters to the <paramref name="bundle"/>.
+            </summary>
+            <typeparam name="TParameters">The type of the view model parameters.</typeparam>
+            <param name="bundle">The bundle to put the view model parameters to.</param>
+            <param name="parameters">The view model parameters. Can be <see langword="null"/>.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="bundle"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.BundleExtensions.GetResult``1(Android.OS.Bundle)">
+            <summary>
+            Gets the lifecycle-aware view model result from the <paramref name="bundle"/>.
+            </summary>
+            <typeparam name="TResult">The type of the view model result.</typeparam>
+            <param name="bundle">The bundle to extract the view model result from.</param>
+            <returns>The view model result instance if the <paramref name="bundle"/> contains the result; otherwise, <see langword="null"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="bundle"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.BundleExtensions.PutResult``1(Android.OS.Bundle,``0)">
+            <summary>
+            Puts the lifecycle-aware view model result to the <paramref name="bundle"/>.
+            </summary>
+            <typeparam name="TResult">The type of the view model result.</typeparam>
+            <param name="bundle">The bundle to put the view model result to.</param>
+            <param name="result">The view model result. Can be <see langword="null"/>.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="bundle"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="T:FlexiMvvm.Views.IntentExtensions">
+            <summary>
+            Provides a set of static methods for the <see cref="T:Android.Content.Intent"/>.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.IntentExtensions.GetParameters``1(Android.Content.Intent)">
+            <summary>
+            Gets the lifecycle-aware view model parameters from the <paramref name="intent"/>.
+            </summary>
+            <typeparam name="TParameters">The type of the view model parameters.</typeparam>
+            <param name="intent">The intent to extract the view model parameters from.</param>
+            <returns>The view model parameters instance if the <paramref name="intent"/> contains the parameters; otherwise, <see langword="null"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="intent"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.IntentExtensions.PutParameters``1(Android.Content.Intent,``0)">
+            <summary>
+            Puts the lifecycle-aware view model parameters to the <paramref name="intent"/>.
+            </summary>
+            <typeparam name="TParameters">The type of the view model parameters.</typeparam>
+            <param name="intent">The intent to put the view model parameters to.</param>
+            <param name="parameters">The view model parameters. Can be <see langword="null"/>.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="intent"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.IntentExtensions.GetResult``1(Android.Content.Intent)">
+            <summary>
+            Gets the lifecycle-aware view model result from the <paramref name="intent"/>.
+            </summary>
+            <typeparam name="TResult">The type of the view model result.</typeparam>
+            <param name="intent">The intent to extract the view model result from.</param>
+            <returns>The view model result instance if the <paramref name="intent"/> contains the result; otherwise, <see langword="null"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="intent"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.IntentExtensions.PutResult``1(Android.Content.Intent,``0)">
+            <summary>
+            Puts the lifecycle-aware view model result to the <paramref name="intent"/>.
+            </summary>
+            <typeparam name="TResult">The type of the view model result.</typeparam>
+            <param name="intent">The intent to put the view model result to.</param>
+            <param name="result">The view model result. Can be <see langword="null"/>.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="intent"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="T:FlexiMvvm.Views.ViewExtensions">
+            <summary>
+            Provides a set of static methods for the <see cref="T:FlexiMvvm.Views.IView`1"/>.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.ViewExtensions.As(FlexiMvvm.Views.IView{FlexiMvvm.ViewModels.ILifecycleViewModel},System.Action{AndroidX.Fragment.App.FragmentActivity},System.Action{AndroidX.Fragment.App.Fragment})">
+            <summary>
+            Executes appropriate handler based on actual type of the <paramref name="view"/>.
+            </summary>
+            <param name="view">The view that is represented by an activity or fragment.</param>
+            <param name="activityHandler">The handler to execute if <paramref name="view"/> is <see cref="!:Android.Support.V4.App.FragmentActivity"/>.</param>
+            <param name="fragmentHandler">The handler to execute if <paramref name="view"/> is <see cref="!:Android.Support.V4.App.Fragment"/>.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="view" /> or <paramref name="activityHandler" /> or <paramref name="fragmentHandler" /> is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentException">
+            The <paramref name="view" /> is derived from a class other than the <see cref="!:Android.Support.V4.App.FragmentActivity"/> or <see cref="!:Android.Support.V4.App.Fragment"/>.
+            </exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.ViewExtensions.As``1(FlexiMvvm.Views.IView{FlexiMvvm.ViewModels.ILifecycleViewModel},System.Func{AndroidX.Fragment.App.FragmentActivity,``0},System.Func{AndroidX.Fragment.App.Fragment,``0})">
+            <summary>
+            Executes appropriate handler based on actual type of the <paramref name="view"/> with returning a result.
+            </summary>
+            <typeparam name="T">The type of the result.</typeparam>
+            <param name="view">The view that is represented by an activity or fragment.</param>
+            <param name="activityHandler">The handler to execute if <paramref name="view"/> is <see cref="!:Android.Support.V4.App.FragmentActivity"/>.</param>
+            <param name="fragmentHandler">The handler to execute if <paramref name="view"/> is <see cref="!:Android.Support.V4.App.Fragment"/>.</param>
+            <returns>A result returned by appropriate handler.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="view" /> or <paramref name="activityHandler" /> or <paramref name="fragmentHandler" /> is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentException">
+            The <paramref name="view" /> is derived from a class other than the <see cref="!:Android.Support.V4.App.FragmentActivity"/> or <see cref="!:Android.Support.V4.App.Fragment"/>.
+            </exception>
+        </member>
+        <member name="T:FlexiMvvm.Views.DefaultResultMapper`1">
+            <summary>
+            Default implementation of the <see cref="T:FlexiMvvm.Views.IResultMapper`1"/>.
+            Uses <see cref="M:FlexiMvvm.Views.IntentExtensions.GetResult``1(Android.Content.Intent)"/> to create a lifecycle-aware view model result instance.
+            </summary>
+            <typeparam name="TResult">The type of the view model result to create.</typeparam>
+        </member>
+        <member name="M:FlexiMvvm.Views.DefaultResultMapper`1.Map(Android.Content.Intent)">
+            <inheritdoc />
+        </member>
+        <member name="T:FlexiMvvm.Views.IAndroidView">
+            <summary>
+            Defines the contract for a platform-specific view.
+            </summary>
+        </member>
+        <member name="T:FlexiMvvm.Views.INavigationView`1">
+            <summary>
+            Defines the contract for a platform-specific view that participates in navigation.
+            </summary>
+            <typeparam name="TViewModel">The type of the view model.</typeparam>
+        </member>
+        <member name="P:FlexiMvvm.Views.INavigationView`1.RequestCode">
+            <summary>
+            Gets the request code that generates a unique numeric code to pass as argument to the <see cref="M:FlexiMvvm.Views.INavigationView`1.StartActivityForResult(Android.Content.Intent,System.Int32)"/> method.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.INavigationView`1.StartActivity(Android.Content.Intent)">
+            <summary>
+            Launch a new activity.
+            </summary>
+            <param name="intent">The intent to start.</param>
+        </member>
+        <member name="M:FlexiMvvm.Views.INavigationView`1.StartActivity(Android.Content.Intent,Android.OS.Bundle)">
+            <summary>
+            Launches a new activity.
+            </summary>
+            <param name="intent">The intent to start.</param>
+            <param name="options">Additional options for how the <see cref="T:Android.App.Activity"/> should be started. Can be <see langword="null"/>.</param>
+        </member>
+        <member name="M:FlexiMvvm.Views.INavigationView`1.StartActivityForResult(Android.Content.Intent,System.Int32)">
+            <summary>
+            Launches an activity for which you would like a result when it finished.
+            Using a negative <paramref name="requestCode"/> is the same as calling <see cref="M:FlexiMvvm.Views.INavigationView`1.StartActivity(Android.Content.Intent)"/>.
+            </summary>
+            <param name="intent">The intent to start.</param>
+            <param name="requestCode">A unique numeric code generated by the <see cref="P:FlexiMvvm.Views.INavigationView`1.RequestCode"/> property.</param>
+        </member>
+        <member name="M:FlexiMvvm.Views.INavigationView`1.StartActivityForResult(Android.Content.Intent,System.Int32,Android.OS.Bundle)">
+            <summary>
+            Launches an activity for which you would like a result when it finished.
+            Using a negative <paramref name="requestCode"/> is the same as calling <see cref="M:FlexiMvvm.Views.INavigationView`1.StartActivity(Android.Content.Intent)"/>.
+            </summary>
+            <param name="intent">The intent to start.</param>
+            <param name="requestCode">A unique numeric code generated by the <see cref="P:FlexiMvvm.Views.INavigationView`1.RequestCode"/> property.</param>
+            <param name="options">Additional options for how the <see cref="T:Android.App.Activity"/> should be started. Can be <see langword="null"/>.</param>
+        </member>
+        <member name="M:FlexiMvvm.Views.INavigationView`1.SetResult(Android.App.Result,Android.Content.Intent)">
+            <summary>
+            Sets the lifecycle-aware view model result to be returned to the calling view's model.
+            </summary>
+            <param name="resultCode">Determines whether the result should be set as successful or not due to cancellation by the user.</param>
+            <param name="data">Contains a set of key/value pairs that is used as source data for the view model result. Can be <see langword="null"/>.</param>
+        </member>
+        <member name="M:FlexiMvvm.Views.INavigationView`1.Finish">
+            <summary>
+            Call this when your activity is done and should be closed.
+            </summary>
+        </member>
+        <member name="T:FlexiMvvm.Views.IOptionsMenuSource">
+            <summary>
+            Defines the contract for an options menu source.
+            </summary>
+        </member>
+        <member name="E:FlexiMvvm.Views.IOptionsMenuSource.OnOptionsItemSelectedCalled">
+            <summary>
+            Occurs when an item in the options menu was selected.
+            </summary>
+        </member>
+        <member name="T:FlexiMvvm.Views.IResultMapper`1">
+            <summary>
+            Defines the contract for a result mapper that knows how to create a lifecycle-aware view model result instance
+            based on a set of key/value pairs stored in the passed <see cref="T:Android.Content.Intent"/> data.
+            </summary>
+            <typeparam name="TResult">The type of the view model result to create.</typeparam>
+        </member>
+        <member name="M:FlexiMvvm.Views.IResultMapper`1.Map(Android.Content.Intent)">
+            <summary>
+            Creates a new <typeparamref name="TResult"/> instance based on a set of key/value pairs stored in the <paramref name="data"/>.
+            </summary>
+            <param name="data">Contains a set of key/value pairs that is used as source data for the view model result. Can be <see langword="null"/>.</param>
+            <returns>The view model result instance if the <paramref name="data"/> is not <see langword="null"/>; otherwise, <see langword="null"/>.</returns>
+        </member>
+        <member name="T:FlexiMvvm.Views.OptionsItemSelectedEventArgs">
+            <summary>
+            Provides data for the <see cref="E:FlexiMvvm.Views.IOptionsMenuSource.OnOptionsItemSelectedCalled"/> event.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.OptionsItemSelectedEventArgs.#ctor(Android.Views.IMenuItem)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FlexiMvvm.Views.OptionsItemSelectedEventArgs"/> class.
+            </summary>
+            <param name="item">The selected menu item.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="item"/> is <see langword="null"/>.</exception>
+        </member>
+        <member name="P:FlexiMvvm.Views.OptionsItemSelectedEventArgs.Item">
+            <summary>
+            Gets the selected menu item.
+            </summary>
+        </member>
+        <member name="P:FlexiMvvm.Views.OptionsItemSelectedEventArgs.Handled">
+            <summary>
+            Gets or sets a value indicating whether the menu item selection is handled successfully or allow normal menu processing to proceed.
+            <para>The default value is <see langword="false"/>.</para>
+            </summary>
+        </member>
+        <member name="T:FlexiMvvm.Views.RequestCode">
+            <summary>
+            Generates a unique numeric request code that identifies a result mapper
+            used to create a lifecycle-aware view model result instance based on the passed <see cref="T:Android.Content.Intent"/> data.
+            </summary>
+        </member>
+        <member name="F:FlexiMvvm.Views.RequestCode.InvalidRequestCode">
+            <summary>
+            Gets a value indicating an invalid request code.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.RequestCode.GetFor``1">
+            <summary>
+            Gets a unique numeric request code that is used to identify the <typeparamref name="TResultMapper"/> result mapper which creates a lifecycle-aware view model result instance.
+            </summary>
+            <typeparam name="TResultMapper">The type of the result mapper which creates a view model result instance.</typeparam>
+            <returns>A unique numeric request code.</returns>
+        </member>
+        <member name="T:FlexiMvvm.Views.FlexiAppCompatActivity">
+            <summary>
+            Represents a/an <see cref="T:AndroidX.AppCompat.App.AppCompatActivity"/> that is adapted for use with the FlexiMvvm.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiAppCompatActivity.#ctor">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiAppCompatActivity.#ctor(System.IntPtr,Android.Runtime.JniHandleOwnership)">
+            <inheritdoc />
+        </member>
+        <member name="E:FlexiMvvm.Views.FlexiAppCompatActivity.OnOptionsItemSelectedCalled">
+            <inheritdoc />
+        </member>
+        <member name="P:FlexiMvvm.Views.FlexiAppCompatActivity.LifecycleDelegate">
+            <summary>
+            Gets the view lifecycle delegate. Intended for internal use by the FlexiMvvm.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiAppCompatActivity.CreateLifecycleDelegate">
+            <summary>
+            Creates a new <see cref="T:FlexiMvvm.Views.Core.IViewLifecycleDelegate"/> instance. Intended for internal use by the FlexiMvvm.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiAppCompatActivity.OnCreate(Android.OS.Bundle)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiAppCompatActivity.OnStart">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiAppCompatActivity.OnResume">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiAppCompatActivity.OnPause">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiAppCompatActivity.OnStop">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiAppCompatActivity.OnOptionsItemSelected(Android.Views.IMenuItem)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiAppCompatActivity.OnActivityResult(System.Int32,Android.App.Result,Android.Content.Intent)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiAppCompatActivity.OnSaveInstanceState(Android.OS.Bundle)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiAppCompatActivity.OnDestroy">
+            <inheritdoc />
+        </member>
+        <member name="T:FlexiMvvm.Views.FlexiAppCompatActivity`1">
+            <summary>
+            Represents a/an <see cref="T:AndroidX.AppCompat.App.AppCompatActivity"/> that is adapted for use with the FlexiMvvm
+            and has its own lifecycle-aware view model.
+            </summary>
+            <typeparam name="TViewModel">The type of the view model.</typeparam>
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiAppCompatActivity`1.#ctor">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiAppCompatActivity`1.#ctor(System.IntPtr,Android.Runtime.JniHandleOwnership)">
+            <inheritdoc />
+        </member>
+        <member name="P:FlexiMvvm.Views.FlexiAppCompatActivity`1.ViewModel">
+            <inheritdoc />
+        </member>
+        <member name="P:FlexiMvvm.Views.FlexiAppCompatActivity`1.RequestCode">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiAppCompatActivity`1.CreateLifecycleDelegate">
+            <inheritdoc />
+        </member>
+        <member name="T:FlexiMvvm.Views.FlexiAppCompatActivity`2">
+            <summary>
+            Represents a/an <see cref="T:AndroidX.AppCompat.App.AppCompatActivity"/> that is adapted for use with the FlexiMvvm,
+            has its own lifecycle-aware view model and takes lifecycle-aware view model parameters.
+            </summary>
+            <typeparam name="TViewModel">The type of the view model.</typeparam>
+            <typeparam name="TParameters">The type of the view model parameters.</typeparam>
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiAppCompatActivity`2.#ctor">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiAppCompatActivity`2.#ctor(System.IntPtr,Android.Runtime.JniHandleOwnership)">
+            <inheritdoc />
+        </member>
+        <member name="P:FlexiMvvm.Views.FlexiAppCompatActivity`2.ViewModel">
+            <inheritdoc />
+        </member>
+        <member name="P:FlexiMvvm.Views.FlexiAppCompatActivity`2.RequestCode">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiAppCompatActivity`2.CreateLifecycleDelegate">
+            <inheritdoc />
+        </member>
+        <member name="T:FlexiMvvm.Views.FlexiDialogFragment">
+            <summary>
+            Represents a/an <see cref="T:AndroidX.Fragment.App.DialogFragment"/> that is adapted for use with the FlexiMvvm.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiDialogFragment.#ctor">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiDialogFragment.#ctor(System.IntPtr,Android.Runtime.JniHandleOwnership)">
+            <inheritdoc />
+        </member>
+        <member name="E:FlexiMvvm.Views.FlexiDialogFragment.OnOptionsItemSelectedCalled">
+            <inheritdoc />
+        </member>
+        <member name="P:FlexiMvvm.Views.FlexiDialogFragment.LifecycleDelegate">
+            <summary>
+            Gets the view lifecycle delegate. Intended for internal use by the FlexiMvvm.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiDialogFragment.CreateLifecycleDelegate">
+            <summary>
+            Creates a new <see cref="T:FlexiMvvm.Views.Core.IViewLifecycleDelegate"/> instance. Intended for internal use by the FlexiMvvm.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiDialogFragment.OnCreate(Android.OS.Bundle)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiDialogFragment.OnStart">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiDialogFragment.OnResume">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiDialogFragment.OnPause">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiDialogFragment.OnStop">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiDialogFragment.OnOptionsItemSelected(Android.Views.IMenuItem)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiDialogFragment.OnActivityResult(System.Int32,System.Int32,Android.Content.Intent)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiDialogFragment.OnSaveInstanceState(Android.OS.Bundle)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiDialogFragment.OnDestroyView">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiDialogFragment.OnDestroy">
+            <inheritdoc />
+        </member>
+        <member name="T:FlexiMvvm.Views.FlexiDialogFragment`1">
+            <summary>
+            Represents a/an <see cref="T:AndroidX.Fragment.App.DialogFragment"/> that is adapted for use with the FlexiMvvm
+            and has its own lifecycle-aware view model.
+            </summary>
+            <typeparam name="TViewModel">The type of the view model.</typeparam>
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiDialogFragment`1.#ctor">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiDialogFragment`1.#ctor(System.IntPtr,Android.Runtime.JniHandleOwnership)">
+            <inheritdoc />
+        </member>
+        <member name="P:FlexiMvvm.Views.FlexiDialogFragment`1.ViewModel">
+            <inheritdoc />
+        </member>
+        <member name="P:FlexiMvvm.Views.FlexiDialogFragment`1.RequestCode">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiDialogFragment`1.CreateLifecycleDelegate">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiDialogFragment`1.SetResult(Android.App.Result,Android.Content.Intent)">
+            <inheritdoc />
+            <exception cref="T:System.NotSupportedException">The fragment cannot set a result. Use the appropriate method of fragment's activity instead.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiDialogFragment`1.Finish">
+            <inheritdoc />
+            <exception cref="T:System.NotSupportedException">The fragment cannot finish an activity. Use the appropriate method of fragment's activity instead.</exception>
+        </member>
+        <member name="T:FlexiMvvm.Views.FlexiDialogFragment`2">
+            <summary>
+            Represents a/an <see cref="T:AndroidX.Fragment.App.DialogFragment"/> that is adapted for use with the FlexiMvvm,
+            has its own lifecycle-aware view model and takes lifecycle-aware view model parameters.
+            </summary>
+            <typeparam name="TViewModel">The type of the view model.</typeparam>
+            <typeparam name="TParameters">The type of the view model parameters.</typeparam>
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiDialogFragment`2.#ctor">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiDialogFragment`2.#ctor(System.IntPtr,Android.Runtime.JniHandleOwnership)">
+            <inheritdoc />
+        </member>
+        <member name="P:FlexiMvvm.Views.FlexiDialogFragment`2.ViewModel">
+            <inheritdoc />
+        </member>
+        <member name="P:FlexiMvvm.Views.FlexiDialogFragment`2.RequestCode">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiDialogFragment`2.CreateLifecycleDelegate">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiDialogFragment`2.SetResult(Android.App.Result,Android.Content.Intent)">
+            <inheritdoc />
+            <exception cref="T:System.NotSupportedException">The fragment cannot set a result. Use the appropriate method of fragment's activity instead.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiDialogFragment`2.Finish">
+            <inheritdoc />
+            <exception cref="T:System.NotSupportedException">The fragment cannot finish an activity. Use the appropriate method of fragment's activity instead.</exception>
+        </member>
+        <member name="T:FlexiMvvm.Views.FlexiFragment">
+            <summary>
+            Represents a/an <see cref="T:AndroidX.Fragment.App.Fragment"/> that is adapted for use with the FlexiMvvm.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiFragment.#ctor">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiFragment.#ctor(System.IntPtr,Android.Runtime.JniHandleOwnership)">
+            <inheritdoc />
+        </member>
+        <member name="E:FlexiMvvm.Views.FlexiFragment.OnOptionsItemSelectedCalled">
+            <inheritdoc />
+        </member>
+        <member name="P:FlexiMvvm.Views.FlexiFragment.LifecycleDelegate">
+            <summary>
+            Gets the view lifecycle delegate. Intended for internal use by the FlexiMvvm.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiFragment.CreateLifecycleDelegate">
+            <summary>
+            Creates a new <see cref="T:FlexiMvvm.Views.Core.IViewLifecycleDelegate"/> instance. Intended for internal use by the FlexiMvvm.
+            </summary>
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiFragment.OnCreate(Android.OS.Bundle)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiFragment.OnStart">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiFragment.OnResume">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiFragment.OnPause">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiFragment.OnStop">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiFragment.OnOptionsItemSelected(Android.Views.IMenuItem)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiFragment.OnActivityResult(System.Int32,System.Int32,Android.Content.Intent)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiFragment.OnSaveInstanceState(Android.OS.Bundle)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiFragment.OnDestroyView">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiFragment.OnDestroy">
+            <inheritdoc />
+        </member>
+        <member name="T:FlexiMvvm.Views.FlexiFragment`1">
+            <summary>
+            Represents a/an <see cref="T:AndroidX.Fragment.App.Fragment"/> that is adapted for use with the FlexiMvvm
+            and has its own lifecycle-aware view model.
+            </summary>
+            <typeparam name="TViewModel">The type of the view model.</typeparam>
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiFragment`1.#ctor">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiFragment`1.#ctor(System.IntPtr,Android.Runtime.JniHandleOwnership)">
+            <inheritdoc />
+        </member>
+        <member name="P:FlexiMvvm.Views.FlexiFragment`1.ViewModel">
+            <inheritdoc />
+        </member>
+        <member name="P:FlexiMvvm.Views.FlexiFragment`1.RequestCode">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiFragment`1.CreateLifecycleDelegate">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiFragment`1.SetResult(Android.App.Result,Android.Content.Intent)">
+            <inheritdoc />
+            <exception cref="T:System.NotSupportedException">The fragment cannot set a result. Use the appropriate method of fragment's activity instead.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiFragment`1.Finish">
+            <inheritdoc />
+            <exception cref="T:System.NotSupportedException">The fragment cannot finish an activity. Use the appropriate method of fragment's activity instead.</exception>
+        </member>
+        <member name="T:FlexiMvvm.Views.FlexiFragment`2">
+            <summary>
+            Represents a/an <see cref="T:AndroidX.Fragment.App.Fragment"/> that is adapted for use with the FlexiMvvm,
+            has its own lifecycle-aware view model and takes lifecycle-aware view model parameters.
+            </summary>
+            <typeparam name="TViewModel">The type of the view model.</typeparam>
+            <typeparam name="TParameters">The type of the view model parameters.</typeparam>
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiFragment`2.#ctor">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiFragment`2.#ctor(System.IntPtr,Android.Runtime.JniHandleOwnership)">
+            <inheritdoc />
+        </member>
+        <member name="P:FlexiMvvm.Views.FlexiFragment`2.ViewModel">
+            <inheritdoc />
+        </member>
+        <member name="P:FlexiMvvm.Views.FlexiFragment`2.RequestCode">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiFragment`2.CreateLifecycleDelegate">
+            <inheritdoc />
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiFragment`2.SetResult(Android.App.Result,Android.Content.Intent)">
+            <inheritdoc />
+            <exception cref="T:System.NotSupportedException">The fragment cannot set a result. Use the appropriate method of fragment's activity instead.</exception>
+        </member>
+        <member name="M:FlexiMvvm.Views.FlexiFragment`2.Finish">
+            <inheritdoc />
+            <exception cref="T:System.NotSupportedException">The fragment cannot finish an activity. Use the appropriate method of fragment's activity instead.</exception>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,9 @@
+/Users/artemandreichenko/RiderProjects/MusicApp/MusicApp.Core/bin/Debug/netstandard2.0/MusicApp.Core.deps.json
+/Users/artemandreichenko/RiderProjects/MusicApp/MusicApp.Core/bin/Debug/netstandard2.0/MusicApp.Core.dll
+/Users/artemandreichenko/RiderProjects/MusicApp/MusicApp.Core/bin/Debug/netstandard2.0/MusicApp.Core.pdb
+/Users/artemandreichenko/RiderProjects/MusicApp/MusicApp.Core/obj/Debug/netstandard2.0/MusicApp.Core.csprojAssemblyReference.cache
+/Users/artemandreichenko/RiderProjects/MusicApp/MusicApp.Core/obj/Debug/netstandard2.0/MusicApp.Core.AssemblyInfoInputs.cache
+/Users/artemandreichenko/RiderProjects/MusicApp/MusicApp.Core/obj/Debug/netstandard2.0/MusicApp.Core.AssemblyInfo.cs
+/Users/artemandreichenko/RiderProjects/MusicApp/MusicApp.Core/obj/Debug/netstandard2.0/MusicApp.Core.csproj.CoreCompileInputs.cache
+/Users/artemandreichenko/RiderProjects/MusicApp/MusicApp.Core/obj/Debug/netstandard2.0/MusicApp.Core.dll
+/Users/artemandreichenko/RiderProjects/MusicApp/MusicApp.Core/obj/Debug/netstandard2.0/MusicApp.Core.pdb
